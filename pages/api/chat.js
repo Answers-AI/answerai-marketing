@@ -7,17 +7,17 @@ const configuration = new Configuration({
 });
 const openai = new OpenAIApi(configuration);
 
-const client = new PineconeClient();
+// const client = new PineconeClient();
 let index;
 
-async function initializePineconeClient() {
-  await client.init({
-    apiKey: process.env.PINECONE_API_KEY,
-    environment: process.env.PINECONE_ENVIRONMENT,
-  });
+// async function initializePineconeClient() {
+//   await client.init({
+//     apiKey: process.env.PINECONE_API_KEY,
+//     environment: process.env.PINECONE_ENVIRONMENT,
+//   });
 
-  index = client.Index("markdownembeddings");
-}
+//   index = client.Index("markdownembeddings");
+// }
 
 async function handler(req, res) {
   // Your handler logic here...
@@ -166,9 +166,9 @@ One of the unique features of Journeys is its ability to keep you on task. If yo
 }
 
 export default async function wrappedHandler(req, res) {
-  if (!index) {
-    await initializePineconeClient();
-  }
+  //   if (!index) {
+  //     await initializePineconeClient();
+  //   }
 
   return handler(req, res);
 }
