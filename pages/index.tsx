@@ -11,6 +11,10 @@ const Header = styled.header`
   padding: 20px;
 `;
 
+export async function getServerSideProps() {
+  return { props: {} };
+}
+
 export default function Home() {
   return (
     <>

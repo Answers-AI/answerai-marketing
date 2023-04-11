@@ -3,6 +3,7 @@ import Typed from "typed.js";
 import styled, { keyframes } from "styled-components";
 import ChatWindow from "../ChatWindow";
 import Modal from "../Modal";
+import ReactMarkdown from "react-markdown";
 
 const HeroContainer = styled.div`
   background-image: url("/background-image.png"); // Update background image path
@@ -14,6 +15,7 @@ const HeroContainer = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  ${({ chatVisible }) => chatVisible && "height: 20vh;"}
 `;
 
 const TextAndInputContainer = styled.div`
@@ -33,6 +35,7 @@ const HeroText = styled.h1`
   padding: 10px;
   border-radius: 5px;
   width: 800px; // Add a fixed width
+  height: 250px;
   white-space: pre-wrap; // Allow wrapping to a new line
   overflow-wrap: break-word; // Add this line to break words when needed
   display: flex;
@@ -58,6 +61,7 @@ const Input = styled.input`
     transform: translateY(-2px); // Slight lift on focus for a floating effect
   }
   background-color: rgba(255, 255, 255, 0.9);
+  color: #000;
 `;
 
 const ButtonContainer = styled.div`
@@ -94,6 +98,23 @@ const ContentWrapper = styled.div`
   justify-content: space-between; // Distribute space between child elements
   text-align: center;
 `;
+const LoadingWrapper = styled.div`
+  position: relative;
+  min-height: 100px;
+`;
+
+const LoadingOverlay = styled.div`
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(255, 255, 255, 0.8);
+  z-index: 2;
+`;
 
 const AnimatedText = ({ phrases }) => {
   const typedTarget = useRef(null);
@@ -101,9 +122,9 @@ const AnimatedText = ({ phrases }) => {
   useEffect(() => {
     const options = {
       strings: phrases,
-      typeSpeed: 50,
-      backSpeed: 50,
-      loop: true,
+      typeSpeed: 40,
+      backSpeed: 1,
+      loop: false,
       smartBackspace: true,
       backDelay: 2000,
     };
@@ -121,6 +142,44 @@ const AnimatedText = ({ phrases }) => {
 const HeroSection = () => {
   const [showChat, setShowChat] = useState(false);
   const [showModal, setShowModal] = useState(false);
+  const [query, setQuery] = useState("");
+  const [messages, setMessages] = useState([]);
+  const [loading, setLoading] = useState(false);
+
+  const chatWindowRef = useRef();
+
+  useEffect(() => {
+    if (chatWindowRef.current) {
+      chatWindowRef.current.scrollTop = chatWindowRef.current.scrollHeight;
+    }
+  }, [messages]);
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setMessages([...messages, { role: "user", content: query }]);
+    setLoading(true);
+
+    const res = await fetch("/api/chat", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ query }),
+    });
+
+    const data = await res.json();
+    console.log(data);
+    setMessages((prevMessages) => [
+      ...prevMessages,
+      { role: "bot", content: data.response },
+    ]);
+    setLoading(false);
+    setQuery("");
+  };
+
+  const handleClearChat = () => {
+    setMessages([]);
+  };
 
   const phrases = [
     "To find the answer, you must ask the right question.",
@@ -145,8 +204,11 @@ const HeroSection = () => {
     "The question is not what you look at, but what you see. - Henry David Thoreau",
     "We learn more by looking for the answer to a question and not finding it than we do from learning the answer itself. - Lloyd Alexander",
   ];
-  const handleAskSidekick = () => {
-    setShowChat(true);
+  const handleAskSidekick = async () => {
+    if (query.trim()) {
+      await handleSubmit({ preventDefault: () => {} });
+      setShowChat(true);
+    }
   };
 
   const handleTalkToHuman = () => {
@@ -161,13 +223,30 @@ const HeroSection = () => {
             <HeroText>
               <AnimatedText phrases={phrases} />
             </HeroText>
-            <Input type="text" placeholder="How can AnswerAI help you?" />
+            <Input
+              type="text"
+              placeholder="How can AnswerAI help you?"
+              value={query}
+              onChange={(e) => setQuery(e.target.value)}
+            />
           </TextAndInputContainer>
           <ButtonContainer>
             <Button onClick={handleAskSidekick}>Ask Sidekick</Button>
             <Button onClick={handleTalkToHuman}>Talk to a Human</Button>
           </ButtonContainer>
-          {showChat && <ChatWindow />}
+          {showChat && (
+            <LoadingWrapper>
+              {loading && <LoadingOverlay>Loading...</LoadingOverlay>}
+              <ChatWindow
+                messages={messages.map((message) => ({
+                  ...message,
+                  content: <ReactMarkdown>{message.content}</ReactMarkdown>,
+                }))}
+                loading={loading}
+                handleClearChat={handleClearChat}
+              />
+            </LoadingWrapper>
+          )}
         </ContentWrapper>
       </HeroContainer>
       {showModal && <Modal closeModal={() => setShowModal(false)} />}

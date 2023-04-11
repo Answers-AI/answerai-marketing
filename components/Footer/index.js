@@ -8,11 +8,11 @@ const FooterContainer = styled.footer`
   padding: 20px;
   background-color: #222;
   color: #fff;
-  position: fixed; // Add fixed positioning
-  bottom: 0; // Fix to the bottom
-  left: 0; // Stretch from left
-  right: 0; // Stretch to right
-  z-index: 1000; // Add a z-index to ensure it's on top
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
 `;
 
 const LinksContainer = styled.div`
@@ -37,15 +37,21 @@ const Footer = () => {
   return (
     <FooterContainer>
       <LinksContainer>
-        <Link href="/privacy" passHref>
-          <StyledLink>Privacy Policy</StyledLink>
-        </Link>
-        <Link href="/terms" passHref>
-          <StyledLink>Terms of Service</StyledLink>
-        </Link>
-        <Link href="/contact" passHref>
-          <StyledLink>Contact</StyledLink>
-        </Link>
+        <>
+          <Link href="/privacy" passHref>
+            <StyledLink>Privacy Policy</StyledLink>
+          </Link>
+        </>
+        <>
+          <Link href="/terms" passHref>
+            <StyledLink>Terms of Service</StyledLink>
+          </Link>
+        </>
+        <>
+          <Link href="/contact" passHref>
+            <StyledLink>Contact</StyledLink>
+          </Link>
+        </>
       </LinksContainer>
       <Copyright>
         &copy; {new Date().getFullYear()} AnswerAI All rights reserved.
