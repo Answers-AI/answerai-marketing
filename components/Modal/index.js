@@ -1,4 +1,5 @@
-import styled from 'styled-components';
+import styled from "styled-components";
+import { InlineWidget } from "react-calendly";
 
 const ModalOverlay = styled.div`
   position: fixed;
@@ -37,12 +38,7 @@ const Modal = ({ closeModal }) => {
     <ModalOverlay onClick={closeModal}>
       <ModalContent onClick={(e) => e.stopPropagation()}>
         <CloseButton onClick={closeModal}>&times;</CloseButton>
-        <iframe
-          src="https://calendly.com/your-username"
-          width="100%"
-          height="500"
-          frameBorder="0"
-          title="Calendly"></iframe>
+        <InlineWidget url="https://calendly.com/lastrev-brad/answerai?hide_event_type_details=1&hide_gdpr_banner=1" />
       </ModalContent>
     </ModalOverlay>
   );
