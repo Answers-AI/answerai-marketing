@@ -61,7 +61,7 @@ const Footer = () => {
         onLoad={() => {
           console.log("test");
           window.AnswersAI.init({
-            targetId: "the-answer-chat-widget",
+            targetId: "the-answer",
             iframeSrc:
               "https://answers-ai-web-ias-git-feature-widget-effect-answers-ai.vercel.app/widgets/chat?apiKey=05031979",
           });
