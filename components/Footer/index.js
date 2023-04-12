@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import Link from "next/link";
+import Script from "next/script";
 
 const FooterContainer = styled.footer`
   display: flex;
@@ -20,7 +21,7 @@ const LinksContainer = styled.div`
   gap: 20px;
 `;
 
-const StyledLink = styled.a`
+const StyledLink = styled(Link)`
   color: #fff;
   text-decoration: none;
 
@@ -34,28 +35,38 @@ const Copyright = styled.p`
 `;
 
 const Footer = () => {
+  const chatWidgetScript = `
+      window.AnswersAI.init({
+        iframeSrc:
+          "https://answers-ai-web-ias.vercel.app/widgets/chat?apiKey=05031979",
+      });
+    `;
+
   return (
     <FooterContainer>
       <LinksContainer>
-        <>
-          <Link href="/privacy" passHref>
-            <StyledLink>Privacy Policy</StyledLink>
-          </Link>
-        </>
-        <>
-          <Link href="/terms" passHref>
-            <StyledLink>Terms of Service</StyledLink>
-          </Link>
-        </>
-        <>
-          <Link href="/contact" passHref>
-            <StyledLink>Contact</StyledLink>
-          </Link>
-        </>
+        <StyledLink href="/privacy">Privacy Policy</StyledLink>
+        <StyledLink href="/terms">Terms of Service</StyledLink>
+        <StyledLink href="/contact">Contact</StyledLink>
       </LinksContainer>
       <Copyright>
         &copy; {new Date().getFullYear()} AnswerAI All rights reserved.
       </Copyright>
+
+      <div id="the-answer"></div>
+      <Script
+        id="the-answer-chat-widget"
+        src="https://answers-ai-web-ias-git-feature-widget-effect-answers-ai.vercel.app/main.js"
+        type="application/javascript"
+        onLoad={() => {
+          console.log("test");
+          window.AnswersAI.init({
+            targetId: "the-answer-chat-widget",
+            iframeSrc:
+              "https://answers-ai-web-ias-git-feature-widget-effect-answers-ai.vercel.app/widgets/chat?apiKey=05031979",
+          });
+        }}
+      />
     </FooterContainer>
   );
 };
