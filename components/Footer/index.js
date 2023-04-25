@@ -56,14 +56,14 @@ const Footer = () => {
       <div id="the-answer"></div>
       <Script
         id="the-answer-chat-widget"
-        src="https://answers-ai-web-ias-git-feature-widget-effect-answers-ai.vercel.app/main.js"
+        src="https://answers-ai-web-ias.vercel.app/main.js"
         type="application/javascript"
         onLoad={() => {
           console.log("test");
           window.AnswersAI.init({
             targetId: "the-answer",
             iframeSrc:
-              "https://answers-ai-web-ias-git-feature-widget-effect-answers-ai.vercel.app/widgets/chat?apiKey=05031979",
+              "https://answers-ai-web-ias.vercel.app/widgets/chat?apiKey=05031979",
           });
         }}
       />
