@@ -72,20 +72,11 @@ const ButtonContainer = styled.div`
 const Button = styled.button`
   padding: 10px 20px;
   cursor: pointer;
-  background-color: rgba(
-    70,
-    130,
-    180,
-    0.9
-  ); // Make buttons slightly transparent
-  border-radius: 25px; // Add rounded corners
+  background-color: #4DB6AC;
+  border-radius: 20px; // Add rounded corners
+  font-family: 'Roboto', sans-serif; // Use Roboto font
   &:hover {
-    background-color: rgba(
-      70,
-      130,
-      180,
-      1
-    ); // Make buttons more opaque on hover
+    background-color: rgba(70, 130, 180, 0.9);
   }
 `;
 
@@ -223,16 +214,9 @@ const HeroSection = () => {
             <HeroText>
               <AnimatedText phrases={phrases} />
             </HeroText>
-            <Input
-              type="text"
-              placeholder="How can AnswerAI help you?"
-              value={query}
-              onChange={(e) => setQuery(e.target.value)}
-            />
           </TextAndInputContainer>
           <ButtonContainer>
-            <Button onClick={handleAskSidekick}>Ask Sidekick</Button>
-            <Button onClick={handleTalkToHuman}>Talk to a Human</Button>
+            <Button onClick={handleTalkToHuman}>Schedule a Demo</Button>
           </ButtonContainer>
           {showChat && (
             <LoadingWrapper>
