@@ -28,7 +28,6 @@ export default function ContactPage() {
       <MainContent>
         <Contact />
       </MainContent>
-      <Footer />
     </>
   );
 }

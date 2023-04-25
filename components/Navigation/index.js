@@ -39,13 +39,7 @@ const Navigation = () => {
   return (
     <NavContainer>
       <Link href="/">Home</Link>
-      <Link href="/about">About</Link>
-      <Link href="/contact">Contact</Link>
-      {isLoggedIn ? (
-        <button onClick={handleLogout}>My Account</button>
-      ) : (
-        <button onClick={handleLogin}>Login</button>
-      )}
+      <Link href="https://app.theanswer.ai">Login</Link>
     </NavContainer>
   );
 };

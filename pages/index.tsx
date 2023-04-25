@@ -23,7 +23,7 @@ export default function Home() {
         <Navigation />
       </Header>
       <HeroSection />
-      <Footer />
+
     </>
   );
 }
