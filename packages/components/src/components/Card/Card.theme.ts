@@ -1,5 +1,4 @@
 import { Theme, ThemeOptions, ComponentsOverrides, ComponentsVariants } from '@mui/material/styles';
-import { display } from '@mui/system';
 
 // https://mui.com/customization/theme-components/#default-props
 export const defaultProps = {};

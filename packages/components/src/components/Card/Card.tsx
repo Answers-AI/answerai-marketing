@@ -1,7 +1,6 @@
 import React from 'react';
 
 import { styled } from '@mui/material/styles';
-import Box from '@mui/material/Box';
 import MuiCard from '@mui/material/Card';
 import CardMedia from '@mui/material/CardMedia';
 import CardActions from '@mui/material/CardActions';
@@ -200,20 +199,6 @@ const Media = styled(CardMedia, {
   slot: 'CardMedia',
   shouldForwardProp,
   overridesResolver: (_, styles) => [styles.cardMedia]
-})(() => ({}));
-
-const MediaFlip = styled(Box, {
-  name: 'Card',
-  slot: 'MediaFlip',
-  shouldForwardProp,
-  overridesResolver: (_, styles) => [styles.cardMediaFlip]
-})(() => ({}));
-
-const MediaContainer = styled(Box, {
-  name: 'Card',
-  slot: 'MediaContainer',
-  shouldForwardProp,
-  overridesResolver: (_, styles) => [styles.cardMediaContainer]
 })(() => ({}));
 
 const Actions = styled(CardActions, {

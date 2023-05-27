@@ -20,9 +20,6 @@ const Block = (inProps: BlockProps) => {
   });
   const { variant, introText, eyebrow, title, subtitle, body, mediaItems, actions, link, sidekickLookup } = props;
 
-  const ownerState = {
-    variant
-  };
   const extraProps = link
     ? {
         component: Link,
@@ -31,14 +28,14 @@ const Block = (inProps: BlockProps) => {
     : {};
 
   return (
-    <Root data-testid="Block" {...sidekick(sidekickLookup)} {...props} variant={variant} ownerState={ownerState}>
+    <Root data-testid="Block" {...sidekick(sidekickLookup)} {...props} variant={variant}>
       {!!introText && (
         <IntroTextWrapper>
           <IntroText {...sidekick(sidekickLookup, 'introText')} {...introText} />
         </IntroTextWrapper>
       )}
 
-      <ContentOuterWrapper ownerState={ownerState}>
+      <ContentOuterWrapper>
         <ContentWrapper>
           <Content>
             {!!eyebrow && <Eyebrow label={eyebrow} />}
