@@ -1,0 +1,34 @@
+fragment Page_BaseFragment on Page {
+  ...Content_BaseFragment
+  title
+  slug
+  header {
+    ...Header_BaseFragment
+  }
+  footer {
+    ...GlobalFooter_BaseFragment
+  }
+  hero {
+    ...Hero_BaseFragment
+  }
+  contents {
+    ...ContentModule_BaseFragment
+  }
+  seo
+  colorScheme
+  headerOverride {
+    ...Header_BaseFragment
+  }
+  footerOverride {
+    ...GlobalFooter_BaseFragment
+  }
+  breadcrumbs {
+    ...Link_BaseFragment
+  }
+}
+
+fragment Page_LinkFragment on Page {
+  ...Content_BaseFragment
+  title
+  slug
+}

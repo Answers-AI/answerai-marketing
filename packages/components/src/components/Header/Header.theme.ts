@@ -1,0 +1,318 @@
+import { Theme, ThemeOptions, ComponentsProps, ComponentsOverrides, ComponentsVariants } from '@mui/material/styles';
+
+const SUPERNAV_TIMEOUT = '15s';
+
+// https://mui.com/customization/theme-components/#default-props
+export const defaultProps: ComponentsProps['Header'] = {};
+
+// https://mui.com/customization/theme-components/#global-style-overrides
+export const styleOverrides: ComponentsOverrides<Theme>['Header'] = {
+  root: ({ theme, ownerState, elevation }) => ({
+    padding: theme.spacing(0, 2),
+
+    ...(!elevation &&
+      ownerState?.color === 'secondary' && {
+        backgroundColor: 'transparent'
+      }),
+
+    [theme.breakpoints.up('md')]: {
+      padding: theme.spacing(0, 5)
+    },
+
+    [theme.breakpoints.up('lg')]: {
+      padding: theme.spacing(0, 3)
+    }
+  }),
+
+  superNav: ({ theme, isElevated }) => ({
+    backgroundColor: theme.palette.primary.main,
+    padding: theme.spacing(0, 2),
+    [theme.breakpoints.down('md')]: {
+      'margin': theme.spacing(0, -2),
+      'transform': 'scaleY(1)',
+      'transformOrigin': 'top',
+      'transformStyle': 'flat',
+      'maxHeight': '100%',
+      'transition': 'transform 250ms ease, max-height 250ms ease, height 250ms ease',
+      'animation': `collapse 250ms ease ${SUPERNAV_TIMEOUT} forwards`,
+      '@keyframes collapse': {
+        to: {
+          transform: 'scaleY(0)',
+          maxHeight: 0,
+          height: 0
+        }
+      },
+
+      ...(!!isElevated && {
+        visibility: 'hidden',
+        maxHeight: 0,
+        height: 0
+      })
+    },
+
+    [theme.breakpoints.up('md')]: {
+      margin: theme.spacing(0, -5),
+
+      ...(!!isElevated && {
+        transform: 'scaleY(0)',
+        maxHeight: 0,
+        height: 0
+      })
+    },
+    [theme.breakpoints.up('lg')]: {
+      margin: theme.spacing(0, -3)
+    }
+  }),
+
+  superNavContainer: ({ theme }) => ({
+    display: 'flex',
+    alignItems: 'center',
+    padding: theme.spacing(0.5, 0),
+    gap: theme.spacing(1),
+    justifyContent: 'flex-start',
+    [theme.breakpoints.up('md')]: {
+      padding: theme.spacing(1, 0),
+      justifyContent: 'center'
+    }
+  }),
+
+  supernavIcon: ({}) => ({
+    margin: 0,
+    height: 21.5
+  }),
+
+  supernavLink: ({ theme }) => ({
+    'padding': 0,
+    'color': theme.palette.primary.main,
+    ...theme.typography.body1,
+    'textAlign': 'center',
+
+    '&:hover': {
+      color: theme.palette.primary.main
+    },
+
+    '&:active': {
+      '.MuiSvgIcon-root': {
+        color: theme.palette.primary.main
+      }
+    },
+
+    [theme.breakpoints.up('md')]: {
+      textAlign: 'left'
+    },
+
+    '.MuiSvgIcon-root': {
+      color: theme.palette.secondary.main,
+      height: theme.spacing(2)
+    }
+  }),
+
+  contentContainer: ({ theme, menuVisible }) => ({
+    height: '100%',
+    minHeight: theme.spacing(8.375),
+    maxHeight: theme.spacing(11.25),
+    alignItems: 'stretch',
+    position: 'relative',
+    display: 'grid',
+    gridTemplateColumns: 'repeat(12, minmax(0, 1fr))',
+    gap: theme.spacing(0, 2),
+    gridTemplateRows: `minmax(${theme.spacing(8.375)}, 1fr)`,
+
+    ...(!!menuVisible && {
+      maxHeight: '100%'
+    }),
+
+    [theme.breakpoints.up('lg')]: {
+      gap: theme.spacing(3),
+      maxHeight: 'unset',
+      minHeight: 'unset'
+    }
+  }),
+
+  logoRoot: ({ theme }) => ({
+    gridColumn: '1/7',
+    gridRow: 1,
+    alignSelf: 'center',
+
+    [theme.breakpoints.up('lg')]: {
+      gridColumn: '1 / span 2'
+    }
+  }),
+
+  logo: ({ theme }) => ({
+    // TODO: Should we hardcode this?
+    height: 20,
+    margin: 0,
+    [theme.breakpoints.up('md')]: {
+      // TODO: Should we hardcode this?
+      height: 27
+    }
+  }),
+
+  headerMenuCtas: ({ theme, isElevated }) => ({
+    gridColumn: '6/13',
+    gridRow: 1,
+    padding: 0,
+    display: 'inline-flex',
+    justifyContent: 'flex-end',
+    alignItems: 'center',
+    height: '100%',
+    justifySelf: 'flex-end',
+
+    [theme.breakpoints.up('md')]: {
+      'padding': theme.spacing(2, 0),
+      'gap': theme.spacing(2),
+      '> [class$=Header-headerMenuCtaItem] ~ [class$=Header-headerMenuCtaItem]': {
+        display: 'block'
+      },
+
+      ...(!!isElevated && {
+        padding: theme.spacing(1, 0)
+      })
+    },
+
+    [theme.breakpoints.up('lg')]: {
+      'gridColumn': '9/ span 4',
+      'width': '100%',
+      'gap': theme.spacing(4),
+      'padding': theme.spacing(4, 0),
+      '[class$=Header-headerMenuCtaItem]': {
+        display: 'block'
+      },
+
+      ...(!!isElevated && {
+        padding: theme.spacing(1, 0)
+      })
+    }
+  }),
+
+  headerMenuCtaItem: ({ theme }) => ({
+    padding: 0,
+    display: 'none',
+
+    [theme.breakpoints.up('lg')]: {
+      'width': 'fit-content',
+      '[class$=MuiLink-root-Link-root]': {
+        color: theme.palette.primary.main,
+        ...theme.typography.body2
+      }
+    }
+  }),
+
+  headerMenuNav: ({ theme, menuVisible }) => ({
+    justifyItems: 'center',
+    position: 'unset',
+    gridColumn: '1/13',
+    gridRow: 2,
+    height: '100%',
+    maxHeight: '100vh',
+    overflow: 'auto',
+
+    ...(!menuVisible && {
+      maxHeight: 0
+    }),
+
+    marginLeft: theme.spacing(-2),
+    marginRight: theme.spacing(-2),
+
+    [theme.breakpoints.up('md')]: {
+      marginLeft: theme.spacing(-5),
+      marginRight: theme.spacing(-5)
+    },
+
+    [theme.breakpoints.up('lg')]: {
+      height: 'auto',
+      overflow: 'unset',
+      marginLeft: 0,
+      marginRight: 0,
+      maxHeight: '100%',
+      gridColumn: '3 / span 6',
+      gridRow: 1,
+      display: 'inline-flex'
+    }
+  }),
+
+  headerMenuNavItems: ({ theme }) => ({
+    display: 'inline-flex',
+    alignItems: 'center',
+    padding: 0,
+    position: 'unset',
+    flexDirection: 'column',
+    width: '100%',
+    borderBottom: `solid 1px ${theme.palette.grey[200]}`,
+    [theme.breakpoints.up('lg')]: {
+      borderBottom: 'none',
+      height: '100%',
+      flexDirection: 'row',
+      width: 'auto'
+    }
+  }),
+
+  headerMenuNavItem: ({ theme }) => ({
+    padding: 0,
+    position: 'unset',
+
+    [theme.breakpoints.up('lg')]: {
+      height: '100%'
+    }
+  }),
+
+  headerMenuMobileCtas: ({ theme }) => ({
+    display: 'inline-flex',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    width: '100%',
+    padding: theme.spacing(2),
+
+    [theme.breakpoints.up('md')]: {
+      padding: theme.spacing(2, 5)
+    },
+
+    [theme.breakpoints.up('lg')]: {
+      display: 'none'
+    }
+  }),
+
+  headerMenuMobileCtaItem: ({ theme }) => ({
+    'width': 'fit-content',
+    'padding': 0,
+    '[class$=MuiLink-root-Link-root]': {
+      color: theme.palette.primary.main,
+      ...theme.typography.body2
+    }
+  }),
+
+  contentSpacer: ({ theme }) => ({
+    [theme.breakpoints.down('md')]: {
+      'minHeight': theme.spacing(12),
+      'transition': 'all 250ms ease',
+      'animation': `content-spacer 250ms ease ${SUPERNAV_TIMEOUT} forwards`,
+      '@keyframes content-spacer': {
+        to: {
+          minHeight: theme.spacing(8.375)
+        }
+      }
+    },
+    [theme.breakpoints.up('md')]: {
+      minHeight: theme.spacing(16)
+    },
+    [theme.breakpoints.up('lg')]: {
+      minHeight: theme.spacing(20.5)
+    }
+  })
+};
+
+// https://mui.com/customization/theme-components/#adding-new-component-variants
+const createVariants = (_theme: Theme): ComponentsVariants['Header'] => [];
+
+export default (theme: Theme): ThemeOptions => ({
+  components: {
+    Header: {
+      // @ts-expect-error
+      height: 122,
+      defaultProps,
+      styleOverrides,
+      variants: createVariants(theme)
+    }
+  }
+});
