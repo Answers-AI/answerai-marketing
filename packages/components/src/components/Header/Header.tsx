@@ -126,7 +126,7 @@ export const Header = (inProps: HeaderProps) => {
                 </HeaderMenuNav>
               )}
 
-              <HeaderMenuCtas isElevated={trigger}>
+              <HeaderMenuCtas>
                 {ctAs?.map((navItem: any, index: number) => (
                   <HeaderMenuCtaItem key={`${navItem.id}-${index}`}>
                     <ContentModule {...navItem} />
@@ -147,7 +147,6 @@ export const Header = (inProps: HeaderProps) => {
             </ContentContainer>
           </Container>
         </Root>
-        <ContentSpacer />
       </>
     </ErrorBoundary>
   );
@@ -157,6 +156,7 @@ const shouldForwardProp = (prop: string) =>
   prop !== 'ownerState' &&
   prop !== 'menuVisible' &&
   prop !== 'menuBreakpoint' &&
+  prop !== 'isElevated' &&
   prop !== 'sidekickLookup' &&
   prop !== 'supernavIcon' &&
   prop !== 'supernavText' &&
@@ -167,6 +167,7 @@ const shouldForwardProp = (prop: string) =>
   prop !== 'logoUrl' &&
   prop !== 'navigationItems' &&
   prop !== 'ctAs' &&
+  prop !== 'legacyBehavior' &&
   prop !== 'mobileCtAs' &&
   prop !== 'hasSuperNav';
 
@@ -180,7 +181,7 @@ const Root = styled(AppBar, {
     prop !== 'supernavText' &&
     prop !== 'supernavLink',
   overridesResolver: (_, styles) => [styles.root]
-})<HeaderProps & { ownerState: any }>(() => ({}));
+})<HeaderProps & { ownerState: any; menuVisible: boolean }>(() => ({}));
 
 const SuperNav = styled(Box, {
   name: 'Header',
@@ -228,7 +229,7 @@ const HeaderMenuCtas = styled(List, {
   slot: 'HeaderMenuCtas',
   shouldForwardProp,
   overridesResolver: (_, styles) => [styles.headerMenuCtas]
-})<{ isElevated?: boolean }>``;
+})(() => ({}));
 
 const HeaderMenuCtaItem = styled(ListItem, {
   name: 'Header',
@@ -277,13 +278,6 @@ const ContentContainer = styled(Toolbar, {
   slot: 'ContentContainer',
   shouldForwardProp,
   overridesResolver: (_, styles) => [styles.contentContainer]
-})<{ variant?: string; menuVisible?: boolean }>``;
-
-const ContentSpacer = styled(Toolbar, {
-  name: 'Header',
-  slot: 'ContentSpacer',
-  shouldForwardProp,
-  overridesResolver: (_, styles) => [styles.contentSpacer]
-})``;
+})<{ variant?: string; menuVisible?: boolean; legacyBehavior?: boolean }>``;
 
 export default Header;

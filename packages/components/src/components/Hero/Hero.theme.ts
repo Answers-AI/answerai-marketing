@@ -10,8 +10,8 @@ export const defaultProps: ComponentsProps['Hero'] = {
 export const styleOverrides: ComponentsOverrides<Theme>['Hero'] = {
   root: ({ theme }) => {
     return {
-      '&': {
-        padding: theme.spacing(10, 0)
+      'header[class*=elevation0] + & ': {
+        padding: theme.spacing(25, 0, 15)
       },
 
       '.MuiTypography-h1': {

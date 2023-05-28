@@ -15,8 +15,10 @@ export const styleOverrides: ComponentsOverrides<Theme>['HeaderNavLink'] = {
     'position': 'relative',
     'transition': 'border-color 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms',
 
-    '[class$=HeaderNavLink-navItemLink]': {
+    '& [class$=HeaderNavLink-navItemLink]': {
       ...theme.typography.body2,
+      fontSize: '0.875rem',
+
       ...(!!open && {
         fontWeight: 800
       })
@@ -24,7 +26,7 @@ export const styleOverrides: ComponentsOverrides<Theme>['HeaderNavLink'] = {
 
     '&:is(:hover, :focus-within):not(:focus-visible)': {
       [theme.breakpoints.up('lg')]: {
-        'borderBottomColor': theme.palette.primary.main,
+        'borderBottomColor': theme.palette.secondary.main,
 
         '[class*="HeaderNavLink-navItemLink"]': {
           'color': theme.palette.primary.main,
@@ -44,7 +46,7 @@ export const styleOverrides: ComponentsOverrides<Theme>['HeaderNavLink'] = {
   }),
 
   navItemLink: ({ theme, open }) => ({
-    'padding': theme.spacing(2, 2),
+    'padding': theme.spacing(0, 2),
     'color': theme.palette.primary.contrastText,
     'flexGrow': '1',
     'alignItems': 'center',
@@ -54,14 +56,10 @@ export const styleOverrides: ComponentsOverrides<Theme>['HeaderNavLink'] = {
     'justifyContent': 'space-between',
     'cursor': 'pointer',
     'transition': 'color 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms',
-
-    [theme.breakpoints.up('md')]: {
-      padding: theme.spacing(2, 5)
-    },
+    'fontSize': '0.875rem',
 
     [theme.breakpoints.up('lg')]: {
       justifyContent: 'flex-start',
-      padding: theme.spacing(0, 2),
       borderTop: 'none'
     },
 

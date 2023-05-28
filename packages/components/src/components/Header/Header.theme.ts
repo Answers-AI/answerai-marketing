@@ -7,25 +7,13 @@ export const defaultProps: ComponentsProps['Header'] = {};
 
 // https://mui.com/customization/theme-components/#global-style-overrides
 export const styleOverrides: ComponentsOverrides<Theme>['Header'] = {
-  root: ({ theme, ownerState, elevation }) => ({
+  root: ({ theme, elevation }) => ({
     padding: theme.spacing(0, 2),
-
-    ...(!elevation &&
-      ownerState?.color === 'secondary' && {
-        backgroundColor: 'transparent'
-      }),
-
-    [theme.breakpoints.up('md')]: {
-      padding: theme.spacing(0, 5)
-    },
-
-    [theme.breakpoints.up('lg')]: {
-      padding: theme.spacing(0, 3)
-    }
+    backgroundColor: !!elevation ? theme.palette.secondary.main : 'transparent'
   }),
 
   superNav: ({ theme, isElevated }) => ({
-    backgroundColor: theme.palette.primary.main,
+    backgroundColor: theme.palette.secondary.main,
     padding: theme.spacing(0, 2),
     [theme.breakpoints.down('md')]: {
       'margin': theme.spacing(0, -2),
@@ -70,6 +58,7 @@ export const styleOverrides: ComponentsOverrides<Theme>['Header'] = {
     padding: theme.spacing(0.5, 0),
     gap: theme.spacing(1),
     justifyContent: 'flex-start',
+
     [theme.breakpoints.up('md')]: {
       padding: theme.spacing(1, 0),
       justifyContent: 'center'
@@ -83,8 +72,8 @@ export const styleOverrides: ComponentsOverrides<Theme>['Header'] = {
 
   supernavLink: ({ theme }) => ({
     'padding': 0,
-    'color': theme.palette.primary.main,
     ...theme.typography.body1,
+    'color': theme.palette.primary.main,
     'textAlign': 'center',
 
     '&:hover': {
@@ -109,7 +98,7 @@ export const styleOverrides: ComponentsOverrides<Theme>['Header'] = {
 
   contentContainer: ({ theme, menuVisible }) => ({
     height: '100%',
-    minHeight: theme.spacing(8.375),
+    minHeight: theme.spacing(4),
     maxHeight: theme.spacing(11.25),
     alignItems: 'stretch',
     position: 'relative',
@@ -139,17 +128,12 @@ export const styleOverrides: ComponentsOverrides<Theme>['Header'] = {
     }
   }),
 
-  logo: ({ theme }) => ({
-    // TODO: Should we hardcode this?
+  logo: () => ({
     height: 20,
-    margin: 0,
-    [theme.breakpoints.up('md')]: {
-      // TODO: Should we hardcode this?
-      height: 27
-    }
+    margin: 0
   }),
 
-  headerMenuCtas: ({ theme, isElevated }) => ({
+  headerMenuCtas: ({ theme }) => ({
     gridColumn: '6/13',
     gridRow: 1,
     padding: 0,
@@ -160,29 +144,21 @@ export const styleOverrides: ComponentsOverrides<Theme>['Header'] = {
     justifySelf: 'flex-end',
 
     [theme.breakpoints.up('md')]: {
-      'padding': theme.spacing(2, 0),
+      'padding': theme.spacing(1, 0),
       'gap': theme.spacing(2),
       '> [class$=Header-headerMenuCtaItem] ~ [class$=Header-headerMenuCtaItem]': {
         display: 'block'
-      },
-
-      ...(!!isElevated && {
-        padding: theme.spacing(1, 0)
-      })
+      }
     },
 
     [theme.breakpoints.up('lg')]: {
-      'gridColumn': '9/ span 4',
+      'gridColumn': '11 / -1',
       'width': '100%',
       'gap': theme.spacing(4),
-      'padding': theme.spacing(4, 0),
+
       '[class$=Header-headerMenuCtaItem]': {
         display: 'block'
-      },
-
-      ...(!!isElevated && {
-        padding: theme.spacing(1, 0)
-      })
+      }
     }
   }),
 
@@ -201,8 +177,9 @@ export const styleOverrides: ComponentsOverrides<Theme>['Header'] = {
 
   headerMenuNav: ({ theme, menuVisible }) => ({
     justifyItems: 'center',
+    justifyContent: 'flex-end',
     position: 'unset',
-    gridColumn: '1/13',
+    gridColumn: '1/-1',
     gridRow: 2,
     height: '100%',
     maxHeight: '100vh',
@@ -226,7 +203,7 @@ export const styleOverrides: ComponentsOverrides<Theme>['Header'] = {
       marginLeft: 0,
       marginRight: 0,
       maxHeight: '100%',
-      gridColumn: '3 / span 6',
+      gridColumn: '3 / -2',
       gridRow: 1,
       display: 'inline-flex'
     }
@@ -239,7 +216,8 @@ export const styleOverrides: ComponentsOverrides<Theme>['Header'] = {
     position: 'unset',
     flexDirection: 'column',
     width: '100%',
-    borderBottom: `solid 1px ${theme.palette.grey[200]}`,
+    borderBottom: `solid 1px ${theme.palette.secondary.main}`,
+
     [theme.breakpoints.up('lg')]: {
       borderBottom: 'none',
       height: '100%',
@@ -264,10 +242,6 @@ export const styleOverrides: ComponentsOverrides<Theme>['Header'] = {
     width: '100%',
     padding: theme.spacing(2),
 
-    [theme.breakpoints.up('md')]: {
-      padding: theme.spacing(2, 5)
-    },
-
     [theme.breakpoints.up('lg')]: {
       display: 'none'
     }
@@ -280,25 +254,6 @@ export const styleOverrides: ComponentsOverrides<Theme>['Header'] = {
       color: theme.palette.primary.main,
       ...theme.typography.body2
     }
-  }),
-
-  contentSpacer: ({ theme }) => ({
-    [theme.breakpoints.down('md')]: {
-      'minHeight': theme.spacing(12),
-      'transition': 'all 250ms ease',
-      'animation': `content-spacer 250ms ease ${SUPERNAV_TIMEOUT} forwards`,
-      '@keyframes content-spacer': {
-        to: {
-          minHeight: theme.spacing(8.375)
-        }
-      }
-    },
-    [theme.breakpoints.up('md')]: {
-      minHeight: theme.spacing(16)
-    },
-    [theme.breakpoints.up('lg')]: {
-      minHeight: theme.spacing(20.5)
-    }
   })
 };
 
@@ -309,7 +264,7 @@ export default (theme: Theme): ThemeOptions => ({
   components: {
     Header: {
       // @ts-expect-error
-      height: 122,
+      height: 80,
       defaultProps,
       styleOverrides,
       variants: createVariants(theme)
