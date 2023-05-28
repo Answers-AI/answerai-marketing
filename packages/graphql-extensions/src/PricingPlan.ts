@@ -5,6 +5,7 @@ import { ContentfulPathsGenerator, ContentfulLoaders } from '@last-rev/types';
 import createPath from './utils/createPath';
 import headerResolver from './resolvers/headerResolver';
 import globalFooterResolver from './resolvers/globalFooterResolver';
+import hrefUrlResolver from './resolvers/hrefUrlResolver';
 
 export const typeDefs = gql`
   type PricingPlan {
@@ -32,6 +33,9 @@ export const mappers = {
       body: 'featuresCard',
       link: 'subscribeCta'
       // actions: ['subscribeCta'
+    },
+    Link: {
+      href: hrefUrlResolver
     }
   }
 };

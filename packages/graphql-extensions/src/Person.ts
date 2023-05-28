@@ -5,6 +5,7 @@ import { ContentfulPathsGenerator, ContentfulLoaders, ApolloContext } from '@las
 import createPath from './utils/createPath';
 import headerResolver from './resolvers/headerResolver';
 import globalFooterResolver from './resolvers/globalFooterResolver';
+import hrefUrlResolver from './resolvers/hrefUrlResolver';
 
 export const typeDefs = gql`
   type Person {
@@ -51,6 +52,9 @@ export const mappers = {
       },
       link: null,
       actions: 'socialLinks'
+    },
+    Link: {
+      href: hrefUrlResolver
     }
   }
 };

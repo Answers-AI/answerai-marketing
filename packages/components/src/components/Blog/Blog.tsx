@@ -46,7 +46,7 @@ const Blog = ({
     <>
       {header ? <ContentModule {...(header as any)} /> : null}
       <Root component="main" {...sidekick(sidekickLookup)}>
-        <ContentContainer>
+        <HeaderContainer>
           {/* TODO: Move Breadcrumb to its own component */}
           {!!breadcrumbs?.length && (
             <Breadcrumb>
@@ -57,71 +57,56 @@ const Blog = ({
           )}
 
           {!!title && <Title component="h1">{title}</Title>}
-
-          <Stats>
-            {!!author && (
-              <Author>
-                {!!author.image && (
-                  <Avatar>
-                    <AvatarImage {...author.image} />
-                  </Avatar>
-                )}
-
-                {!!author.name && (
-                  <AuthorName>
-                    Author: <span>{author.name}</span>
-                  </AuthorName>
-                )}
-              </Author>
-            )}
-
-            {!!pubDate && <PubDate variant="body1">{pubDate}</PubDate>}
-          </Stats>
+          {!!pubDate && <PubDate variant="body1">Published on {pubDate}</PubDate>}
 
           {!!featuredMedia && (
             <FeaturedMedia {...sidekick(sidekickLookup, 'featuredMedia')} {...(featuredMedia as MediaProps)} />
           )}
+        </HeaderContainer>
 
-          <ShareLinksWrapper>
-            <ShareLinksLabel variant="body1">Share</ShareLinksLabel>
+        <ContentContainer>
+          <ContentWrap>
+            {(!!body || !!summary) && (
+              <BodyWrap>
+                {!!summary && <Summary variant="body1">{summary}</Summary>}
+                {!!body && (
+                  <Body {...sidekick(sidekickLookup, 'body')} __typename="Text" body={body} variant="detailPageBody" />
+                )}
+              </BodyWrap>
+            )}
 
-            <ShareLinks>
-              <ShareLink href={`http://www.twitter.com/share?url=${encodedShareUrl}`} target="_blank">
-                <TwitterIcon />
-                <Typography>Twitter</Typography>
-              </ShareLink>
-              <ShareLink href={`https://www.facebook.com/sharer/sharer.php?u=${encodedShareUrl}`} target="_blank">
-                <FacebookIcon />
-                <Typography>Facebook</Typography>
-              </ShareLink>
-              <ShareLink
-                href={`https://www.linkedin.com/sharing/share-offsite/?url=${encodedShareUrl}`}
-                target="_blank">
-                <LinkedinIcon />
-                <Typography>Linkedin</Typography>
-              </ShareLink>
-              <ShareLink href={`mailto:?to=&body=${encodedShareUrl}`}>
-                <EmailIcon />
-                <Typography>Email</Typography>
-              </ShareLink>
-              <ShareLink
-                onClick={() => {
-                  navigator.clipboard.writeText(shareUrl);
-                }}>
-                <CopyLinkIcon />
-                <Typography>Copy Link</Typography>
-              </ShareLink>
-            </ShareLinks>
-          </ShareLinksWrapper>
+            <ShareLinksWrapper>
+              <ShareLinksLabel variant="body1">Share</ShareLinksLabel>
 
-          {(!!body || !!summary) && (
-            <BodyWrap>
-              {!!summary && <Summary variant="body1">{summary}</Summary>}
-              {!!body && (
-                <Body {...sidekick(sidekickLookup, 'body')} __typename="Text" body={body} variant="detailPageBody" />
-              )}
-            </BodyWrap>
-          )}
+              <ShareLinks>
+                <ShareLink href={`http://www.twitter.com/share?url=${encodedShareUrl}`} target="_blank">
+                  <TwitterIcon />
+                  <Typography>Twitter</Typography>
+                </ShareLink>
+                <ShareLink href={`https://www.facebook.com/sharer/sharer.php?u=${encodedShareUrl}`} target="_blank">
+                  <FacebookIcon />
+                  <Typography>Facebook</Typography>
+                </ShareLink>
+                <ShareLink
+                  href={`https://www.linkedin.com/sharing/share-offsite/?url=${encodedShareUrl}`}
+                  target="_blank">
+                  <LinkedinIcon />
+                  <Typography>Linkedin</Typography>
+                </ShareLink>
+                <ShareLink href={`mailto:?to=&body=${encodedShareUrl}`}>
+                  <EmailIcon />
+                  <Typography>Email</Typography>
+                </ShareLink>
+                <ShareLink
+                  onClick={() => {
+                    navigator.clipboard.writeText(shareUrl);
+                  }}>
+                  <CopyLinkIcon />
+                  <Typography>Copy Link</Typography>
+                </ShareLink>
+              </ShareLinks>
+            </ShareLinksWrapper>
+          </ContentWrap>
 
           {!!relatedItems?.length && (
             <RelatedItemsWrapper>
@@ -148,7 +133,14 @@ const Blog = ({
                 </Author>
               )}
 
-              {!!author.body && <AuthorSummary>{author.body}</AuthorSummary>}
+              {!!author.body && (
+                <AuthorSummary
+                  {...sidekick(sidekickLookup, 'body')}
+                  __typename="Text"
+                  body={author.body}
+                  variant="detailPageBody"
+                />
+              )}
 
               {!!author.socialLinks?.length && (
                 <AuthorSocialLinks>
@@ -180,14 +172,19 @@ const Root = styled(Box, {
   slot: 'Root',
   overridesResolver: (_, styles) => [styles.root]
 })(({ theme }) => ({
-  padding: theme.spacing(4, 2, 5.75, 2),
-  letterSpacing: 'initial',
-  [theme.breakpoints.up('md')]: {
-    padding: theme.spacing(4, 5, 11, 5)
-  },
-  [theme.breakpoints.up('lg')]: {
-    padding: theme.spacing(4, 3, 9, 3)
+  'header[class*=elevation0] + & ': {
+    padding: theme.spacing(25, 0, 0)
   }
+}));
+
+const HeaderContainer = styled(Container, {
+  name: 'Blog',
+  slot: 'ContentContainer',
+  overridesResolver: (_, styles) => [styles.contentContainer]
+})<{ variant?: string }>(({ theme }) => ({
+  display: 'grid',
+  gridTemplateColumns: 'repeat(1, 1fr)',
+  gap: theme.spacing(4, 2)
 }));
 
 const ContentContainer = styled(Container, {
@@ -196,18 +193,8 @@ const ContentContainer = styled(Container, {
   overridesResolver: (_, styles) => [styles.contentContainer]
 })<{ variant?: string }>(({ theme }) => ({
   display: 'grid',
-  gridTemplateColumns: 'repeat(2,1fr)',
-  gap: theme.spacing(4, 2),
-
-  [theme.breakpoints.up('md')]: {
-    gridTemplateColumns: 'repeat(6,1fr)',
-    gap: theme.spacing(4, 3)
-  },
-
-  [theme.breakpoints.up('lg')]: {
-    gridTemplateColumns: 'repeat(12,1fr)',
-    gap: theme.spacing(8, 3)
-  }
+  gridTemplateColumns: 'repeat(12, 1fr)',
+  gap: theme.spacing(4, 2)
 }));
 
 const Breadcrumb = styled(Box, {
@@ -241,21 +228,25 @@ const BreadcrumbItem = styled(ContentModule, {
   marginRight: theme.spacing(1)
 }));
 
+const BodyWrap = styled(Box, {
+  name: 'Blog',
+  slot: 'BodyWrap',
+  overridesResolver: (_, styles) => [styles.bodyWrap]
+})(() => ({}));
+
 const Title = styled(Typography, {
   name: 'Blog',
   slot: 'Title',
   overridesResolver: (_, styles) => [styles.title]
 })<TypographyProps<React.ElementType>>(({ theme }) => ({
   ...theme.typography.h5,
-  gridColumn: '1 / -1',
-  gridRow: '3',
 
   [theme.breakpoints.up('md')]: {
-    ...theme.typography.h3,
-    gridRow: '2'
+    ...theme.typography.h3
   },
+
   [theme.breakpoints.up('lg')]: {
-    ...theme.typography.h1
+    ...theme.typography.h2
   }
 }));
 
@@ -268,37 +259,14 @@ const Summary = styled(Typography, {
   display: 'inline-block'
 }));
 
-const Stats = styled(Box, {
-  name: 'Blog',
-  slot: 'Stats',
-  overridesResolver: (_, styles) => [styles.stats]
-})(({ theme }) => ({
-  gridColumn: '1 / -1',
-  gridRow: '4',
-  display: 'flex',
-  alignItems: 'flex-end',
-  gap: theme.spacing(6),
-
-  [theme.breakpoints.up('md')]: {
-    gridRow: '3'
-  },
-
-  [theme.breakpoints.up('lg')]: {
-    gridColumn: '1 / span 8'
-  }
-}));
-
 const PubDate = styled(Typography, {
   name: 'Blog',
   slot: 'PubDate',
   overridesResolver: (_, styles) => [styles.pubDate]
 })<TypographyProps<React.ElementType>>(({ theme }) => ({
   paddingBottom: theme.spacing(1.5),
-  display: 'none',
-
-  [theme.breakpoints.up('md')]: {
-    display: 'block'
-  }
+  gridColumn: '1 / -1',
+  gridRow: '3'
 }));
 
 const Author = styled(Box, {
@@ -370,20 +338,7 @@ const ShareLinksWrapper = styled(Box, {
   name: 'Blog',
   slot: 'ShareLinksWrapper',
   overridesResolver: (_, styles) => [styles.shareLinksWrapper]
-})(({ theme }) => ({
-  gridColumn: '1 / span 2',
-  gridRow: '5',
-  display: 'flex',
-  flexDirection: 'column',
-  gap: theme.spacing(0.5),
-  [theme.breakpoints.up('md')]: {
-    gridColumn: '1 / span 6',
-    gap: theme.spacing(2)
-  },
-  [theme.breakpoints.up('lg')]: {
-    gridColumn: '1 / span 2'
-  }
-}));
+})(() => ({}));
 
 const ShareLinksLabel = styled(Typography, {
   name: 'Blog',
@@ -400,12 +355,7 @@ const ShareLinks = styled(Box, {
 })(({ theme }) => ({
   display: 'flex',
   alignItems: 'flex-start',
-  gap: theme.spacing(3),
-  justifyContent: 'space-between',
-
-  [theme.breakpoints.up('lg')]: {
-    flexDirection: 'column'
-  }
+  gap: theme.spacing(1)
 }));
 
 const ShareLink = styled((props) => <ButtonBase {...props} disableRipple disableTouchRipple />, {
@@ -413,11 +363,11 @@ const ShareLink = styled((props) => <ButtonBase {...props} disableRipple disable
   slot: 'ShareLink',
   overridesResolver: (_, styles) => [styles.shareLink]
 })<{ href?: string; target?: string; onClick?: any }>(({ theme }) => ({
-  'gap': theme.spacing(2),
+  'gap': theme.spacing(1),
 
   '& svg': {
-    width: theme.spacing(5),
-    height: theme.spacing(5)
+    width: theme.spacing(2),
+    height: theme.spacing(2)
   },
 
   '& .MuiTypography-root': {
@@ -432,21 +382,16 @@ const ShareLink = styled((props) => <ButtonBase {...props} disableRipple disable
   }
 }));
 
-const BodyWrap = styled(Box, {
+const ContentWrap = styled(Box, {
   name: 'Blog',
-  slot: 'BodyWrap',
-  overridesResolver: (_, styles) => [styles.bodyWrap]
+  slot: 'ContentWrap',
+  overridesResolver: (_, styles) => [styles.contentWrap]
 })(({ theme }) => ({
-  gridColumn: '1 / span 2',
-  gridRow: '6',
+  gridColumn: '1 / -1',
+  gridRow: '1',
 
   [theme.breakpoints.up('md')]: {
-    gridColumn: '1 / span 6'
-  },
-
-  [theme.breakpoints.up('lg')]: {
-    gridRow: '5',
-    gridColumn: '3 / span 6'
+    gridColumn: '2 / 9'
   }
 }));
 
@@ -456,61 +401,17 @@ const Body = styled(ContentModule, {
   overridesResolver: (_, styles) => [styles.body]
 })(() => ({}));
 
-const Newsletter = styled(Box, {
-  name: 'Blog',
-  slot: 'Newsletter',
-  overridesResolver: (_, styles) => [styles.newsletter]
-})(({ theme }) => ({
-  display: 'none',
-  [theme.breakpoints.up('lg')]: {
-    gridRow: '4',
-    gridColumn: '10 / span 3',
-    display: 'flex',
-    flexDirection: 'column',
-    padding: theme.spacing(2),
-    // TODO: Figma has value D9D9D9, which is not defined in the theme colors
-    backgroundColor: theme.palette.grey[200],
-    borderRadius: theme.spacing(1)
-  }
-}));
-
-const NewsletterTitle = styled(Typography, {
-  name: 'Blog',
-  slot: 'NewsletterTitle',
-  overridesResolver: (_, styles) => [styles.newsletterTitle]
-})<TypographyProps<React.ElementType>>(() => ({}));
-
-const NewsletterSubtitle = styled(Typography, {
-  name: 'Blog',
-  slot: 'NewsletterSubtitle',
-  overridesResolver: (_, styles) => [styles.newsletterSubtitle]
-})<TypographyProps<React.ElementType>>(() => ({}));
-
-const NewsletterForm = styled(ContentModule, {
-  name: 'Blog',
-  slot: 'NewsletterForm',
-  overridesResolver: (_, styles) => [styles.newsletterForm]
-})(() => ({}));
-
-const NewsletterBlock = styled(ContentModule, {
-  name: 'Blog',
-  slot: 'NewsletterBlock',
-  overridesResolver: (_, styles) => [styles.newsletterBlock]
-})(() => ({}));
-
 const RelatedItemsWrapper = styled(Box, {
   name: 'Blog',
   slot: 'RelatedItemsWrapper',
   overridesResolver: (_, styles) => [styles.relatedItemsWrapper]
 })(({ theme }) => ({
-  display: 'none',
+  gridColumn: '1 / -1',
+  gridRow: '2',
 
-  [theme.breakpoints.up('lg')]: {
-    gridRow: '5',
-    gridColumn: '10 / span 3',
-    display: 'flex',
-    flexDirection: 'column',
-    gap: theme.spacing(2)
+  [theme.breakpoints.up('md')]: {
+    gridColumn: '9 / 11',
+    gridRow: '1'
   }
 }));
 
@@ -543,33 +444,31 @@ const AuthorContainer = styled(Box, {
   slot: 'AuthorContainer',
   overridesResolver: (_, styles) => [styles.authorContainer]
 })(({ theme }) => ({
-  gridRow: '7',
   gridColumn: '1 / -1',
-  borderTop: `1px solid ${theme.palette.primary.main}`,
-  borderBottom: `1px solid ${theme.palette.primary.main}`,
+  gridRow: '2',
+  borderTop: `1px solid ${theme.palette.secondary.main}`,
   padding: theme.spacing(4, 0),
   display: 'flex',
   flexDirection: 'column',
   gap: theme.spacing(2),
+
+  [theme.breakpoints.up('md')]: {
+    gridColumn: '2 / 9'
+  },
 
   [theme.breakpoints.down('md')]: {
     '[class*=Blog-author]': {
       alignItems: 'flex-start',
       flexDirection: 'column'
     }
-  },
-
-  [theme.breakpoints.up('lg')]: {
-    gridRow: '6',
-    gridColumn: '3 / span 6'
   }
 }));
 
-const AuthorSummary = styled(Typography, {
+const AuthorSummary = styled(ContentModule, {
   name: 'Blog',
   slot: 'AuthorSummary',
   overridesResolver: (_, styles) => [styles.authorSummary]
-})<TypographyProps<React.ElementType>>(() => ({}));
+})(() => ({}));
 
 const AuthorSocialLinks = styled(Box, {
   name: 'Blog',
