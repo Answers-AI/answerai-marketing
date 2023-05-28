@@ -1,10 +1,14 @@
+require('dotenv').config();
+
 const path = require('path');
+const { graphqlEndpoint } = require('@drata-website/utils');
+
 module.exports = {
   client: {
     service: {
-      name: 'ias-knowledge-base',
+      name: process.env.APOLLO_GRAPH_REF || 'lastrev-next-starter',
       localSchemaFile: path.resolve(__dirname, './packages/graphql-sdk/schema.graphql'),
-      url: 'http://localhost:5000/graphql'
+      url: graphqlEndpoint
     },
     includes: ['./packages/components/**/*.graphql', './packages/graphql-sdk/src/**/*.graphql'],
     excludes: ['**/generated/**']

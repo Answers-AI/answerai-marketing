@@ -1,5 +1,5 @@
 require('dotenv').config();
-const URL = `${(process.env.GRAPHQL_SERVER || 'http://localhost:5000/graphql').replace(
+const URL = `${(process.env.GRAPHQL_SERVER || 'http://localhost:8888/graphql').replace(
   /^http:/,
   'http-get:'
 )}?query={__schema{types{name}}}`;

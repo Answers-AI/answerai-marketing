@@ -58,17 +58,16 @@ const Blog = ({
 
           {!!title && <Title component="h1">{title}</Title>}
           {!!pubDate && <PubDate variant="body1">Published on {pubDate}</PubDate>}
-
-          {!!featuredMedia && (
-            <FeaturedMedia {...sidekick(sidekickLookup, 'featuredMedia')} {...(featuredMedia as MediaProps)} />
-          )}
+          {!!summary && <Summary variant="body1">{summary}</Summary>}
         </HeaderContainer>
 
         <ContentContainer>
           <ContentWrap>
-            {(!!body || !!summary) && (
+            {!!featuredMedia && (
+              <FeaturedMedia {...sidekick(sidekickLookup, 'featuredMedia')} {...(featuredMedia as MediaProps)} />
+            )}
+            {!!body && (
               <BodyWrap>
-                {!!summary && <Summary variant="body1">{summary}</Summary>}
                 {!!body && (
                   <Body {...sidekick(sidekickLookup, 'body')} __typename="Text" body={body} variant="detailPageBody" />
                 )}
@@ -184,7 +183,8 @@ const HeaderContainer = styled(Container, {
 })<{ variant?: string }>(({ theme }) => ({
   display: 'grid',
   gridTemplateColumns: 'repeat(1, 1fr)',
-  gap: theme.spacing(4, 2)
+  gap: theme.spacing(2),
+  marginBottom: theme.spacing(8)
 }));
 
 const ContentContainer = styled(Container, {
@@ -221,10 +221,10 @@ const BreadcrumbItem = styled(ContentModule, {
   overridesResolver: (_, styles) => [styles.breadcrumbItem]
 })(({ theme }) => ({
   textDecoration: 'none',
-  borderLeft: `2px solid ${theme.palette.primary.main}`,
+  borderLeft: `1px solid ${theme.palette.secondary.main}`,
   paddingLeft: theme.spacing(0.5),
+  ...theme.typography.bodySmall,
   color: theme.palette.primary.main,
-  ...theme.typography.body2,
   marginRight: theme.spacing(1)
 }));
 
@@ -264,9 +264,9 @@ const PubDate = styled(Typography, {
   slot: 'PubDate',
   overridesResolver: (_, styles) => [styles.pubDate]
 })<TypographyProps<React.ElementType>>(({ theme }) => ({
-  paddingBottom: theme.spacing(1.5),
   gridColumn: '1 / -1',
-  gridRow: '3'
+  gridRow: '3',
+  ...theme.typography.bodySmall
 }));
 
 const Author = styled(Box, {
@@ -377,6 +377,7 @@ const ShareLink = styled((props) => <ButtonBase {...props} disableRipple disable
   [theme.breakpoints.up('md')]: {
     'gap': theme.spacing(1),
     '& .MuiTypography-root': {
+      ...theme.typography.bodySmall,
       display: 'block'
     }
   }

@@ -10,10 +10,13 @@ jobs:
   lr-e2e-tests:
     uses: last-rev-llc/workflows/.github/workflows/e2e.yml@main
     with:
-      provider: 'netlify' # Or 'vercel'
-      parallel-jobs: 10
+      provider: 'vercel'
+      parallel-jobs: 5
+      preview-max-timeout: 10000
     secrets:
       CYPRESS_PROJECT_ID: ${{ secrets.CYPRESS_PROJECT_ID }}
       CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
       PERCY_TOKEN: ${{ secrets.PERCY_TOKEN }}
       SITE: ${{ secrets.SITE }}
+      VERCEL_PREVIEW_DEPLOYMENT_PASSWORD: ${{ secrets.VERCEL_PREVIEW_DEPLOYMENT_PASSWORD }}
+      PGP_SECRET_SIGNING_PASSPHRASE: ${{ secrets.PGP_SECRET_SIGNING_PASSPHRASE }}

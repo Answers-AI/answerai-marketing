@@ -77,7 +77,7 @@ You can open the GraphQL playground where you can run queries on the data layer 
 yarn gql:dev # Runs the GraphQL server by itself
 ```
 
-3. You can go to [http://localhost:5000/graphql](http://localhost:5000/graphql)
+3. You can go to [http://localhost:8888/graphql](http://localhost:8888/graphql)
 
 ### Getting the data for a Page query
 
@@ -293,7 +293,7 @@ In order to use visual testing to verify that the page has not changed you need 
 | CONTENTFUL_PREVIEW_TOKEN        | Preview token from Contentful (ask your admin for this value)                                                                                                                                                               |
 | CONTENTFUL_SPACE_ID             | The ID of the Contentful space. This value depends on the client’s contentful set up, you can grab this from the Contentful URL (e.g. https://app.contentful.com/spaces/{CONTENTFUL_SPACE_ID}/settings/space)               |
 | CONTENTFUL_USE_PREVIEW          | This can be true or false. If you set it to true, it means that the framework is going to pull draft and published content. If you set it to false, the framework is only going to pull published content (aka production). |
-| GRAPHQL_SERVER_URL              | This is the URL that the GraphQL client is going to use to connect to the server. For your local environment it should be http://localhost:5000/graphql, for Netlify it should be /.netlify/functions/graphql.              |
+| GRAPHQL_SERVER_URL              | This is the URL that the GraphQL client is going to use to connect to the server. For your local environment it should be http://localhost:8888/graphql, for Netlify it should be /.netlify/functions/graphql.              |
 | LOG_LEVEL                       | Log level for the different processes, usually debug for the local environment.                                                                                                                                             |
 | NEXT_PUBLIC_CONTENTFUL_ENV      | Same as CONTENTFUL_ENV, this is the public environment variable used for Sidekick                                                                                                                                           |
 | NEXT_PUBLIC_CONTENTFUL_SPACE_ID | Same as CONTENTFUL_SPACE_ID, this is the public environment variable used for Sidekick                                                                                                                                      |

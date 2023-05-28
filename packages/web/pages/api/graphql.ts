@@ -4,6 +4,8 @@ import type { NextApiHandler, NextApiRequest, NextApiResponse } from 'next';
 import Cors from 'cors';
 import { createVercelHandler } from '@last-rev/graphql-contentful-core';
 
+import { ApolloServerPluginLandingPageDisabled } from '@apollo/server/plugin/disabled';
+
 import lrConfig from '../../../../config';
 
 function initMiddleware(middleware: any) {
@@ -30,9 +32,10 @@ const handler: NextApiHandler = async (req, res) => {
 
   return await createVercelHandler(
     lrConfig.clone({
-      strategy: 'redis', // always use redis strategy for live api,
+      contentStrategy: 'cms',
       apolloServerOptions: {
-        introspection: false
+        introspection: false,
+        plugins: [ApolloServerPluginLandingPageDisabled()]
       }
     })
   )(req, res);

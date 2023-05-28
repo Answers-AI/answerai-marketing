@@ -2,6 +2,9 @@ import { defineConfig } from 'cypress';
 import path from 'path';
 
 module.exports = defineConfig({
+  env: {
+    vercel_jwt: process.env.VERCEL_JWT
+  },
   viewportWidth: 1440,
   viewportHeight: 900,
   // TODO: Enable video when issues with Cypress hanging is fixed

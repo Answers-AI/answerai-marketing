@@ -24,14 +24,18 @@ const logger = getWinstonLogger({
 });
 
 const ContentSecurityPolicy = `
-  default-src 'self'  *.sentry.io  *.facebook.com;
-  style-src 'self' 'unsafe-inline'  *.sentry.io  fonts.googleapis.com;
-  script-src 'self' 'unsafe-inline' 'unsafe-eval' *.sentry.io  *.google-analytics.com *.googletagmanager.com;
-  font-src 'self'  *.sentry.io  fonts.gstatic.com data:;
-  img-src * data:;
-  media-src * data:;
-  object-src 'none';
-  frame-ancestors 'self' https://app.contentful.com
+default-src 'self'  *.sentry.io  *.facebook.com *.ctfassets.net *.vercel-insights.com *.hsforms.com hubspot-forms-static-embed.s3.amazonaws.com www.google-analytics.com analytics.google.com rs.fullstory.com *.zoominfo.com *.dreamdata.cloud us-central1-adaptive-growth.cloudfunctions.net;
+style-src 'self' 'unsafe-inline'  *.sentry.io  *.googleapis.com *.fontawesome.com;
+script-src 'self' 'unsafe-inline' 'unsafe-eval' *.chilipiper.com *.youtube.com *.sentry.io  *.google-analytics.com *.googletagmanager.com *.gstatic.com *.googleadservices.com *.google.com *.facebook.net *.ads-twitter.com *.doubleclick.net *.jquery.com *.hsforms.net *.greenhouse.io *.clearbitscripts.com *.clickcease.com *.zoominfo.com *.hs-scripts.com *.dreamdata.cloud *.g2crowd.com *.redditstatic.com bat.bing.com *.fullstory.com cdn.pdst.fm amplify.outbrain.com cmp.osano.com *.adroll.com snap.licdn.com *.clickagy.com *.hs-analytics.net *.hscollectedforms.net *.hs-banner.com *.usemessages.com *.outbrain.com;
+font-src 'self'  *.sentry.io  fonts.gstatic.com *.fontawesome.com *.googleapis.com data:;
+frame-src 'self' *.hubspot.com *.chilipiper.com *.youtube.com *.google.com *.doubleclick.net *.greenhouse.io hemsync.clickagy.com forms.hsforms.com *.facebook.com www.facebook.com player.vimeo.com;
+worker-src 'self' data: blob:;
+connect-src 'self' *.chilipiper.com *.cloudfunctions.net *.us-central1-adaptive-growth.cloudfunctions.net *.osano.com *.doubleclick.net *.google-analytics.com *.hubspot.com *.oribi.io *.hsforms.com hubspot-forms-static-embed.s3.amazonaws.com *.gstatic.com *.googleadservices.com *.google.com *.facebook.net www.facebook.com *.ads-twitter.com *.jquery.com *.hsforms.net *.greenhouse.io *.clearbitscripts.com *.clickcease.com *.zoominfo.com *.hs-scripts.com *.dreamdata.cloud *.g2crowd.com *.redditstatic.com bat.bing.com *.fullstory.com cdn.pdst.fm amplify.outbrain.com cmp.osano.com *.adroll.com snap.licdn.com *.clickagy.com *.hs-analytics.net *.hscollectedforms.net *.hs-banner.com *.usemessages.com *.outbrain.com *.sentry.io *.vimeo.com vimeo.com;
+script-src-elem 'self' boards.greenhouse.io platform.twitter.com *.chilipiper.com *.youtube.com js.hs-banner.com googleads.g.doubleclick.net *.googleads.g.doubleclick.net *.adroll.com *.jquery.com *.hsforms.net *.clickcease.com tags.clickagy.com js.hscollectedforms.net js.usemessages.com js.hs-analytics.net www.clickcease.com *.zoominfo.com *.g2crowd.com *.dreamdata.cloud *.hs-scripts.com *.redditstatic.com *.bing.com *.googleadservices.com *.licdn.com *.google-analytics.com *.googletagmanager.com *.osano.com *.ads-twitter.com *.outbrain.com *.facebook.net *.clearbitscripts.com *.facebook.net *.pdst.fm *.fullstory.com *.clearbitjs.com js.hsleadflows.net 'unsafe-eval' 'unsafe-inline';
+img-src * data:;
+media-src * data:;
+object-src 'none';
+frame-ancestors 'self' https://app.contentful.com
 `;
 
 const securityHeaders = [
@@ -129,7 +133,10 @@ const nextConfig = {
       'react': path.resolve(__dirname, '../../node_modules', 'react'),
       '@emotion/react': path.resolve(__dirname, '../../node_modules', '@emotion/react'),
       '@mui': path.resolve(__dirname, '../../node_modules/@mui'),
-      '@answersai-marketing/graphql-sdk': path.resolve(__dirname, '../../node_modules/@answersai-marketing/graphql-sdk/src'),
+      '@answersai-marketing/graphql-sdk': path.resolve(
+        __dirname,
+        '../../node_modules/@answersai-marketing/graphql-sdk/src'
+      ),
       '@answersai-marketing/utils': path.resolve(__dirname, '../../node_modules/@answersai-marketing/utils/src')
     };
     config.plugins.push(

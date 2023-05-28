@@ -57,6 +57,14 @@ const baseTheme: ThemeOptions = {
       lineHeight: 1.5,
       color: '#000000'
     },
+    bodySmall: {
+      fontFamily: 'Poppins',
+      fontWeight: 400,
+      fontSize: '0.75rem',
+      letterSpacing: 0.875,
+      lineHeight: 1.2,
+      color: '#000000'
+    },
     h1: {
       fontFamily: 'Poppins',
       fontSize: '3.25rem',

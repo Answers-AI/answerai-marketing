@@ -29,3 +29,5 @@ lerna-debug.log
 create-app.json
 
 packages/web/cypress/integration/__generated/**
+
+.vercel
