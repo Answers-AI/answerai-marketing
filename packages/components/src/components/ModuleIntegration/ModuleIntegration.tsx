@@ -1,6 +1,6 @@
-import { ModuleIntegrationProps } from './ModuleIntegration.types';
+// import { ModuleIntegrationProps } from './ModuleIntegration.types';
 
-const ModuleIntegration = ({}: ModuleIntegrationProps) => {
+const ModuleIntegration = () => {
   return null;
 };
 
