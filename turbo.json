@@ -71,7 +71,7 @@
     },
     "@answersai-marketing/graphql-sdk#build": {
       "dependsOn": ["@answersai-marketing/graphql-sdk#gql:healthcheck", "^build"],
-      "outputs": ["dist/**", "schema.graphql"]
+      "outputs": ["dist/**", "src/generated/**", "schema.graphql"]
     },
     "@answersai-marketing/web#dev": {
       "cache": false,

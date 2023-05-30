@@ -21,7 +21,7 @@ const FooterNavigationItem = ({ text, href, variant, tag, sidekickLookup }: Foot
       // @ts-ignore
       ownerState={ownerState}>
       {text}
-      {!!tag && <Tag label={tag} variant="careers" />}
+      {!!tag && <Tag label={tag} />}
     </Root>
   );
 };

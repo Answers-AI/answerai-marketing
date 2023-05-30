@@ -31703,83 +31703,47 @@ tunnel-agent@^0.6.0:
   dependencies:
     safe-buffer "^5.0.1"
 
-turbo-darwin-64@1.2.0-canary.5:
-  version "1.2.0-canary.5"
-  resolved "https://registry.yarnpkg.com/turbo-darwin-64/-/turbo-darwin-64-1.2.0-canary.5.tgz#26c4784fe2deaec5bd630a8e0673c3a097f70601"
-  integrity sha512-OJmJjF39fEUvkeno8LCUw5dH+LYzI+FaunEMcQrJ6bQl2ldn+CCjgJN064Fg/6fycGDURomyW39oPp8o3iqbUw==
+turbo-darwin-64@1.10.0:
+  version "1.10.0"
+  resolved "https://registry.yarnpkg.com/turbo-darwin-64/-/turbo-darwin-64-1.10.0.tgz#3ea9dd3ae0cc534d8a7e9d0cae69c40473b5fc3a"
+  integrity sha512-N0aVGFtBgOKd7pIdUiKREwnDhNHRIvpMJbmUw04c1AqEoTiKAKT6iuzcCozO5N/gYMVr0hxrXgLal5OLYXtcsw==
 
-turbo-darwin-arm64@1.2.0-canary.5:
-  version "1.2.0-canary.5"
-  resolved "https://registry.yarnpkg.com/turbo-darwin-arm64/-/turbo-darwin-arm64-1.2.0-canary.5.tgz#15937dcf4458ce62248249667dcd93c6884fe59e"
-  integrity sha512-LQlTiuk1+NVgeQ3KnQ0dAB9lsWlWnVslB7IipTgRMw6uBlZiAA1GVgUGr1QPr8KBYKFbDo/aQMl7ufBPPf+01A==
+turbo-darwin-arm64@1.10.0:
+  version "1.10.0"
+  resolved "https://registry.yarnpkg.com/turbo-darwin-arm64/-/turbo-darwin-arm64-1.10.0.tgz#5986bde6aea855d399783f03aca5373efe1524bf"
+  integrity sha512-boXzhaHTS5MsTMv48I/JmYp9/fYplXk5nACUDrqV6nD1hzO5PMn5wNg75ATbpkaMaeuD+hjuobeSxn1p4vpqQg==
 
-turbo-freebsd-64@1.2.0-canary.5:
-  version "1.2.0-canary.5"
-  resolved "https://registry.yarnpkg.com/turbo-freebsd-64/-/turbo-freebsd-64-1.2.0-canary.5.tgz#bd1da4aad1c61f72aab252aeae16199f4dd410e1"
-  integrity sha512-rW1VghenPc0IiQkCvo6Nzpv8IBBDyuf7a+6FLXj8KK+m3CxrTN5Ae+C0jmf78c8V3cklCzxSIOe2tXQ8vgTJmQ==
+turbo-linux-64@1.10.0:
+  version "1.10.0"
+  resolved "https://registry.yarnpkg.com/turbo-linux-64/-/turbo-linux-64-1.10.0.tgz#2602177e6d619226f0ad76968477c523f11f4562"
+  integrity sha512-crKQuS1jrp4vp+Th6EmUqqmAlvYNnzGmwWMLeckmYILrV7zAddu87eJu4hB7V6uV+W1qHZUTw8WXa1w1+8boBw==
 
-turbo-freebsd-arm64@1.2.0-canary.5:
-  version "1.2.0-canary.5"
-  resolved "https://registry.yarnpkg.com/turbo-freebsd-arm64/-/turbo-freebsd-arm64-1.2.0-canary.5.tgz#c228a449388c9dde9ff5f1521729be22ac67b8e0"
-  integrity sha512-ZfqVHbHvmztfDAYonZyXup+dUxAKzF3ixwjTM3SA8GvKzVUzPf96+SwxlkGJi8BUwFvvzezccycKb7vv2y4/FA==
+turbo-linux-arm64@1.10.0:
+  version "1.10.0"
+  resolved "https://registry.yarnpkg.com/turbo-linux-arm64/-/turbo-linux-arm64-1.10.0.tgz#066083eabaf5d68d9f4d2e0e5845df69b1fd9502"
+  integrity sha512-Y2fhWe0xepLjl7doIvsJK7mp2h8E+OF6qJsUHRgxFeRWQWi1I6clD2aEQeykHK8Tp+qp8pKFMocj32nFBvuCcg==
 
-turbo-linux-32@1.2.0-canary.5:
-  version "1.2.0-canary.5"
-  resolved "https://registry.yarnpkg.com/turbo-linux-32/-/turbo-linux-32-1.2.0-canary.5.tgz#9899ffaef8981ee3cc88a0d06fa1e0c6e00d5c8b"
-  integrity sha512-K7TgPfTwDl/hhiQZBhce/iTYYUhbF6qqHCWoTT6xvsvgr3/332D6gN/Lqfq5NUZRvWpz6bULX83Tli/E5hDC7A==
+turbo-windows-64@1.10.0:
+  version "1.10.0"
+  resolved "https://registry.yarnpkg.com/turbo-windows-64/-/turbo-windows-64-1.10.0.tgz#9da63454c858781f37280cadcc47300a79a31de7"
+  integrity sha512-uh8rEqH6teaHysEMjinwWBqyNwv4IvgSAwbq/OphP8jObstTYHoR+gFPo8RQUSTaBYy4QVszgi5eO5YLvEQqNA==
 
-turbo-linux-64@1.2.0-canary.5:
-  version "1.2.0-canary.5"
-  resolved "https://registry.yarnpkg.com/turbo-linux-64/-/turbo-linux-64-1.2.0-canary.5.tgz#8d8b5edbc3a7400851e886a7223260506c707f17"
-  integrity sha512-zw2q5ZzFqs8zc8vXBqD1z59V+Ac6YHLIz1d1V9tmBkviKrGm/NPfoD8oS1bU5hWXdEeSPg7P/x3g2jLO8oacuw==
+turbo-windows-arm64@1.10.0:
+  version "1.10.0"
+  resolved "https://registry.yarnpkg.com/turbo-windows-arm64/-/turbo-windows-arm64-1.10.0.tgz#d17aee3e497f718b1aa1d74da4b87929e95766a8"
+  integrity sha512-JaVj3iM7qyRD6xYGZLL/Gs4mQKfM1zL0f91AwHZLNkk1CrJ6i5kO4ZjhKkwXSpVOTNKW3sX0Q7dExXj85Vv7UQ==
 
-turbo-linux-arm64@1.2.0-canary.5:
-  version "1.2.0-canary.5"
-  resolved "https://registry.yarnpkg.com/turbo-linux-arm64/-/turbo-linux-arm64-1.2.0-canary.5.tgz#58d675636fc1722e673f3ffaad6b7ebff8aa3430"
-  integrity sha512-e9Bpq19EStcxJu0Jd9Fsrf5AvaqoI9gEPewGVpxONFnQrbLh6EHjYHyFng60cv5iTskq+fToMxHA3snQQo3tvg==
-
-turbo-linux-arm@1.2.0-canary.5:
-  version "1.2.0-canary.5"
-  resolved "https://registry.yarnpkg.com/turbo-linux-arm/-/turbo-linux-arm-1.2.0-canary.5.tgz#9a9f6049461bc0092c11deb54dda077b9455c1d1"
-  integrity sha512-v+AI2U51iofZrsniiRfj4AMarH02KEht7vrhherx6Nknmgu7odtSsz9OrSAhyJl0c/Ml7klTm8J61SIaFjcrCQ==
-
-turbo-linux-mips64le@1.2.0-canary.5:
-  version "1.2.0-canary.5"
-  resolved "https://registry.yarnpkg.com/turbo-linux-mips64le/-/turbo-linux-mips64le-1.2.0-canary.5.tgz#90757528d694e7dbea0e9017be3a4255fe7a6050"
-  integrity sha512-Tft8sbVMmlDcrml/0mfJKp2LwfbtU1whqE7kwkIptCNGnoTIFj+3An9KnPoB6mRP0CeTAMsbFh3xr+UPlpnZcw==
-
-turbo-linux-ppc64le@1.2.0-canary.5:
-  version "1.2.0-canary.5"
-  resolved "https://registry.yarnpkg.com/turbo-linux-ppc64le/-/turbo-linux-ppc64le-1.2.0-canary.5.tgz#feef745c90aac16404ba909965dd8848abd32abf"
-  integrity sha512-IIsyZNarksBmjSDx+iV2eTgM5WwOuINxSn+VkvVL9N+U0tvQPwn6Q76H7mU16f+m4oMN9jaAEI7uGHN+tIiwEA==
-
-turbo-windows-32@1.2.0-canary.5:
-  version "1.2.0-canary.5"
-  resolved "https://registry.yarnpkg.com/turbo-windows-32/-/turbo-windows-32-1.2.0-canary.5.tgz#d3e0fa4e95f57e36561b79a095ec470b579296e0"
-  integrity sha512-lkZTED8ARoBPM+dbE/QCml4EH2mk03DTkq8gO9FM0BLYOq0dSXZl9NH9JAc+H+4gC15wVVpYwT7fDMe9yHUdOA==
-
-turbo-windows-64@1.2.0-canary.5:
-  version "1.2.0-canary.5"
-  resolved "https://registry.yarnpkg.com/turbo-windows-64/-/turbo-windows-64-1.2.0-canary.5.tgz#e058e892d162273a4a7a802bb5ddb168f41e87f7"
-  integrity sha512-DX7ltRDyz5eQqYsFaotxg1HI/fvZExxsILt2+/aqdRk3g775gGpKJjghzot5QxLu56SCp6DElmvDOswjfgfHWg==
-
-turbo@1.2.0-canary.5:
-  version "1.2.0-canary.5"
-  resolved "https://registry.yarnpkg.com/turbo/-/turbo-1.2.0-canary.5.tgz#9d2678df40767452d76ca858c597eec2f0429387"
-  integrity sha512-mTqzorXP6ELhjcEdb6TWZahgEP2d70rQclI21uNPqzP0RekogywUiDQkfBdF5DqEJcqaRJ4HzwkCYaqu1tUDig==
+turbo@1.10.0:
+  version "1.10.0"
+  resolved "https://registry.yarnpkg.com/turbo/-/turbo-1.10.0.tgz#1f8a4563ffcc5e92a141bfd2b42f0b95ce015b8c"
+  integrity sha512-GWxoL2zJduiNaEHz78o74l2jCQEeuUZ3MdpMPz0SpZOvt3nimpvQPNxiyfbqt3U9/V5G375PWKYSbXkVnIbQcA==
   optionalDependencies:
-    turbo-darwin-64 "1.2.0-canary.5"
-    turbo-darwin-arm64 "1.2.0-canary.5"
-    turbo-freebsd-64 "1.2.0-canary.5"
-    turbo-freebsd-arm64 "1.2.0-canary.5"
-    turbo-linux-32 "1.2.0-canary.5"
-    turbo-linux-64 "1.2.0-canary.5"
-    turbo-linux-arm "1.2.0-canary.5"
-    turbo-linux-arm64 "1.2.0-canary.5"
-    turbo-linux-mips64le "1.2.0-canary.5"
-    turbo-linux-ppc64le "1.2.0-canary.5"
-    turbo-windows-32 "1.2.0-canary.5"
-    turbo-windows-64 "1.2.0-canary.5"
+    turbo-darwin-64 "1.10.0"
+    turbo-darwin-arm64 "1.10.0"
+    turbo-linux-64 "1.10.0"
+    turbo-linux-arm64 "1.10.0"
+    turbo-windows-64 "1.10.0"
+    turbo-windows-arm64 "1.10.0"
 
 tv4@^1.3.0:
   version "1.3.0"
