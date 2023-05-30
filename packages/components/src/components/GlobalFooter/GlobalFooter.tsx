@@ -119,7 +119,6 @@ const Logo = styled(ContentModule, {
 const LogoUrl = styled(Link, {
   name: 'GlobalFooter',
   slot: 'LogoUrl',
-  shouldForwardProp: (prop) => prop !== 'noLinkStyle',
   overridesResolver: (_, styles) => [styles.logoUrl]
 })(() => ({}));
 

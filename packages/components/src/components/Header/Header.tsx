@@ -210,14 +210,13 @@ const SupernavLink = styled(ContentModule, {
 const LogoRoot = styled(Link, {
   name: 'Header',
   slot: 'LogoRoot',
-  shouldForwardProp: (prop) => prop !== 'noLinkStyle',
+  shouldForwardProp,
   overridesResolver: (_, styles) => [styles.logoRoot]
 })(() => ({}));
 
 const Logo = styled(ContentModule, {
   name: 'Header',
   slot: 'Logo',
-  shouldForwardProp,
   overridesResolver: (_, styles) => [styles.logo]
 })<{ variant?: string }>(() => ({
   height: '100%',
