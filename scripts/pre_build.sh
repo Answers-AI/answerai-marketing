@@ -28,9 +28,8 @@ if [[ "${GRAPHQL_RUNNER_STRATEGY}" == "fs" ]] || [[ -z "${GRAPHQL_RUNNER_STRATEG
         fi
     fi
 
-
     if [ -f "$GITIGNORE" ]; then
-        mv ${GITIGNORE} ${NOT_GITIGNORE} 
+        mv ${GITIGNORE} ${NOT_GITIGNORE}
         echo "Renamed .gitignore to !gitignore"
     fi
 
