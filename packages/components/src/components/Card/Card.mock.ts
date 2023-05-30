@@ -1,11 +1,11 @@
-import { CardProps } from './Card';
+import { CardProps } from './Card.types';
 import { staticRichTextMock } from '../Text/Text.mock';
 import { mediaMock } from '../Media/Media.mock';
 import mockLink from '../Link/Link.mock';
 
 export const cardMock = (): CardProps => ({
   __typename: 'Card',
-  media: mediaMock(),
+  media: [mediaMock()],
   title: 'This is a card title',
   subtitle: 'And this is the subtitle',
   body: staticRichTextMock(),
@@ -14,11 +14,7 @@ export const cardMock = (): CardProps => ({
 });
 
 export const cardWithTags = (): CardProps => ({
-  ...cardMock(),
-  tags: [
-    { ...mockLink(), text: 'Card tag' },
-    { ...mockLink(), text: 'Card tag 2' }
-  ]
+  ...cardMock()
 });
 
 export default cardMock;

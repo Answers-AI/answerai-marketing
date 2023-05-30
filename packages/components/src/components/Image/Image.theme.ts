@@ -1,10 +1,7 @@
 import { Theme, ThemeOptions, ComponentsProps, ComponentsOverrides, ComponentsVariants } from '@mui/material/styles';
 
 // https://mui.com/customization/theme-components/#default-props
-export const defaultProps: ComponentsProps['Image'] = {
-  contentWidth: 'xl',
-  disableGutters: false
-};
+export const defaultProps: ComponentsProps['Image'] = {};
 
 // https://mui.com/customization/theme-components/#global-style-overrides
 export const styleOverrides: ComponentsOverrides<Theme>['Image'] = {

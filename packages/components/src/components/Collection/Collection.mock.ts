@@ -1,5 +1,5 @@
 import { lorem } from 'faker';
-import { CollectionProps } from './Collection';
+import { CollectionProps } from './Collection.types';
 import mockCard from '../Card/Card.mock';
 import { complexMock } from '../Text/Text.mock';
 
@@ -7,8 +7,7 @@ export const collectionMock = (): CollectionProps => ({
   id: '1',
   __typename: 'Collection',
   sidekickLookup: {},
-  itemsSpacing: 2,
-  variant: 'three-per-row',
+  variant: 'threePerRow',
   items: [{ ...mockCard() }, { ...mockCard(), title: lorem.sentence() }, { ...mockCard() }, { ...mockCard() }],
   itemsVariant: 'standard-round',
 

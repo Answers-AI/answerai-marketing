@@ -1,9 +1,7 @@
-import React from 'react';
-
 import { ModuleIntegrationProps } from './ModuleIntegration.types';
 
-const ModuleIntegration = ({ ...props }: ModuleIntegrationProps) => {
-  return <div>ModuleIntegrations</div>;
+const ModuleIntegration = ({}: ModuleIntegrationProps) => {
+  return null;
 };
 
 export default ModuleIntegration;

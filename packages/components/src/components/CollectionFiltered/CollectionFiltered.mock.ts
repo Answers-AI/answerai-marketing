@@ -1,6 +1,5 @@
 import { CollectionFilteredProps } from '@last-rev/component-library/dist/components/CollectionFiltered';
 import cardMock from '../Card/Card.mock';
-import mockTheme from '../../theme';
 
 export default (): CollectionFilteredProps => ({
   id: 'collection-filtered',

@@ -1,7 +1,6 @@
 import mockNavigationItem from '../NavigationItem/NavigationItem.mock';
 import { NavigationBarProps } from './NavigationBar';
 import mockLink from '../Link/Link.mock';
-import mockTheme from '../../theme';
 
 export const mockWithNavigationItems = (): NavigationBarProps => ({
   variant: 'NavigationBar-three-per-row',

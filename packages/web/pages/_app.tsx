@@ -16,6 +16,7 @@ const clientSideEmotionCache = createEmotionCache();
 
 interface MyAppProps extends AppProps {
   emotionCache?: EmotionCache;
+  pageProps: any;
 }
 // const loadFeatures = () => import('../src/features').then((res) => res.default);
 
