@@ -45,9 +45,9 @@ const parseNode = (node: Block | Inline | Text, results: AlgoliaRichTextContent[
       }
     }
 
-    if (content) {
-      results.push({ section, content });
-    }
+    // if (content) {
+    results.push({ section, content });
+    // }
   }
 
   // if (contents.length) {

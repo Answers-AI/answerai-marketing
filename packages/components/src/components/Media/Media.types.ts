@@ -3,6 +3,7 @@ import { MediaProps as LRMediaProps } from '@last-rev/component-library/dist/com
 import { LinkProps } from '../Link';
 
 export interface MediaProps extends LRMediaProps {
+  __typename?: any;
   controls?: boolean;
   link?: LinkProps;
 }

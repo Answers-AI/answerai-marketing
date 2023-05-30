@@ -20,6 +20,7 @@ import ArrowRightIcon from '../Icons/ArrowRightIcon';
 import AngledArrowIcon from '../Icons/AngledArrowIcon';
 
 export interface LinkProps extends LRLinkProps {
+  __typename: 'Link';
   actionType?: string;
   passHref?: boolean;
 }

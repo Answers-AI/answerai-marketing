@@ -43,7 +43,8 @@ export const styleOverrides: ComponentsOverrides<Theme>['GlobalFooter'] = {
 
   logo: ({}) => ({
     margin: 'initial',
-    width: 161
+    width: 161,
+    height: 'auto'
   }),
 
   disclaimer: () => ({}),

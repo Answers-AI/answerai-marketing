@@ -79,11 +79,32 @@ export const styleOverrides: ComponentsOverrides<Theme>['Block'] = {
   }),
 
   body: ({ theme }) => ({
-    textAlign: 'center',
+    'textAlign': 'center',
 
     [theme.breakpoints.up('md')]: {
       paddingLeft: theme.spacing(3.25),
       textAlign: 'left'
+    },
+
+    '& > [class*=Text-root] > *:not(:first-child)': {
+      '&:not(:is(ul, ol, li))': {
+        marginTop: '1em',
+        marginBottom: '2em'
+      },
+
+      '&:is(ul, ol)': {
+        marginTop: '-1em',
+        marginBottom: '3em'
+      }
+    },
+
+    '& > [class*=Text-root] > *:first-child': {
+      marginTop: '0'
+    },
+
+    '[class*=MuiTypography-h]': {
+      marginBottom: '.5em',
+      marginTop: '2em'
     }
   }),
 

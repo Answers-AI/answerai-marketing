@@ -11,6 +11,8 @@ export const styleOverrides: ComponentsOverrides<Theme>['Card'] = {
     'boxShadow': `0 0 0 1px ${theme.palette.secondary.main}, 0 0 0 1px ${theme.palette.secondary.main}`,
     'border': `solid 3px transparent`,
     'transition': 'all 0.25s ease-in-out',
+    'willChange': 'transform',
+    'transform': 'translateZ(0)',
 
     '&:hover': {
       transform: 'scale(1.05)',
@@ -286,6 +288,8 @@ const createVariants = (theme: Theme): ComponentsVariants['Card'] => [
       'flexDirection': 'column',
       'height': '100%',
       'backgroundColor': theme.palette.secondary.main,
+      'willChange': 'transform',
+      'transform': 'translateZ(0)',
 
       '& *': {
         textAlign: 'center'
