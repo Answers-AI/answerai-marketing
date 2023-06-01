@@ -15,7 +15,7 @@ export const styleOverrides: ComponentsOverrides<Theme>['Card'] = {
     'transform': 'translateZ(0)',
     'backgroundColor': theme.palette.common.white,
     '& *': {
-      color: theme.palette.primary.main
+      color: theme.palette.common.black
     },
 
     '&:hover': {
@@ -211,7 +211,6 @@ const createVariants = (theme: Theme): ComponentsVariants['Card'] => [
       },
 
       '[class$=Card-title]': {
-        ...theme.typography.h3,
         marginBottom: theme.spacing(1)
       },
 
@@ -386,13 +385,13 @@ const createVariants = (theme: Theme): ComponentsVariants['Card'] => [
 
       '&:hover': {
         'backgroundColor': theme.palette.primary.main,
-        'color': theme.palette.common.white,
+        'color': theme.palette.common.black,
         'transform': 'scale(1.15)',
         'position': 'relative',
         'zIndex': 2,
 
         '& *': {
-          color: theme.palette.common.white
+          color: theme.palette.common.black
         }
       }
     }

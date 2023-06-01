@@ -73,16 +73,15 @@ export const styleOverrides: ComponentsOverrides<Theme>['Header'] = {
   supernavLink: ({ theme }) => ({
     'padding': 0,
     ...theme.typography.body1,
-    'color': theme.palette.primary.main,
     'textAlign': 'center',
 
     '&:hover': {
-      color: theme.palette.primary.main
+      color: '#00fff2'
     },
 
     '&:active': {
       '.MuiSvgIcon-root': {
-        color: theme.palette.primary.main
+        color: '#00fff2'
       }
     },
 
@@ -91,7 +90,7 @@ export const styleOverrides: ComponentsOverrides<Theme>['Header'] = {
     },
 
     '.MuiSvgIcon-root': {
-      color: theme.palette.secondary.main,
+      color: '#00fff2',
       height: theme.spacing(2)
     }
   }),
@@ -169,7 +168,7 @@ export const styleOverrides: ComponentsOverrides<Theme>['Header'] = {
     [theme.breakpoints.up('lg')]: {
       'width': 'fit-content',
       '[class$=MuiLink-root-Link-root]': {
-        color: theme.palette.primary.main,
+        color: '#00fff2',
         ...theme.typography.body2
       }
     }
@@ -251,7 +250,7 @@ export const styleOverrides: ComponentsOverrides<Theme>['Header'] = {
     'width': 'fit-content',
     'padding': 0,
     '[class$=MuiLink-root-Link-root]': {
-      color: theme.palette.primary.main,
+      color: '#00fff2',
       ...theme.typography.body2
     }
   })

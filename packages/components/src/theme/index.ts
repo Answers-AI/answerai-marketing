@@ -134,8 +134,8 @@ const baseTheme: ThemeOptions = {
       }
     },
     primary: {
-      main: '#3B00AD',
-      contrastText: '#FFFFFF'
+      main: '#00fff2',
+      contrastText: '#000000'
     },
     secondary: {
       main: '#EDF0FF',

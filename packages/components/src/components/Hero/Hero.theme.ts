@@ -14,10 +14,6 @@ export const styleOverrides: ComponentsOverrides<Theme>['Hero'] = {
         padding: theme.spacing(25, 0, 15)
       },
 
-      '.MuiTypography-h1': {
-        color: theme.palette.primary.main
-      },
-
       '.MuiTypography-h2': {
         ...theme.typography.h1,
         lineHeight: '1.25'
@@ -25,6 +21,13 @@ export const styleOverrides: ComponentsOverrides<Theme>['Hero'] = {
 
       '& [class*=backgroundRoot]': {
         opacity: '.5'
+      },
+
+      '& img': {
+        borderRadius: '50%',
+        border: '10px solid #00fff2 !important',
+        display: 'inline-block',
+        overflow: 'hidden'
       }
     };
   }
