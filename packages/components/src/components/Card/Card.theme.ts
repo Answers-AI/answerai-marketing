@@ -187,10 +187,12 @@ const createVariants = (theme: Theme): ComponentsVariants['Card'] => [
           objectFit: 'cover',
           aspectRatio: '424/240'
         },
+
         [theme.breakpoints.up('md')]: {
           flex: '2 1 0px',
           width: 0
         },
+
         [theme.breakpoints.up('lg')]: {
           flex: 'unset',
           width: 'unset'
@@ -202,9 +204,11 @@ const createVariants = (theme: Theme): ComponentsVariants['Card'] => [
         marginBottom: theme.spacing(2),
         textTransform: 'uppercase',
         color: theme.palette.grey[500],
+
         [theme.breakpoints.up('md')]: {
           marginBottom: theme.spacing(1)
         },
+
         [theme.breakpoints.up('lg')]: {
           marginBottom: theme.spacing(2)
         }
@@ -298,7 +302,8 @@ const createVariants = (theme: Theme): ComponentsVariants['Card'] => [
       'transform': 'translateZ(0)',
 
       '& *': {
-        textAlign: 'center'
+        textAlign: 'center',
+        color: theme.palette.common.black
       },
 
       [theme.breakpoints.up('md')]: {
@@ -312,6 +317,7 @@ const createVariants = (theme: Theme): ComponentsVariants['Card'] => [
 
       '[class$=Card-eyebrow]': {
         ...theme.typography.h5,
+        'color': theme.palette.common.black,
         'marginBottom': theme.spacing(2),
         'textTransform': 'uppercase',
         'position': 'relative',
@@ -336,6 +342,7 @@ const createVariants = (theme: Theme): ComponentsVariants['Card'] => [
 
       '[class$=Card-title]': {
         ...theme.typography.h3,
+        color: theme.palette.common.black,
         marginBottom: theme.spacing(1)
       },
 

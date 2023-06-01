@@ -190,7 +190,7 @@ const createVariants = (theme: Theme): ComponentsVariants['Block'] => [
     },
     style: {
       '[class*=contentOuterWrapper]': {
-        gridTemplateAreas: `"${span('content', 10)} " " ${span('media', 10)}"`
+        gridTemplateAreas: `". ${span('content', 10)} ." " . ${span('media', 10)} ."`
       }
     }
   },
@@ -200,7 +200,7 @@ const createVariants = (theme: Theme): ComponentsVariants['Block'] => [
     },
     style: {
       '[class*=contentOuterWrapper]': {
-        gridTemplateAreas: `"${span('media', 10)} " " ${span('content', 10)}"`
+        gridTemplateAreas: `". ${span('media', 10)} " " ${span('content', 10)}. "`
       }
     }
   },

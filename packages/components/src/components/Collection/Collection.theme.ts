@@ -69,7 +69,7 @@ export const styleOverrides: ComponentsOverrides<Theme>['Collection'] = {
     },
 
     '[class$=Text-subtitle]': {
-      ...theme.typography.h3,
+      ...theme.typography.h5,
       textAlign: `${align === 'center' ? 'center' : 'left'}`,
       marginTop: theme.spacing(2)
     },
@@ -92,22 +92,6 @@ export const styleOverrides: ComponentsOverrides<Theme>['Collection'] = {
 
       '[class$=Text-root] > *': {
         ...theme.typography.body2
-      },
-
-      '&::before': {
-        width: 115
-      }
-    },
-
-    [theme.breakpoints.up('md')]: {
-      'gridColumn': '1 / span 8',
-
-      ...(align === 'center' && {
-        gridColumn: '3 / span 8'
-      }),
-
-      '[class$=Text-title]': {
-        ...theme.typography.h2
       }
     },
 
