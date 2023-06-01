@@ -3,11 +3,10 @@ import { Theme, ThemeOptions, ComponentsProps, ComponentsOverrides, ComponentsVa
 // https://mui.com/customization/theme-components/#default-props
 export const defaultProps: ComponentsProps['Media'] = {
   nextImageOptimization: true,
-  disableInlineSVG: true,
+  disableInlineSVG: false,
   priority: false,
   // All images are shown close to full bleed size
-  sizes: '100vw',
-  controls: true
+  sizes: '100vw'
 };
 
 // https://mui.com/customization/theme-components/#global-style-overrides

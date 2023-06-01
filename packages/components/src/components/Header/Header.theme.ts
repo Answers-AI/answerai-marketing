@@ -9,12 +9,17 @@ export const defaultProps: ComponentsProps['Header'] = {};
 export const styleOverrides: ComponentsOverrides<Theme>['Header'] = {
   root: ({ theme, elevation }) => ({
     padding: theme.spacing(0, 2),
-    backgroundColor: !!elevation ? theme.palette.secondary.main : 'transparent'
+    backgroundColor: !!elevation ? '#1e2145' : 'transparent'
   }),
 
   superNav: ({ theme, isElevated }) => ({
-    backgroundColor: theme.palette.secondary.main,
-    padding: theme.spacing(0, 2),
+    'backgroundColor': '#1e2145',
+    'padding': theme.spacing(0, 2),
+
+    '& *': {
+      color: theme.palette.common.white
+    },
+
     [theme.breakpoints.down('md')]: {
       'margin': theme.spacing(0, -2),
       'transform': 'scaleY(1)',
@@ -56,8 +61,15 @@ export const styleOverrides: ComponentsOverrides<Theme>['Header'] = {
     display: 'flex',
     alignItems: 'center',
     padding: theme.spacing(0.5, 0),
+    paddingLeft: 0,
+    paddingRight: 0,
     gap: theme.spacing(1),
     justifyContent: 'flex-start',
+
+    [theme.breakpoints.down('sm')]: {
+      padding: theme.spacing(0.5, 0),
+      margin: '0 auto'
+    },
 
     [theme.breakpoints.up('md')]: {
       padding: theme.spacing(1, 0),
@@ -65,13 +77,13 @@ export const styleOverrides: ComponentsOverrides<Theme>['Header'] = {
     }
   }),
 
-  supernavIcon: ({}) => ({
+  supernavIcon: () => ({
     margin: 0,
     height: 21.5
   }),
 
   supernavLink: ({ theme }) => ({
-    'padding': 0,
+    'padding': theme.spacing(0.5, 2),
     ...theme.typography.body1,
     'textAlign': 'center',
 
@@ -91,11 +103,12 @@ export const styleOverrides: ComponentsOverrides<Theme>['Header'] = {
 
     '.MuiSvgIcon-root': {
       color: '#00fff2',
-      height: theme.spacing(2)
+      height: theme.spacing(2),
+      marginLeft: theme.spacing(1)
     }
   }),
 
-  contentContainer: ({ theme, menuVisible }) => ({
+  contentContainer: ({ theme, menuVisible, isElevated }) => ({
     height: '100%',
     minHeight: theme.spacing(4),
     maxHeight: theme.spacing(11.25),
@@ -104,7 +117,7 @@ export const styleOverrides: ComponentsOverrides<Theme>['Header'] = {
     display: 'grid',
     gridTemplateColumns: 'repeat(12, minmax(0, 1fr))',
     gap: theme.spacing(0, 2),
-    gridTemplateRows: `minmax(${theme.spacing(8.375)}, 1fr)`,
+    gridTemplateRows: !!isElevated ? `minmax(${theme.spacing(6.25)}, 1fr)` : `minmax(${theme.spacing(8.375)}, 1fr)`,
 
     ...(!!menuVisible && {
       maxHeight: '100%'
@@ -127,9 +140,14 @@ export const styleOverrides: ComponentsOverrides<Theme>['Header'] = {
     }
   }),
 
-  logo: () => ({
-    height: 20,
-    margin: 0
+  logo: ({ isElevated }) => ({
+    display: !!isElevated ? 'block' : 'none',
+    height: !!isElevated ? 20 : 40,
+    margin: 0,
+
+    svg: {
+      fill: '#ffffff'
+    }
   }),
 
   headerMenuCtas: ({ theme }) => ({

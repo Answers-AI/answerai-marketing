@@ -7,24 +7,24 @@ export const defaultProps: ComponentsProps['Section'] = {};
 export const styleOverrides: ComponentsOverrides<Theme>['Section'] = {
   root: ({ theme, hasBackground }) => {
     return {
-      'marginTop': hasBackground ? 0 : theme.spacing(10),
-      'marginBottom': hasBackground ? 0 : theme.spacing(10),
+      'marginTop': hasBackground ? 0 : theme.spacing(15),
+      'marginBottom': hasBackground ? 0 : theme.spacing(15),
       'paddingTop': hasBackground ? theme.spacing(20) : 0,
       'paddingBottom': hasBackground ? theme.spacing(20) : 0,
       'overflow': hasBackground ? 'hidden' : 'visible',
 
       '& &': {
-        marginTop: theme.spacing(5),
-        marginBottom: theme.spacing(5)
+        marginTop: theme.spacing(10),
+        marginBottom: theme.spacing(10)
       },
 
-      'main > &': {
-        '&:first-of-type': {
-          marginTop: 0
-        }
-      },
+      // 'main > &': {
+      //   '&:first-of-type': {
+      //     marginTop: 0
+      //   }
+      // },
 
-      'main > &:lat-of-type': {
+      'main > &:last-of-type': {
         marginBottom: 0
       },
 

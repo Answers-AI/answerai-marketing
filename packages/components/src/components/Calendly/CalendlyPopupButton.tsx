@@ -18,7 +18,7 @@ const CalendlyPopupButton = ({ sidekickLookup, settings }: CalendlyProps) => {
   return (
     <Root ref={rootRef} {...sidekick(sidekickLookup)}>
       <Box>
-        <Button variant="outlined" onClick={() => setIsOpen(true)}>
+        <Button variant="contained" onClick={() => setIsOpen(true)}>
           {settings?.ctaText || 'Click here to schedule!'}
         </Button>
         <PopupModal

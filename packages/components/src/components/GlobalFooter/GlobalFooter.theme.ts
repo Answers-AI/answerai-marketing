@@ -10,9 +10,9 @@ export const styleOverrides: ComponentsOverrides<Theme>['GlobalFooter'] = {
   }),
 
   footerContent: ({ theme }) => ({
-    backgroundImage: `url('https://images.ctfassets.net/e4vn8tcbbhts/7hTKCRbU98AKt7nKX5vGnd/245e49383d82f8074e32f768e7856dd6/footer-background.svg')`,
-    backgroundSize: 'cover',
-    backgroundPosition: 'top center',
+    // backgroundImage: `url('https://images.ctfassets.net/e4vn8tcbbhts/7hTKCRbU98AKt7nKX5vGnd/245e49383d82f8074e32f768e7856dd6/footer-background.svg')`,
+    // backgroundSize: 'cover',
+    // backgroundPosition: 'top center',
     paddingTop: theme.spacing(20),
     paddingBottom: theme.spacing(20)
   }),
@@ -44,7 +44,11 @@ export const styleOverrides: ComponentsOverrides<Theme>['GlobalFooter'] = {
   logo: ({}) => ({
     margin: 'initial',
     width: 161,
-    height: 'auto'
+    height: 'auto',
+
+    svg: {
+      fill: '#fba62d'
+    }
   }),
 
   disclaimer: () => ({}),

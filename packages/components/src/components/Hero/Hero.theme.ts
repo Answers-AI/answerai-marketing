@@ -11,7 +11,11 @@ export const styleOverrides: ComponentsOverrides<Theme>['Hero'] = {
   root: ({ theme }) => {
     return {
       'header[class*=elevation0] + & ': {
-        padding: theme.spacing(25, 0, 15)
+        padding: theme.spacing(10, 0, 5),
+
+        [theme.breakpoints.up('md')]: {
+          padding: theme.spacing(25, 0, 15)
+        }
       },
 
       '.MuiTypography-h2': {

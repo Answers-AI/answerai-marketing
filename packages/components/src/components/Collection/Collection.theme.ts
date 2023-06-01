@@ -5,22 +5,7 @@ export const defaultProps = {};
 
 // https://mui.com/customization/theme-components/#global-style-overrides
 export const styleOverrides: ComponentsOverrides<Theme>['Collection'] = {
-  root: ({ theme, disableGutters }) => ({
-    ...(!disableGutters && {
-      'padding': theme.spacing(8, 2, 9.5, 2),
-      'section[id] &': {
-        padding: 0
-      },
-
-      [theme.breakpoints.up('md')]: {
-        padding: theme.spacing(16, 5)
-      },
-
-      [theme.breakpoints.up('md')]: {
-        padding: theme.spacing(16, 3)
-      }
-    })
-  }),
+  root: () => ({}),
   contentContainer: ({ theme }) => ({
     'display': 'grid',
     'gridTemplateColumns': 'repeat(2,1fr)',

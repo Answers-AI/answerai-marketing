@@ -10,6 +10,7 @@ fragment Media_BaseFragment on Media {
     fileName
     width
     height
+    svgContent
   }
   fileMobile {
     url
@@ -17,6 +18,7 @@ fragment Media_BaseFragment on Media {
     fileName
     width
     height
+    svgContent
   }
   fileTablet {
     url
@@ -24,6 +26,7 @@ fragment Media_BaseFragment on Media {
     fileName
     width
     height
+    svgContent
   }
   link {
     ...Link_BaseFragment

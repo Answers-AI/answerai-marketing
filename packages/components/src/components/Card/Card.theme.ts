@@ -39,9 +39,15 @@ export const styleOverrides: ComponentsOverrides<Theme>['Card'] = {
   }),
 
   cardMedia: ({ theme, ownerState }) => ({
-    display: 'block',
-    position: 'relative',
-    width: '100%',
+    'display': 'block',
+    'position': 'relative',
+    'width': '100%',
+    'paddingBottom': theme.spacing(2),
+
+    '& > span': {
+      width: '100% !important',
+      height: '100% !important'
+    },
 
     ...(ownerState?.variant === 'icon' && {
       padding: theme.spacing(0),
@@ -238,15 +244,15 @@ const createVariants = (theme: Theme): ComponentsVariants['Card'] => [
       },
 
       '[class$=Card-body]': {
-        'flex': 1,
-        'wordWrap': 'break-word',
-        'overflowWrap': 'break-word',
-        'overflow': 'hidden',
-        'textOverflow': 'ellipsis',
-        'display': '-webkit-box',
-        'hyphens': 'auto',
-        '-webkit-line-clamp': '2',
-        '-webkit-box-orient': 'vertical'
+        flex: 1
+        // 'wordWrap': 'break-word',
+        // 'overflowWrap': 'break-word',
+        // 'overflow': 'hidden',
+        // 'textOverflow': 'ellipsis',
+        // 'display': '-webkit-box',
+        // 'hyphens': 'auto',
+        // '-webkit-line-clamp': '2',
+        // '-webkit-box-orient': 'vertical'
       },
 
       '[class$=Text-root]': {
@@ -254,14 +260,14 @@ const createVariants = (theme: Theme): ComponentsVariants['Card'] => [
       },
 
       '[class$=MuiTypography-root]': {
-        'wordWrap': 'break-word',
-        'overflowWrap': 'break-word',
-        'overflow': 'hidden',
-        'textOverflow': 'ellipsis',
-        'display': '-webkit-box',
-        'hyphens': 'auto',
-        '-webkit-line-clamp': '2',
-        '-webkit-box-orient': 'vertical'
+        // 'wordWrap': 'break-word',
+        // 'overflowWrap': 'break-word',
+        // 'overflow': 'hidden',
+        // 'textOverflow': 'ellipsis',
+        // 'display': '-webkit-box',
+        // 'hyphens': 'auto',
+        // '-webkit-line-clamp': '2',
+        // '-webkit-box-orient': 'vertical'
       },
 
       '[class$=Card-cardActions]': {
@@ -316,7 +322,7 @@ const createVariants = (theme: Theme): ComponentsVariants['Card'] => [
       },
 
       '[class$=Card-eyebrow]': {
-        ...theme.typography.h5,
+        ...theme.typography.h4,
         'color': theme.palette.common.black,
         'marginBottom': theme.spacing(2),
         'textTransform': 'uppercase',
@@ -333,6 +339,7 @@ const createVariants = (theme: Theme): ComponentsVariants['Card'] => [
         },
 
         [theme.breakpoints.up('md')]: {
+          ...theme.typography.h5,
           marginBottom: theme.spacing(1)
         },
         [theme.breakpoints.up('lg')]: {
@@ -341,9 +348,13 @@ const createVariants = (theme: Theme): ComponentsVariants['Card'] => [
       },
 
       '[class$=Card-title]': {
-        ...theme.typography.h3,
+        ...theme.typography.h5,
         color: theme.palette.common.black,
-        marginBottom: theme.spacing(1)
+        marginBottom: theme.spacing(1),
+
+        [theme.breakpoints.up('md')]: {
+          ...theme.typography.h3
+        }
       },
 
       '[class$=Card-subtitle]': {

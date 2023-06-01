@@ -78,7 +78,7 @@ const baseTheme: ThemeOptions = {
       lineHeight: 1.375,
       fontWeight: 700,
       fontStyle: 'normal',
-      color: '#00fff2'
+      color: '#fba62d'
     },
     h2: {
       fontFamily: 'Poppins',
@@ -86,7 +86,7 @@ const baseTheme: ThemeOptions = {
       lineHeight: 1.25,
       fontWeight: 700,
       fontStyle: 'normal',
-      color: '#00fff2'
+      color: '#fba62d'
     },
     h3: {
       fontFamily: 'Poppins',
@@ -94,7 +94,7 @@ const baseTheme: ThemeOptions = {
       lineHeight: 1.375,
       fontWeight: 700,
       fontStyle: 'normal',
-      color: '#00fff2'
+      color: '#fba62d'
     },
     h4: {
       fontFamily: 'Poppins',

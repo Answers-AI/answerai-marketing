@@ -131,6 +131,8 @@ export const styleOverrides: ComponentsOverrides<Theme>['Block'] = {
 
     return {
       gridArea: 'media',
+      margin: 'auto',
+      width: '100%',
       ...circleCSS
     };
   },
