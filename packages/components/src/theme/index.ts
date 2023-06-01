@@ -25,6 +25,7 @@ import NavigationItem from '../components/NavigationItem/NavigationItem.theme';
 import Collection from '../components/Collection/Collection.theme';
 import merge from 'lodash/merge';
 import camelCase from 'lodash/camelCase';
+import createGridMixin from './mixins/createGridMixin';
 
 const baseTheme: ThemeOptions = {
   spacing: 8,
@@ -38,8 +39,12 @@ const baseTheme: ThemeOptions = {
       sm: 600,
       md: 900,
       lg: 1200,
-      xl: 1536
+      xl: 1536,
+      xxl: 3840
     }
+  },
+  mixins: {
+    gridContainer: createGridMixin // this gives your mixin the name `gridContainer`
   },
   typography: {
     // Customize add and/or remove as necesary
@@ -47,63 +52,65 @@ const baseTheme: ThemeOptions = {
       fontFamily: 'Poppins',
       fontWeight: 400,
       fontSize: '1rem',
-      lineHeight: 1.625,
-      color: '#000000'
+      lineHeight: 1.625
     },
     body2: {
       fontFamily: 'Poppins',
       fontWeight: 400,
-      fontSize: '1.125rem',
-      lineHeight: 1.5,
-      color: '#000000'
+      fontSize: '1rem',
+      lineHeight: 1.5
     },
     bodySmall: {
       fontFamily: 'Poppins',
       fontWeight: 400,
-      fontSize: '0.75rem',
-      letterSpacing: 0.875,
-      lineHeight: 1.2,
-      color: '#000000'
+      fontSize: '.875rem',
+      lineHeight: 1.25
+    },
+    bodyLarge: {
+      fontFamily: 'Poppins',
+      fontWeight: 400,
+      fontSize: '1.5rem',
+      lineHeight: 1.625
     },
     h1: {
       fontFamily: 'Poppins',
-      fontSize: '3.25rem',
+      fontSize: '4.5rem',
       lineHeight: 1.375,
       fontWeight: 700,
       fontStyle: 'normal',
-      color: '#000000'
+      color: '#00fff2'
     },
     h2: {
       fontFamily: 'Poppins',
-      fontSize: '2.75rem',
+      fontSize: '4rem',
       lineHeight: 1.25,
       fontWeight: 700,
       fontStyle: 'normal',
-      color: '#000000'
+      color: '#00fff2'
     },
     h3: {
       fontFamily: 'Poppins',
-      fontSize: '2rem',
+      fontSize: '3rem',
       lineHeight: 1.375,
       fontWeight: 700,
       fontStyle: 'normal',
-      color: '#000000'
+      color: '#00fff2'
     },
     h4: {
       fontFamily: 'Poppins',
-      fontSize: '1.5rem',
+      fontSize: '2.25rem',
       lineHeight: 1.5,
       fontWeight: 700,
       fontStyle: 'normal',
-      color: '#000000'
+      color: '#00fff2'
     },
     h5: {
       fontFamily: 'Poppins',
-      fontSize: '1.25rem',
+      fontSize: '1.5rem',
       lineHeight: 1.2,
       fontWeight: 700,
       fontStyle: 'normal',
-      color: '#000000'
+      color: '#00fff2'
     },
     h6: {
       fontFamily: 'Poppins',
@@ -115,7 +122,7 @@ const baseTheme: ThemeOptions = {
     }
   },
   palette: {
-    mode: 'light',
+    mode: 'dark',
     ...{
       white: {
         main: '#FFF',
@@ -134,11 +141,8 @@ const baseTheme: ThemeOptions = {
       main: '#EDF0FF',
       contrastText: '#000000'
     },
-    background: {
-      default: '#FFFFFF'
-    },
     text: {
-      primary: '#747474',
+      primary: '#ffffff',
       secondary: '#E5E5E5',
       disabled: 'rgba(0, 0, 0, 0.38)'
     },

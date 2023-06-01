@@ -5,7 +5,11 @@ export enum BlockVariants {
   mediaAbove = 'mediaAbove',
   mediaOnRight = 'mediaOnRight',
   mediaOnLeft = 'mediaOnLeft',
-  mediaBelow = 'mediaBelow'
+  mediaBelow = 'mediaBelow',
+  mediaCircleAbove = 'mediaCircleAbove',
+  mediaCircleOnRight = 'mediaCircleOnRight',
+  mediaCircleOnLeft = 'mediaCircleOnLeft',
+  mediaCircleBelow = 'mediaCircleBelow'
 }
 
 export interface BlockProps extends Block_BaseFragmentFragment {}
@@ -27,6 +31,7 @@ export interface BlockClasses {
   mediaItems: string;
   actionsWrapper: string;
   action: string;
+  common: string;
 }
 
 export declare type BlockClassKey = keyof BlockClasses;

@@ -1,6 +1,5 @@
 import React from 'react';
 import { styled } from '@mui/material/styles';
-import Container from '@mui/material/Container';
 import Box, { BoxProps } from '@mui/material/Box';
 import Typography, { TypographyProps } from '@mui/material/Typography';
 import Chip from '@mui/material/Chip';
@@ -12,6 +11,7 @@ import { BlockProps } from './Block.types';
 import Link, { LinkProps } from '../Link';
 
 import useThemeProps from '../../utils/useThemeProps';
+import Container from '@mui/material/Container';
 
 const Block = (inProps: BlockProps) => {
   const props = useThemeProps({
@@ -35,7 +35,7 @@ const Block = (inProps: BlockProps) => {
         </IntroTextWrapper>
       )}
 
-      <ContentOuterWrapper>
+      <ContentOuterWrapper styleVariant={variant}>
         <ContentWrapper>
           <Content>
             {!!eyebrow && <Eyebrow label={eyebrow} />}
@@ -65,7 +65,7 @@ const Block = (inProps: BlockProps) => {
         </ContentWrapper>
 
         {!!mediaItems && (
-          <MediaWrapper {...extraProps}>
+          <MediaWrapper {...extraProps} variant={variant}>
             {mediaItems.map((media) => (
               <Media key={media?.id} {...sidekick(sidekickLookup, 'mediaItems')} {...media} />
             ))}

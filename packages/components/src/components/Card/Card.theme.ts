@@ -13,6 +13,10 @@ export const styleOverrides: ComponentsOverrides<Theme>['Card'] = {
     'transition': 'all 0.25s ease-in-out',
     'willChange': 'transform',
     'transform': 'translateZ(0)',
+    'backgroundColor': theme.palette.common.white,
+    '& *': {
+      color: theme.palette.primary.main
+    },
 
     '&:hover': {
       transform: 'scale(1.05)',
@@ -33,6 +37,7 @@ export const styleOverrides: ComponentsOverrides<Theme>['Card'] = {
       }
     }
   }),
+
   cardMedia: ({ theme, ownerState }) => ({
     display: 'block',
     position: 'relative',
@@ -41,8 +46,6 @@ export const styleOverrides: ComponentsOverrides<Theme>['Card'] = {
     ...(ownerState?.variant === 'icon' && {
       padding: theme.spacing(0),
       maxWidth: 48,
-
-      [theme.breakpoints.up('md')]: {},
 
       [theme.breakpoints.up('lg')]: {
         'padding': theme.spacing(1),
@@ -77,6 +80,10 @@ export const styleOverrides: ComponentsOverrides<Theme>['Card'] = {
   subtitle: () => ({}),
 
   body: ({ theme, ownerState }) => ({
+    '& *': {
+      ...theme.typography.bodySmall
+    },
+
     ...(ownerState?.variant === 'icon' && {
       marginTop: theme.spacing(1)
     })
@@ -287,7 +294,7 @@ const createVariants = (theme: Theme): ComponentsVariants['Card'] => [
       'display': 'flex',
       'flexDirection': 'column',
       'height': '100%',
-      'backgroundColor': theme.palette.secondary.main,
+      'backgroundColor': theme.palette.common.white,
       'willChange': 'transform',
       'transform': 'translateZ(0)',
 

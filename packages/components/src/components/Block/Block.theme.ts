@@ -14,17 +14,24 @@ export const styleOverrides: ComponentsOverrides<Theme>['Block'] = {
 
   introText: ({}) => ({}),
 
-  contentOuterWrapper: ({ theme }) => ({
-    'display': 'grid',
-    'gap': theme.spacing(4, 2),
+  contentOuterWrapper: ({ theme, styleVariant }) => {
+    const isCircleVariant = ((styleVariant || '') as string).indexOf('Circle') > -1;
 
-    'gridTemplateColumns': '1fr 1fr',
-    'gridTemplateRows': 'auto',
-
-    'section[id] [class*=Section-gridItem]:not(:only-child) &': {
-      padding: 0
+    let circleCSS = {};
+    if (isCircleVariant) {
+      circleCSS = {};
     }
-  }),
+
+    return {
+      ...theme.mixins.gridContainer(theme),
+      'gridTemplateAreas': `"${span('media', 12)}" "${span('content', 12)} "`,
+
+      'section[id] [class*=Section-gridItem]:not(:only-child) &': {
+        padding: 0
+      },
+      ...circleCSS
+    };
+  },
 
   content: ({ theme }) => ({
     display: 'flex',
@@ -37,7 +44,11 @@ export const styleOverrides: ComponentsOverrides<Theme>['Block'] = {
   }),
 
   contentWrapper: () => ({
-    gridArea: 'content'
+    gridArea: 'content',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    flexDirection: 'column'
   }),
 
   eyebrow: ({ theme }) => ({
@@ -52,28 +63,24 @@ export const styleOverrides: ComponentsOverrides<Theme>['Block'] = {
 
   title: ({ theme }) => ({
     ...theme.typography.h3,
-    color: theme.palette.primary.main,
     textAlign: 'center',
     marginBottom: theme.spacing(2),
 
     [theme.breakpoints.up('md')]: {
       ...theme.typography.h2,
-      color: theme.palette.primary.main,
       fontWeight: 900,
-      paddingLeft: theme.spacing(3.25),
       textAlign: 'left'
     }
   }),
 
   subtitle: ({ theme }) => ({
     ...theme.typography.h4,
-    color: theme.palette.primary.main,
+
     textAlign: 'center',
 
     [theme.breakpoints.up('md')]: {
       ...theme.typography.h3,
       fontWeight: 400,
-      paddingLeft: theme.spacing(3.25),
       textAlign: 'left'
     }
   }),
@@ -82,7 +89,6 @@ export const styleOverrides: ComponentsOverrides<Theme>['Block'] = {
     'textAlign': 'center',
 
     [theme.breakpoints.up('md')]: {
-      paddingLeft: theme.spacing(3.25),
       textAlign: 'left'
     },
 
@@ -108,9 +114,26 @@ export const styleOverrides: ComponentsOverrides<Theme>['Block'] = {
     }
   }),
 
-  mediaWrapper: () => ({
-    gridArea: 'media'
-  }),
+  mediaWrapper: ({ variant }) => {
+    const isCircleVariant = ((variant || '') as string).indexOf('Circle') > -1;
+
+    let circleCSS = {};
+    if (isCircleVariant) {
+      circleCSS = {
+        '& img': {
+          borderRadius: '50%',
+          border: '10px solid #00fff2 !important',
+          display: 'inline-block',
+          overflow: 'hidden'
+        }
+      };
+    }
+
+    return {
+      gridArea: 'media',
+      ...circleCSS
+    };
+  },
 
   mediaItems: ({}) => ({}),
 
@@ -128,6 +151,8 @@ export const styleOverrides: ComponentsOverrides<Theme>['Block'] = {
   action: () => ({})
 };
 
+const span = (str: string, columns: number) => `${str} `.repeat(columns);
+
 // https://mui.com/customization/theme-components/#adding-new-component-variants
 const createVariants = (theme: Theme): ComponentsVariants['Block'] => [
   {
@@ -137,12 +162,10 @@ const createVariants = (theme: Theme): ComponentsVariants['Block'] => [
     // @ts-ignore: TODO
     style: ({ eyebrow }) => ({
       '[class*=contentOuterWrapper]': {
-        gridTemplateColumns: '1fr',
-        gridTemplateAreas: '"media" "content"',
+        gridTemplateAreas: `"${span('media', 12)} " " ${span('content', 12)}"`,
 
-        [theme.breakpoints.up('md')]: {
-          gridTemplateColumns: '1fr 1fr',
-          gridTemplateAreas: '"content media"'
+        [theme.breakpoints.up('lg')]: {
+          gridTemplateAreas: `"${span('content', 6)} ${span('media', 6)}"`
         }
       }
     })
@@ -153,12 +176,10 @@ const createVariants = (theme: Theme): ComponentsVariants['Block'] => [
     },
     style: () => ({
       '[class*=contentOuterWrapper]': {
-        gridTemplateColumns: '1fr',
-        gridTemplateAreas: '"media" "content"',
+        gridTemplateAreas: `"${span('media', 12)} " " ${span('content', 12)}"`,
 
-        [theme.breakpoints.up('md')]: {
-          gridTemplateColumns: '1fr 1fr',
-          gridTemplateAreas: '"media content"'
+        [theme.breakpoints.up('lg')]: {
+          gridTemplateAreas: `"${span('media', 6)} ${span('content', 6)}"`
         }
       }
     })
@@ -169,18 +190,7 @@ const createVariants = (theme: Theme): ComponentsVariants['Block'] => [
     },
     style: {
       '[class*=contentOuterWrapper]': {
-        gridTemplateColumns: '1fr',
-        gridTemplateAreas: '"content" "media"',
-
-        [theme.breakpoints.up('md')]: {
-          'gridTemplateColumns': '1fr 10fr 1fr',
-          'gridTemplateAreas': '".  content ." ". media ."',
-
-          '& *': {
-            alignItems: 'center',
-            textAlign: 'center'
-          }
-        }
+        gridTemplateAreas: `"${span('content', 10)} " " ${span('media', 10)}"`
       }
     }
   },
@@ -190,18 +200,64 @@ const createVariants = (theme: Theme): ComponentsVariants['Block'] => [
     },
     style: {
       '[class*=contentOuterWrapper]': {
-        gridTemplateColumns: '1fr',
-        gridTemplateAreas: '"content" "media"',
+        gridTemplateAreas: `"${span('media', 10)} " " ${span('content', 10)}"`
+      }
+    }
+  },
+  {
+    props: {
+      variant: 'mediaCircleOnRight'
+    },
+    // @ts-ignore: TODO
+    style: ({ eyebrow }) => ({
+      '[class*=contentOuterWrapper]': {
+        gridTemplateAreas: `"${span('media', 12)} " " ${span('content', 12)}"`,
 
         [theme.breakpoints.up('md')]: {
-          'gridTemplateColumns': '1fr 10fr 1fr',
-          'gridTemplateAreas': '".  media ." ". content ."',
-
-          '& *': {
-            alignItems: 'center',
-            textAlign: 'center'
-          }
+          gridTemplateAreas: `"${span('content', 8)} ${span('media', 4)}"`
         }
+
+        // [theme.breakpoints.up('lg')]: {
+        //   gridTemplateAreas: `"${span('content', 6)} ${span('content', 6)}"`
+        // }
+      }
+    })
+  },
+  {
+    props: {
+      variant: 'mediaCircleOnLeft'
+    },
+    style: () => ({
+      '[class*=contentOuterWrapper]': {
+        gridTemplateAreas: `"${span('media', 12)} " " ${span('content', 12)}"`,
+
+        [theme.breakpoints.up('md')]: {
+          gridTemplateAreas: `"${span('media', 4)} ${span('content', 8)}"`
+        }
+
+        // [theme.breakpoints.up('lg')]: {
+        //   gridTemplateAreas: `"${span('media', 6)} ${span('content', 6)}"`
+        // }
+      }
+    })
+  },
+  {
+    props: {
+      variant: 'mediaCircleBelow'
+    },
+    style: {
+      '[class*=contentOuterWrapper]': {
+        gridTemplateAreas: `"${span('content', 8)} " " ${span('media', 6)}"`
+      }
+    }
+  },
+  {
+    props: {
+      variant: 'mediaCircleAbove'
+    },
+    style: {
+      '[class*=contentOuterWrapper]': {
+        gridTemplateAreas: `"${span('media', 6)} " "  ${span('media', 8)}"`
       }
     }
   }

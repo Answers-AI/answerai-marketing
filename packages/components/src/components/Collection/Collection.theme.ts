@@ -156,14 +156,25 @@ const createVariants = (theme: Theme): ComponentsVariants['Collection'] => [
     style: {
       '&': {
         '[class*="Collection-itemsContainer"]': {
-          display: 'grid',
-          gridTemplateColumns: 'repeat(1, minmax(0, 1fr))',
+          'display': 'grid',
+          'gridTemplateColumns': 'repeat(1, minmax(0, 1fr))',
+          'gap': theme.spacing(2),
+
+          '& *': {
+            textAlign: 'center',
+            marginLeft: 'auto',
+            marginRight: 'auto'
+          },
 
           [theme.breakpoints.up('md')]: {
             'gridTemplateColumns': 'repeat(2, minmax(0, 1fr))',
 
+            '[class*=Collection-item]': {
+              height: 'min-content'
+            },
+
             '[class*=Collection-item]:nth-child(even)': {
-              marginTop: theme.spacing(4)
+              marginTop: theme.spacing(0)
             }
           }
         }
