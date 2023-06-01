@@ -23,7 +23,10 @@ interface MyAppProps extends AppProps {
 // Make sure this URLs matche what font files your site loads
 const FONT_URLS = ['https://fonts.gstatic.com/s/poppins/v20/pxiEyp8kv8JHgFVrJJfecnFHGPc.woff2'];
 
-function MyApp({ Component, emotionCache = clientSideEmotionCache, pageProps }: MyAppProps) {
+function MyApp({ Component, emotionCache = clientSideEmotionCache, pageProps, router }: MyAppProps) {
+  const path = router?.pathname;
+  const isExtension = path?.includes('/_contentful');
+
   return (
     <CacheProvider value={emotionCache}>
       {pageProps.pageData?.page?.seo ? <SEO seo={pageProps.pageData.page.seo} /> : null}
@@ -36,10 +39,11 @@ function MyApp({ Component, emotionCache = clientSideEmotionCache, pageProps }: 
         }
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         {!!pageProps.pageData?.page?.seo?.title ? <title>{pageProps.pageData.page.seo.title.value}</title> : null}
+
         <meta name="contentful_space" content={process.env.NEXT_PUBLIC_CONTENTFUL_SPACE_ID} />
         <meta name="contentful_environment" content={process.env.NEXT_PUBLIC_CONTENTFUL_ENV} />
       </Head>
-      {process.env.NEXT_PUBLIC_GTM_ID ? (
+      {!isExtension && process.env.NEXT_PUBLIC_GTM_ID ? (
         <>
           <Head>
             <link rel="preconnect" href="https://www.googletagmanager.com" />

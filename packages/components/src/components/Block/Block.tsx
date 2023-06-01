@@ -101,7 +101,7 @@ const ContentOuterWrapper = styled(Container, {
   slot: 'ContentOuterWrapper',
   shouldForwardProp,
   overridesResolver: (_, styles) => [styles.contentOuterWrapper]
-})(() => ({}));
+})<{ styleVariant?: string }>(() => ({}));
 
 const IntroTextWrapper = styled(Box, {
   name: 'Block',
