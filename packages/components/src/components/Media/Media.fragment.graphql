@@ -1,0 +1,34 @@
+fragment Media_BaseFragment on Media {
+  id
+  __typename
+  title
+  description
+  variant
+  file {
+    url
+    extension
+    fileName
+    width
+    height
+    svgContent
+  }
+  fileMobile {
+    url
+    extension
+    fileName
+    width
+    height
+    svgContent
+  }
+  fileTablet {
+    url
+    extension
+    fileName
+    width
+    height
+    svgContent
+  }
+  link {
+    ...Link_BaseFragment
+  }
+}

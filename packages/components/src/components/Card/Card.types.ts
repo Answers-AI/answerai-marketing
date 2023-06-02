@@ -1,0 +1,38 @@
+import { Card_BaseFragmentFragment } from '@answersai-marketing/graphql-sdk/dist';
+
+type CardVariants =
+  | 'default'
+  | 'mediaFill'
+  | 'mediaContain'
+  | 'mediaSquare'
+  | 'icon'
+  | 'content'
+  | 'pricing'
+  | undefined;
+
+export interface CardProps extends Card_BaseFragmentFragment {
+  loading?: boolean;
+  variant?: CardVariants;
+  colorScheme?: string;
+  position?: number;
+  isFirst?: Boolean;
+  isMultipleOfTwo?: Boolean;
+  isMultipleOfThree?: Boolean;
+}
+
+export interface CardClasses {
+  root: string;
+  cardLink: string;
+  cardMedia: string;
+  cardMediaFlip: string;
+  cardMediaContainer: string;
+  cardActions: string;
+  cardAction: string;
+  cardContent: string;
+  eyebrow: string;
+  title: string;
+  subtitle: string;
+  body: string;
+}
+
+export declare type CardClassKey = keyof CardClasses;
