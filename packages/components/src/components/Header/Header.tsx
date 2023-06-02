@@ -277,6 +277,5 @@ const ContentContainer = styled(Toolbar, {
   slot: 'ContentContainer',
   shouldForwardProp,
   overridesResolver: (_, styles) => [styles.contentContainer]
-})<{ variant?: string; menuVisible?: boolean; legacyBehavior?: boolean }>``;
-
+})<{ variant?: string; menuVisible?: boolean; legacyBehavior?: boolean; isElevated?: boolean }>``;
 export default Header;
