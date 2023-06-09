@@ -18,7 +18,7 @@ export const typeDefs = gql`
   type Blog {
     header: Header
     blogCategories: [CategoryBlog]
-    relatedItems: [Card]
+    relatedItems: [Link]
     author: Person
     breadcrumbs: [Link]
     contents: [Content]
@@ -35,7 +35,7 @@ export const mappers = {
         const pubDate = getLocalizedField(ref?.fields, 'pubDate', ctx);
         return pubDate && format(new Date(pubDate), 'MMMM dd, yyyy');
       },
-      relatedItems: relatedItemsResolver,
+      // relatedItems: relatedItemsResolver,
       seo: seoBlogResolver
     },
     Link: {

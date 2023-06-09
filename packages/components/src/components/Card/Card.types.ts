@@ -1,7 +1,9 @@
 import { Card_BaseFragmentFragment } from '@answersai-marketing/graphql-sdk/dist';
+import { MediaProps } from '../Media/Media';
 
 type CardVariants =
   | 'default'
+  | 'defaultCircleImage'
   | 'mediaFill'
   | 'mediaContain'
   | 'mediaSquare'
@@ -12,6 +14,7 @@ type CardVariants =
 
 export interface CardProps extends Card_BaseFragmentFragment {
   loading?: boolean;
+  media?: MediaProps;
   variant?: CardVariants;
   colorScheme?: string;
   position?: number;

@@ -238,17 +238,7 @@ const Title = styled(Typography, {
   name: 'Blog',
   slot: 'Title',
   overridesResolver: (_, styles) => [styles.title]
-})<TypographyProps<React.ElementType>>(({ theme }) => ({
-  ...theme.typography.h5,
-
-  [theme.breakpoints.up('md')]: {
-    ...theme.typography.h3
-  },
-
-  [theme.breakpoints.up('lg')]: {
-    ...theme.typography.h2
-  }
-}));
+})<TypographyProps<React.ElementType>>(() => ({}));
 
 const Summary = styled(Typography, {
   name: 'Blog',
