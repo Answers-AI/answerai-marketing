@@ -32,12 +32,12 @@ const relatedItemsResolver = async (ref: any, _args: any, ctx: ApolloContext) =>
       const path = await getPathReader(ctx)?.getPathsByContentId(blog?.sys?.id ?? '', undefined, process.env.SITE);
       if (listImageRef) media.push(listImageRef);
       else if (featuredMediaRef) media.push(featuredMediaRef);
-      return createType('card', {
+      return createType('link', {
         id: blog?.sys?.id,
         title,
         media,
         variant: 'Blog Related Item',
-        link: createType('link', {
+        href: createType('link', {
           manualUrl: path?.[0] ?? '#'
         })
       });

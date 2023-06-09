@@ -1,6 +1,8 @@
 import { Collection_BaseFragmentFragment } from '@answersai-marketing/graphql-sdk/dist';
 
 type CollectionVariants =
+  | 'default'
+  | 'defaultCircleImage'
   | 'onePerRow'
   | 'twoPerRow'
   | 'twoPerRowOffset'

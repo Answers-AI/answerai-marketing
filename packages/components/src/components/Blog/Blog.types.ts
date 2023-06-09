@@ -6,6 +6,7 @@ export interface BlogClasses {
   root: string;
   featuredMedia: string;
   pubDate: string;
+  title: string;
   summary: string;
   author: string;
   body: string;

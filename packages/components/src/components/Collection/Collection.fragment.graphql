@@ -13,6 +13,7 @@ fragment Collection_BaseFragment on Collection {
   ...Collection_FieldsFragment
   items {
     ...Card_BaseFragment
+    ...Blog_CardFragment
     ...Link_CardFragment
     ...Media_BaseFragment
   }

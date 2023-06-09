@@ -63,9 +63,21 @@ export const styleOverrides: ComponentsOverrides<Theme>['Card'] = {
     })
   }),
 
-  cardActions: () => ({}),
+  cardActions: ({ theme }) => ({
+    padding: 0,
+    marginTop: theme.spacing(1),
+    flexDirection: 'column',
 
-  cardAction: () => ({}),
+    [theme.breakpoints.up('md')]: {
+      flexDirection: 'column',
+      alignItems: 'flex-start'
+    }
+  }),
+
+  cardAction: () => ({
+    paddingLeft: 0,
+    marginLeft: 0
+  }),
 
   cardContent: ({ theme, ownerState }) => ({
     ...(ownerState?.variant === 'icon' && {
@@ -245,40 +257,17 @@ const createVariants = (theme: Theme): ComponentsVariants['Card'] => [
 
       '[class$=Card-body]': {
         flex: 1
-        // 'wordWrap': 'break-word',
-        // 'overflowWrap': 'break-word',
-        // 'overflow': 'hidden',
-        // 'textOverflow': 'ellipsis',
-        // 'display': '-webkit-box',
-        // 'hyphens': 'auto',
-        // '-webkit-line-clamp': '2',
-        // '-webkit-box-orient': 'vertical'
-      },
-
-      '[class$=Text-root]': {
-        overflow: 'hidden'
-      },
-
-      '[class$=MuiTypography-root]': {
-        // 'wordWrap': 'break-word',
-        // 'overflowWrap': 'break-word',
-        // 'overflow': 'hidden',
-        // 'textOverflow': 'ellipsis',
-        // 'display': '-webkit-box',
-        // 'hyphens': 'auto',
-        // '-webkit-line-clamp': '2',
-        // '-webkit-box-orient': 'vertical'
       },
 
       '[class$=Card-cardActions]': {
         padding: 0,
         marginTop: theme.spacing(8),
         justifyContent: 'space-between',
-        flexDirection: 'row',
+        flexDirection: 'column',
         gap: theme.spacing(1, 4),
 
         [theme.breakpoints.up('md')]: {
-          flexDirection: 'row'
+          flexDirection: 'column'
         }
       },
 

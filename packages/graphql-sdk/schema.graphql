@@ -67,7 +67,7 @@ type Blog implements Content {
   listImage: Media
   lr__path__: String
   pubDate: Date
-  relatedItems: [Card]
+  relatedItems: [Link]
   seo: JSON
   sidekickLookup: JSON
   slug: String
@@ -134,7 +134,7 @@ input CollectionFilterInput {
   topics: [String]
 }
 
-union CollectionItem = Card | Link | Media | NavigationItem | Section
+union CollectionItem = Blog | Card | Link | Media | NavigationItem | Section
 
 type CollectionItemConnection {
   items: [CollectionItem]

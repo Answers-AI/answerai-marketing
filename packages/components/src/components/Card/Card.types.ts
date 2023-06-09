@@ -2,6 +2,7 @@ import { Card_BaseFragmentFragment } from '@answersai-marketing/graphql-sdk/dist
 
 type CardVariants =
   | 'default'
+  | 'defaultCircleImage'
   | 'mediaFill'
   | 'mediaContain'
   | 'mediaSquare'
