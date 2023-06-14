@@ -31,6 +31,7 @@ const CalendlyPopupWidget = dynamic(() => import('./components/Calendly/Calendly
 const CalendlyPopupButton = dynamic(() => import('./components/Calendly/CalendlyPopupButton'));
 const ModuleIntegration = dynamic(() => import('./components/ModuleIntegration'));
 const Block = dynamic(() => import('./components/Block'));
+const Form = dynamic(() => import('./components/Form'));
 const Blog = dynamic(() => import('./components/Blog'));
 const GlobalFooter = dynamic(() => import('./components/GlobalFooter'));
 const Header = dynamic(() => import('./components/Header'));
@@ -100,6 +101,7 @@ const contentMapping: {
   'ModuleIntegration:calendlyInline': CalendlyInline,
   'ModuleIntegration:calendlyPopupWidget': CalendlyPopupWidget,
   'ModuleIntegration:calendlyPopupButton': CalendlyPopupButton,
+  'ModuleIntegration:hubspotFormDefault': Form,
   Block,
   GlobalFooter,
   Blog,

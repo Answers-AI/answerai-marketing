@@ -7,7 +7,21 @@ export const defaultProps = {};
 export const styleOverrides: ComponentsOverrides<Theme>['Blog'] = {
   root: ({}) => ({}),
 
-  featuredMedia: ({}) => ({}),
+  featuredMedia: () => ({}),
+
+  featuredMediaWrap: ({ theme }) => ({
+    gridColumn: '1 / span 2',
+    gridRow: '2',
+    width: '100%',
+    margin: theme.spacing(0, 0, 4),
+    [theme.breakpoints.up('md')]: {
+      gridRow: '4',
+      gridColumn: '1 / span 6'
+    },
+    [theme.breakpoints.up('lg')]: {
+      gridColumn: '1 / span 8'
+    }
+  }),
 
   pubDate: ({}) => ({}),
 

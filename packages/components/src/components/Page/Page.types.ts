@@ -1,4 +1,4 @@
-import { Page_BaseFragmentFragment } from '@answersai-marketing/graphql-sdk/dist';
+import { Page_BaseFragmentFragment } from '@answersai-marketing/graphql-sdk';
 
 export interface PageProps extends Page_BaseFragmentFragment {}
 

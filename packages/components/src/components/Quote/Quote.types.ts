@@ -1,4 +1,4 @@
-import { Quote_BaseFragmentFragment } from '@answersai-marketing/graphql-sdk/dist';
+import { Quote_BaseFragmentFragment } from '@answersai-marketing/graphql-sdk';
 import { LinkProps } from '../Link';
 import { MediaProps } from '../Media';
 

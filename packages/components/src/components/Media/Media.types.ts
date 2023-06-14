@@ -10,6 +10,7 @@ export interface MediaProps extends LRMediaProps {
 
 export interface MediaClasses {
   root: string;
+  mediaWrap: string;
 }
 
 export declare type MediaClassKey = keyof MediaClasses;

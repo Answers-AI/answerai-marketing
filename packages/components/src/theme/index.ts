@@ -23,6 +23,7 @@ import Calendly from '../components/Calendly/Calendly.theme';
 import NavigationBar from '../components/NavigationBar/NavigationBar.theme';
 import NavigationItem from '../components/NavigationItem/NavigationItem.theme';
 import Collection from '../components/Collection/Collection.theme';
+import Form from '../components/Form/Form.theme';
 import merge from 'lodash/merge';
 import camelCase from 'lodash/camelCase';
 import createGridMixin from './mixins/createGridMixin';
@@ -191,6 +192,7 @@ const createSchemeTheme = (schemeKey?: string) => {
         Page(baseSchemeTheme),
         Text(baseSchemeTheme),
         Card(baseSchemeTheme),
+        Form(baseSchemeTheme),
         GlobalFooter(baseSchemeTheme),
         Block(baseSchemeTheme),
         FooterNavigationItem(baseSchemeTheme),

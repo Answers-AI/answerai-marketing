@@ -15,17 +15,19 @@ export const styleOverrides: ComponentsOverrides<Theme>['HeaderNavGroup'] = {
   }),
 
   navItemLink: ({ theme }) => ({
-    ...theme.typography.body2,
+    ...theme.typography.bodySmall,
     'padding': 0,
     'border': 'none',
-    'color': theme.palette.primary.contrastText,
+    'color': theme.palette.common.white,
     'flexGrow': '1',
     'alignItems': 'center',
     'display': 'flex',
     'width': '100%',
     'cursor': 'pointer',
+
     '&:is(:hover, :focus-within):not(:focus-visible)': {
-      textDecoration: 'none'
+      textDecoration: 'none',
+      color: '#00fff2'
     },
 
     '.MuiSvgIcon-root': {
@@ -45,9 +47,10 @@ export const styleOverrides: ComponentsOverrides<Theme>['HeaderNavGroup'] = {
   navItemSubMenu: ({ theme }) => ({
     [theme.breakpoints.up('md')]: {
       display: 'grid',
-      gridTemplateColumns: 'repeat(3, 1fr)',
-      gap: theme.spacing(2, 3)
+      gridTemplateColumns: 'repeat(1, 1fr)',
+      gap: theme.spacing(1)
     },
+
     [theme.breakpoints.up('lg')]: {
       display: 'block'
     }

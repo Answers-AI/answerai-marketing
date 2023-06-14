@@ -4,6 +4,7 @@ fragment Media_BaseFragment on Media {
   title
   description
   variant
+  assetURL
   file {
     url
     extension

@@ -2,6 +2,8 @@ import React from 'react';
 import { useRouter } from 'next/router';
 import { styled } from '@mui/material/styles';
 import Box from '@mui/material/Box';
+import List from '@mui/material/List';
+import ListItem from '@mui/material/ListItem';
 import Container from '@mui/material/Container';
 import Typography, { TypographyProps } from '@mui/material/Typography';
 import MuiAvatar from '@mui/material/Avatar';
@@ -31,7 +33,10 @@ const Blog = ({
   breadcrumbs,
   sidekickLookup,
   summary,
-  contents
+  contents,
+  modelUsed,
+  promptedBy,
+  imagesGeneratedBy
 }: BlogProps) => {
   const { asPath } = useRouter();
   const [shareUrl, setShareUrl] = React.useState('');
@@ -45,6 +50,7 @@ const Blog = ({
   return (
     <>
       {header ? <ContentModule {...(header as any)} /> : null}
+
       <Root component="main" {...sidekick(sidekickLookup)}>
         <HeaderContainer>
           {/* TODO: Move Breadcrumb to its own component */}
@@ -57,14 +63,62 @@ const Blog = ({
           )}
 
           {!!title && <Title component="h1">{title}</Title>}
-          {!!pubDate && <PubDate variant="body1">Published on {pubDate}</PubDate>}
+          {!!pubDate && <PubDate variant="body1">Published: {pubDate}</PubDate>}
+          {!!author && (
+            <AAIListWrap>
+              Written By:
+              <AAIList>
+                <AAIListItem sx={{ display: 'inline' }}>{author.name}</AAIListItem>
+              </AAIList>
+            </AAIListWrap>
+          )}
+
+          {!!promptedBy?.length && (
+            <AAIListWrap>
+              Prompted By:
+              <AAIList>
+                {promptedBy.map((pb?: string) => (
+                  <AAIListItem key={pb} sx={{ display: 'inline' }}>
+                    {pb}
+                  </AAIListItem>
+                ))}
+              </AAIList>
+            </AAIListWrap>
+          )}
+
+          {!!modelUsed?.length && (
+            <AAIListWrap>
+              Model:
+              <AAIList>
+                {modelUsed.map((model?: string) => (
+                  <AAIListItem key={model} sx={{ display: 'inline' }}>
+                    {model}
+                  </AAIListItem>
+                ))}
+              </AAIList>
+            </AAIListWrap>
+          )}
+
+          {!!imagesGeneratedBy?.length && (
+            <AAIListWrap>
+              Images:
+              <AAIList>
+                {imagesGeneratedBy.map((imageBy?: string) => (
+                  <AAIListItem key={imageBy}>{imageBy}</AAIListItem>
+                ))}
+              </AAIList>
+            </AAIListWrap>
+          )}
+
           {!!summary && <Summary variant="body1">{summary}</Summary>}
         </HeaderContainer>
 
         <ContentContainer>
           <ContentWrap>
             {!!featuredMedia && (
-              <FeaturedMedia {...sidekick(sidekickLookup, 'featuredMedia')} {...(featuredMedia as MediaProps)} />
+              <FeaturedMediaWrap {...sidekick(sidekickLookup, 'featuredMedia')}>
+                <FeaturedMedia {...(featuredMedia as MediaProps)} />
+              </FeaturedMediaWrap>
             )}
             {!!body && (
               <BodyWrap>
@@ -269,6 +323,43 @@ const Author = styled(Box, {
   gap: theme.spacing(1.5)
 }));
 
+const AAIListWrap = styled(Box, {
+  name: 'Blog',
+  slot: 'AAIListWrap',
+  overridesResolver: (_, styles) => [styles.aaiListWrap]
+})(({ theme }) => ({
+  display: 'inline-block',
+  padding: 0,
+  ...theme.typography.bodySmall
+}));
+
+const AAIList = styled(List, {
+  name: 'Blog',
+  slot: 'AAIList',
+  overridesResolver: (_, styles) => [styles.aaiList]
+})(({ theme }) => ({
+  display: 'inline-block',
+  padding: 0,
+  ...theme.typography.bodySmall
+}));
+
+const AAIListItem = styled(ListItem, {
+  name: 'Blog',
+  slot: 'AAIListItem',
+  overridesResolver: (_, styles) => [styles.aaiListItem]
+})(({ theme }) => ({
+  'display': 'inline',
+  'paddingLeft': theme.spacing(1),
+
+  '&::after': {
+    content: '", "'
+  },
+
+  '&:last-child::after': {
+    content: 'unset'
+  }
+}));
+
 const Avatar = styled(MuiAvatar, {
   name: 'Blog',
   slot: 'Avatar',
@@ -306,23 +397,17 @@ const AuthorName = styled(Typography, {
   }
 }));
 
+const FeaturedMediaWrap = styled(Box, {
+  name: 'Blog',
+  slot: 'FeaturedMediaWrap',
+  overridesResolver: (_, styles) => [styles.featuredMediaWrap]
+})(() => ({}));
+
 const FeaturedMedia = styled(ContentModule, {
   name: 'Blog',
   slot: 'FeaturedMedia',
   overridesResolver: (_, styles) => [styles.featuredMedia]
-})(({ theme }) => ({
-  gridColumn: '1 / span 2',
-  gridRow: '2',
-  width: '100%',
-  margin: 0,
-  [theme.breakpoints.up('md')]: {
-    gridRow: '4',
-    gridColumn: '1 / span 6'
-  },
-  [theme.breakpoints.up('lg')]: {
-    gridColumn: '1 / span 8'
-  }
-}));
+})(() => ({}));
 
 const ShareLinksWrapper = styled(Box, {
   name: 'Blog',

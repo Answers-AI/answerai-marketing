@@ -26,7 +26,7 @@ export const styleOverrides: ComponentsOverrides<Theme>['HeaderNavLink'] = {
 
     '&:is(:hover, :focus-within):not(:focus-visible)': {
       [theme.breakpoints.up('lg')]: {
-        'borderBottomColor': theme.palette.secondary.main,
+        'borderBottomColor': '#fba62d',
 
         '[class*="HeaderNavLink-navItemLink"]': {
           'color': theme.palette.primary.main,
@@ -47,20 +47,19 @@ export const styleOverrides: ComponentsOverrides<Theme>['HeaderNavLink'] = {
 
   navItemLink: ({ theme, open }) => ({
     'padding': theme.spacing(0, 2),
-    'color': theme.palette.primary.contrastText,
+    'color': theme.palette.text.primary,
     'flexGrow': '1',
     'alignItems': 'center',
     'display': 'flex',
-    'borderTop': `solid 1px ${theme.palette.grey[200]}`,
     'width': '100%',
     'justifyContent': 'space-between',
     'cursor': 'pointer',
     'transition': 'color 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms',
     'fontSize': '0.875rem',
+    'whiteSpace': 'nowrap',
 
     [theme.breakpoints.up('lg')]: {
-      justifyContent: 'flex-start',
-      borderTop: 'none'
+      justifyContent: 'flex-start'
     },
 
     '.MuiSvgIcon-root': {
@@ -105,7 +104,7 @@ export const styleOverrides: ComponentsOverrides<Theme>['HeaderNavLink'] = {
       transform: 'translateY(100%)',
       flexDirection: 'row',
       padding: 0,
-      paddingTop: theme.spacing(3),
+      paddingTop: theme.spacing(0.5),
       transition: 'visibility 0s, opacity 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms',
 
       ...(numOfCols === 2 && {
@@ -124,28 +123,31 @@ export const styleOverrides: ComponentsOverrides<Theme>['HeaderNavLink'] = {
     }
   }),
 
-  navItemSubMenu: ({ theme, numOfCols }) => ({
+  navItemSubMenu: ({ theme }) => ({
     [theme.breakpoints.up('md')]: {
       padding: theme.spacing(3, 3),
       display: 'flex',
       flexDirection: 'column',
-      gap: theme.spacing(6)
+      gap: theme.spacing(1)
     },
+
     [theme.breakpoints.up('lg')]: {
       'display': 'grid',
       'gap': theme.spacing(0),
-      'padding': 0,
-      'borderRadius': theme.spacing(2),
+      'padding': theme.spacing(1, 0),
+      'borderBottomLeftRadius': theme.spacing(4),
+      'borderTopRightRadius': theme.spacing(4),
       'overflow': 'hidden',
-      'backgroundColor': theme.palette.primary.main,
+      'backgroundColor': '#1e2145', //theme.palette.primary.main,
       'width': 'fit-content',
       // @ts-ignore: TODO: items not recognized
-      'gridTemplateColumns': `repeat(${(numOfCols ?? 0) + 1}, auto)`,
+      'gridTemplateColumns': `repeat(1, auto)`,
       'boxShadow': theme.shadows[1],
+
       '> li': {
-        borderRight: `solid 1px ${theme.palette.grey[200]}`,
-        padding: theme.spacing(3, 1, 4.5, 4)
+        padding: theme.spacing(1, 2)
       },
+
       '> li:last-of-type': {
         borderColor: 'transparent'
       }
@@ -160,6 +162,7 @@ export const styleOverrides: ComponentsOverrides<Theme>['HeaderNavLink'] = {
 
   megaNavContainer: ({ theme }) => ({
     display: 'none',
+
     [theme.breakpoints.up('lg')]: {
       display: 'flex',
       flexDirection: 'column',

@@ -1,7 +1,7 @@
 require('dotenv').config();
 
 const path = require('path');
-const { graphqlEndpoint } = require('@drata-website/utils');
+const { graphqlEndpoint } = require('@answerai-marketing/utils');
 
 module.exports = {
   client: {

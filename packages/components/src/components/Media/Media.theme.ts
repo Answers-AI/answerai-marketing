@@ -17,9 +17,28 @@ export const styleOverrides: ComponentsOverrides<Theme>['Media'] = {
     display: 'block',
     maxWidth: `100%`,
     margin: 'auto',
-
     height: 'auto'
-  })
+  }),
+
+  mediaWrap: ({ variant }) => {
+    if (variant === 'embed') {
+      return {
+        'padding': '56.25% 0 0 0',
+        'position': 'relative',
+
+        '& iframe': {
+          position: 'absolute',
+          top: 0,
+          left: 0,
+          width: '100%',
+          height: '100%'
+        }
+      };
+    }
+    return {};
+  }
+
+  // Override a style that is defined in the theme
   // root: {
   //   backgroundColor: 'red'
   // }
@@ -35,15 +54,6 @@ export const styleOverrides: ComponentsOverrides<Theme>['Media'] = {
 // https://mui.com/customization/theme-components/#adding-new-component-variants
 const createVariants = (_theme: Theme): ComponentsVariants['Media'] => [
   // Use prop matching to set variant styles
-  // {
-  //   props: {
-  //     variant: 'example'
-  //   },
-  //   style: {
-  //     backgroundColor: theme.palette.primary.main
-  //   }
-  // }
-  // Other props are also valid
   // {
   //   props: {
   //     backgroundColor: 'primary.main',

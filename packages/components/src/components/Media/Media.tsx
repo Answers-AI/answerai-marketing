@@ -5,15 +5,22 @@ export type { MediaProps, MediaClassKey, MediaClasses } from '@last-rev/componen
 
 import { MediaProps } from './Media.types';
 import Link from '../Link';
+import Box from '@mui/material/Box';
 
 const Media = ({ link, ...props }: MediaProps) => {
   if (link)
     return (
       <Root {...link}>
-        <LRMedia {...props} />
+        <MediaWrap variant={props.variant}>
+          <LRMedia {...props} />
+        </MediaWrap>
       </Root>
     );
-  return <LRMedia {...props} />;
+  return (
+    <MediaWrap variant={props.variant}>
+      <LRMedia {...props} />
+    </MediaWrap>
+  );
 };
 
 const Root = styled(Link, {
@@ -22,4 +29,9 @@ const Root = styled(Link, {
   overridesResolver: (_, styles) => [styles.root]
 })(() => ({}));
 
+const MediaWrap = styled(Box, {
+  name: 'Media',
+  slot: 'MediaWrap',
+  overridesResolver: (_, styles) => [styles.mediaWrap]
+})<MediaProps>(() => ({}));
 export default Media;

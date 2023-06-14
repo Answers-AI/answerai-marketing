@@ -1,4 +1,4 @@
-import { Collection_BaseFragmentFragment } from '@answersai-marketing/graphql-sdk/dist';
+import { Collection_BaseFragmentFragment } from '@answersai-marketing/graphql-sdk';
 
 type CollectionVariants =
   | 'default'

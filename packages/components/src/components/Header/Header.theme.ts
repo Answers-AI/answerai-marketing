@@ -9,7 +9,8 @@ export const defaultProps: ComponentsProps['Header'] = {};
 export const styleOverrides: ComponentsOverrides<Theme>['Header'] = {
   root: ({ theme, elevation }) => ({
     padding: theme.spacing(0, 2),
-    backgroundColor: !!elevation ? '#1e2145' : 'transparent'
+    backgroundColor: !!elevation ? '#1e2145' : 'transparent',
+    backgroundImage: 'unset'
   }),
 
   superNav: ({ theme, isElevated }) => ({
@@ -88,12 +89,12 @@ export const styleOverrides: ComponentsOverrides<Theme>['Header'] = {
     'textAlign': 'center',
 
     '&:hover': {
-      color: '#00fff2'
+      color: '#fba62d'
     },
 
     '&:active': {
       '.MuiSvgIcon-root': {
-        color: '#00fff2'
+        color: '#fba62d'
       }
     },
 
@@ -101,8 +102,8 @@ export const styleOverrides: ComponentsOverrides<Theme>['Header'] = {
       textAlign: 'left'
     },
 
-    '.MuiSvgIcon-root': {
-      color: '#00fff2',
+    '& .MuiSvgIcon-root': {
+      color: '#fba62d',
       height: theme.spacing(2),
       marginLeft: theme.spacing(1)
     }
@@ -185,6 +186,7 @@ export const styleOverrides: ComponentsOverrides<Theme>['Header'] = {
 
     [theme.breakpoints.up('lg')]: {
       'width': 'fit-content',
+
       '[class$=MuiLink-root-Link-root]': {
         color: '#00fff2',
         ...theme.typography.body2
@@ -220,7 +222,7 @@ export const styleOverrides: ComponentsOverrides<Theme>['Header'] = {
       marginLeft: 0,
       marginRight: 0,
       maxHeight: '100%',
-      gridColumn: '3 / -2',
+      gridColumn: '3 / -3',
       gridRow: 1,
       display: 'inline-flex'
     }

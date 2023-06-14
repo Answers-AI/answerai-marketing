@@ -240,10 +240,7 @@ const createVariants = (theme: Theme): ComponentsVariants['Collection'] => [
         'gridRow': '-3',
 
         [theme.breakpoints.up('md')]: {
-          gridColumn: '2/-2'
-        },
-
-        [theme.breakpoints.up('md')]: {
+          gridColumn: '2/-2',
           gridRow: '-2/1'
         },
 

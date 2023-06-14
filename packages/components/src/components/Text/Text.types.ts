@@ -1,4 +1,4 @@
-import { Text_BaseFragmentFragment } from '@answersai-marketing/graphql-sdk/dist';
+import { Text_BaseFragmentFragment } from '@answersai-marketing/graphql-sdk';
 
 export interface TextProps extends Text_BaseFragmentFragment {
   eyebrow?: string;
