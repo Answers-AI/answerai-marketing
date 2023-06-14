@@ -1,4 +1,4 @@
-import { Person_BaseFragmentFragment } from '@answersai-marketing/graphql-sdk/dist';
+import { Person_BaseFragmentFragment } from '@answersai-marketing/graphql-sdk';
 
 export interface PersonProps extends Person_BaseFragmentFragment {}
 

@@ -1,4 +1,4 @@
-import { ModuleIntegration_BaseFragmentFragment } from '@answersai-marketing/graphql-sdk/dist';
+import { ModuleIntegration_BaseFragmentFragment } from '@answersai-marketing/graphql-sdk';
 
 export interface PhrasesProps extends ModuleIntegration_BaseFragmentFragment {}
 

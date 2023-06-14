@@ -1,4 +1,4 @@
-import { Header_BaseFragmentFragment } from '@answersai-marketing/graphql-sdk/dist';
+import { Header_BaseFragmentFragment } from '@answersai-marketing/graphql-sdk';
 
 export interface HeaderProps extends Header_BaseFragmentFragment {
   variant?: 'elevation' | 'outlined' | undefined;

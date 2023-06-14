@@ -29,6 +29,9 @@ fragment Blog_BaseFragment on Blog {
     ...ContentModule_BaseFragment
   }
   seo
+  modelUsed
+  promptedBy
+  imagesGeneratedBy
 }
 
 fragment Blog_CardFragment on Blog {

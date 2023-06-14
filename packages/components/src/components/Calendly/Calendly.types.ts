@@ -1,4 +1,4 @@
-import { ModuleIntegration_BaseFragmentFragment } from '@answersai-marketing/graphql-sdk/dist';
+import { ModuleIntegration_BaseFragmentFragment } from '@answersai-marketing/graphql-sdk';
 
 export interface CalendlyProps extends ModuleIntegration_BaseFragmentFragment {}
 

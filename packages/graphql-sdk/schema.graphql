@@ -64,8 +64,11 @@ type Blog implements Content {
   footer: Content
   header: Header
   id: String
+  imagesGeneratedBy: [String]
   listImage: Media
   lr__path__: String
+  modelUsed: [String]
+  promptedBy: [String]
   pubDate: Date
   relatedItems: [Link]
   seo: JSON

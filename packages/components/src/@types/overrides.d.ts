@@ -28,6 +28,7 @@ import { NavigationBarClassKey } from '../components/NavigationBar';
 import { PageClassKey } from '../components/Page';
 import { PhrasesClassKey } from '../components/Phrases';
 import { CalendlyClassKey } from '../components/Calendly';
+import { FormClassKey } from '../components/Form';
 import { ModuleIntegrationClassKey } from '../components/ModuleIntegration';
 import { QuoteClassKey } from '../components/Quote';
 // import { CollectionCarouselClassKey } from '../components/CollectionCarousel';
@@ -64,6 +65,7 @@ declare module '@mui/material/styles' {
     Person: PersonClassKey;
     Phrases: PhrasesClassKey;
     Calendly: CalendlyClassKey;
+    Form: FormClassKey;
     ModuleIntegration: ModuleIntegrationClassKey;
     // CollectionCarousel: CollectionCarouselClassKey;
     CollectionFiltered: CollectionFilteredClassKey;

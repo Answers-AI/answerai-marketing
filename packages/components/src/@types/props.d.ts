@@ -23,6 +23,7 @@ import { ModuleIntegrationProps } from '../components/ModuleIntegration';
 import { PersonProps } from '../components/Person';
 import { PhrasesProps } from '../components/Phrases';
 import { CalendlyProps } from '../components/Calendly';
+import { FormProps } from '../components/Form';
 import { SectionProps } from '../components/Section';
 import { CollectionProps } from '../components/Collection';
 import { CollectionFilteredProps } from '../components/CollectionFiltered';
@@ -58,6 +59,7 @@ declare module '@mui/material/styles' {
     Person: PersonProps;
     Phrases: PhrasesProps;
     Calendly: CalendlyProps;
+    Form: FormProps;
     Section: SectionProps;
     Collection: CollectionProps;
     CollectionFiltered: CollectionFilteredProps;

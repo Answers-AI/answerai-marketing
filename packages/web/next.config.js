@@ -23,7 +23,7 @@ const logger = getWinstonLogger({
   module: 'next.config'
 });
 
-const ContentSecurityPolicy = ``;
+// const ContentSecurityPolicy = `
 // default-src 'self'  *.sentry.io  *.facebook.com *.ctfassets.net *.vercel-insights.com *.hsforms.com hubspot-forms-static-embed.s3.amazonaws.com www.google-analytics.com analytics.google.com rs.fullstory.com *.zoominfo.com *.dreamdata.cloud us-central1-adaptive-growth.cloudfunctions.net;
 // style-src 'self' 'unsafe-inline'  *.sentry.io  *.googleapis.com *.fontawesome.com;
 // script-src 'self' 'unsafe-inline' 'unsafe-eval' *.chilipiper.com *.youtube.com *.sentry.io  *.google-analytics.com *.googletagmanager.com *.gstatic.com *.googleadservices.com *.google.com *.facebook.net *.ads-twitter.com *.doubleclick.net *.jquery.com *.hsforms.net *.greenhouse.io *.clearbitscripts.com *.clickcease.com *.zoominfo.com *.hs-scripts.com *.dreamdata.cloud *.g2crowd.com *.redditstatic.com bat.bing.com *.fullstory.com cdn.pdst.fm amplify.outbrain.com cmp.osano.com *.adroll.com snap.licdn.com *.clickagy.com *.hs-analytics.net *.hscollectedforms.net *.hs-banner.com *.usemessages.com *.outbrain.com;
@@ -37,6 +37,21 @@ const ContentSecurityPolicy = ``;
 // object-src 'none';
 // frame-ancestors 'self' https://app.contentful.com
 // `;
+
+const ContentSecurityPolicy = `
+  default-src 'self'  *.hsforms.com hubspot-forms-static-embed.s3.amazonaws.com;
+  style-src 'self' 'unsafe-inline';
+  script-src 'self' 'unsafe-inline' 'unsafe-eval' * *.youtube.com  *.google-analytics.com *.googletagmanager.com *.gstatic.com *.googleadservices.com *.google.com  *.jquery.com *.hsforms.net *.hs-scripts.com  *.hs-analytics.net *.hscollectedforms.net *.hs-banner.com;
+  font-src 'self'  fonts.gstatic.com *.fontawesome.com *.googleapis.com data:;
+  frame-src 'self' *.hubspot.com *.youtube.com *.google.com  forms.hsforms.com;
+  worker-src 'self' data: blob:;
+  connect-src 'self' *.hubspot.com *.hsforms.com hubspot-forms-static-embed.s3.amazonaws.com *.jquery.com *.hsforms.net *.hs-scripts.com  *.hs-analytics.net *.hscollectedforms.net *.hs-banner.com ;
+  script-src-elem 'self' *.youtube.com js.hs-banner.com  *.jquery.com *.hsforms.net js.hscollectedforms.net  js.hs-analytics.net  *.hs-scripts.com js.hsleadflows.net 'unsafe-eval' 'unsafe-inline';
+  img-src * data:;
+  media-src * data:;
+  object-src 'none';
+  frame-ancestors 'self' https://app.contentful.com
+`;
 
 const securityHeaders = [
   {

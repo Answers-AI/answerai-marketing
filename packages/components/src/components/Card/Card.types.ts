@@ -1,4 +1,4 @@
-import { Card_BaseFragmentFragment } from '@answersai-marketing/graphql-sdk/dist';
+import { Card_BaseFragmentFragment } from '@answersai-marketing/graphql-sdk';
 
 type CardVariants =
   | 'default'

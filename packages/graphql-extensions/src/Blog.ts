@@ -6,7 +6,7 @@ import { format } from 'date-fns';
 import headerResolver from './resolvers/headerResolver';
 import globalFooterResolver from './resolvers/globalFooterResolver';
 import pageBreadcrumbsResolver from './resolvers/pageBreadcrumbsResolver';
-import relatedItemsResolver from './resolvers/relatedItemsResolver';
+// import relatedItemsResolver from './resolvers/relatedItemsResolver';
 import hrefUrlResolver from './resolvers/hrefUrlResolver';
 import seoBlogResolver from './resolvers/seoBlogResolver';
 import createType from './utils/createType';
@@ -22,6 +22,9 @@ export const typeDefs = gql`
     author: Person
     breadcrumbs: [Link]
     contents: [Content]
+    modelUsed: [String]
+    promptedBy: [String]
+    imagesGeneratedBy: [String]
   }
 `;
 

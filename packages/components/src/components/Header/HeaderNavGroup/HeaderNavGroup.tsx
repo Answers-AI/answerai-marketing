@@ -47,7 +47,6 @@ export const HeaderNavGroup = ({
           {...props}
           variant={variant}
           {...sidekick(sidekickLookup)}
-          icon="arrow-right"
           onKeyDown={onKeyDown}
           onClick={onNavItemClick}
           onRequestClose={onRequestClose}
