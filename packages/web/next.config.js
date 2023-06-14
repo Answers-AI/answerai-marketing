@@ -38,30 +38,15 @@ const logger = getWinstonLogger({
 // frame-ancestors 'self' https://app.contentful.com
 // `;
 
-const ContentSecurityPolicy = `
-  default-src 'self'  *.hsforms.com hubspot-forms-static-embed.s3.amazonaws.com;
-  style-src 'self' 'unsafe-inline';
-  script-src 'self' 'unsafe-inline' 'unsafe-eval' * *.youtube.com  *.google-analytics.com *.googletagmanager.com *.gstatic.com *.googleadservices.com *.google.com  *.jquery.com *.hsforms.net *.hs-scripts.com  *.hs-analytics.net *.hscollectedforms.net *.hs-banner.com;
-  font-src 'self'  fonts.gstatic.com *.fontawesome.com *.googleapis.com data:;
-  frame-src 'self' *.hubspot.com *.youtube.com *.google.com  forms.hsforms.com;
-  worker-src 'self' data: blob:;
-  connect-src 'self' *.hubspot.com *.hsforms.com hubspot-forms-static-embed.s3.amazonaws.com *.jquery.com *.hsforms.net *.hs-scripts.com  *.hs-analytics.net *.hscollectedforms.net *.hs-banner.com ;
-  script-src-elem 'self' *.youtube.com js.hs-banner.com  *.jquery.com *.hsforms.net js.hscollectedforms.net  js.hs-analytics.net  *.hs-scripts.com js.hsleadflows.net 'unsafe-eval' 'unsafe-inline';
-  img-src * data:;
-  media-src * data:;
-  object-src 'none';
-  frame-ancestors 'self' https://app.contentful.com
-`;
-
 const securityHeaders = [
   {
     key: 'Strict-Transport-Security',
     value: 'max-age=63072000; includeSubDomains; preload'
   },
-  {
-    key: 'Content-Security-Policy',
-    value: ContentSecurityPolicy.replace(/\s{2,}/g, ' ').trim()
-  },
+  // {
+  //   key: 'Content-Security-Policy',
+  //   value: ContentSecurityPolicy.replace(/\s{2,}/g, ' ').trim()
+  // },
   {
     key: 'X-Content-Type-Options',
     value: 'nosniff'
