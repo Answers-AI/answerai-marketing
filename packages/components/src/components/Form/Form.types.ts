@@ -3,6 +3,7 @@ import { ModuleIntegration_BaseFragmentFragment } from '@answersai-marketing/gra
 export interface FormProps extends Form_BaseFragmentFragment {
   submitted?: boolean;
   hasSuccessMessage?: boolean;
+  settings?: any;
 }
 
 export interface FormClasses {

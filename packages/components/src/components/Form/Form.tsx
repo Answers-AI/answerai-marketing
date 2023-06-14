@@ -6,7 +6,6 @@ import CircularProgress from '@mui/material/CircularProgress';
 import Head from 'next/head';
 
 import { FormProps } from './Form.types';
-import ContentModule from '../ContentModule';
 
 // @ts-ignore
 const HSForm = dynamic(() => import('react-hubspot-form'), { ssr: false });
@@ -39,7 +38,7 @@ const Form = ({ settings, variant }: FormProps) => {
                */
             }}
             onFormSubmitted={handleSubmit}
-            inlineMessage={'hello world'}
+            inlineMessage={'Thanks for submitting!'}
             loading={<CircularProgress />}
           />
         </FormContainer>
@@ -64,12 +63,6 @@ const FormContainer = styled(Box, {
   name: 'Form',
   slot: 'FormContainer',
   overridesResolver: (_, styles) => [styles.formContainer]
-})(() => ({}));
-
-const SuccessMessage = styled(ContentModule, {
-  name: 'Form',
-  slot: 'SuccessMessage',
-  overridesResolver: (_, styles) => [styles.successMessage]
 })(() => ({}));
 
 export default Form;
