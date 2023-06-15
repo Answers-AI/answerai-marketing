@@ -31,3 +31,6 @@ create-app.json
 packages/web/cypress/integration/__generated/**
 
 .vercel
+
+docubot/preview
+docubot/markdown
