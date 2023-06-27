@@ -142,7 +142,6 @@ export const styleOverrides: ComponentsOverrides<Theme>['Header'] = {
   }),
 
   logo: ({ isElevated }) => ({
-    display: !!isElevated ? 'block' : 'none',
     height: !!isElevated ? 20 : 40,
     margin: 0,
 
