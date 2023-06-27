@@ -90,7 +90,7 @@ export const Header = (inProps: HeaderProps) => {
             <ContentContainer menuVisible={menuVisible} disableGutters isElevated={trigger}>
               {logo ? (
                 <LogoRoot noLinkStyle {...(logoUrl as LinkProps)} __typename="Link" aria-label={'Go to homepage'}>
-                  <Logo {...logo} priority alt={logo?.title ?? 'Go to homepage'} isElevated={true} />
+                  <Logo {...logo} priority alt={logo?.title ?? 'Go to homepage'} isElevated={trigger} />
                 </LogoRoot>
               ) : null}
 
