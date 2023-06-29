@@ -1,0 +1,6 @@
+The following JSON is the structure of an Contentful content entry.
+"""
+{{fileContents}}
+"""
+I want you to create a detailed summary of the content with relevant keywords
+I want you to create a list of all additional content entries that this content entry has a reference to

@@ -24,7 +24,7 @@ export const styleOverrides: ComponentsOverrides<Theme>['Text'] = {
       },
 
       '*': {
-        ...theme.typography.h3
+        ...theme.typography.body1
       }
     }
   }),

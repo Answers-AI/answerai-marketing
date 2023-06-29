@@ -1,0 +1,8 @@
+The following JSON is the structure of an Contentful content model that is used inside of a NextJS application.
+"""
+{{fileContents}}
+"""
+I want you to create a detailed summary of the content model. 
+I want you to create a markdown table that includes all of the fields and their properties
+I want you to create a markdown table that includes all of the sys properties
+I want you to create a list of all additional content models that this content model has a reference to
