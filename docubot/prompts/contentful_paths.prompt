@@ -1,0 +1,6 @@
+The following JSON is the structure of a Contentful website. It has the full paths of the entire taxonomy. 
+"""
+{{fileContents}}
+"""
+I want you to create a detailed list of the paths and its related id. 
+I want you to sumamrize this file and how it is used to create the full site taxonomy and build the global paths for the site
