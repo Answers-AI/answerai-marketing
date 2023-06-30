@@ -395,6 +395,7 @@ type Query {
   _service: _Service!
   availableLocales: Locales
   content(displayType: String, id: String!, locale: String, preview: Boolean): Content
+  contentPreview(displayType: String, id: String!, locale: String, overrideContent: JSON): Content
   contents(filter: ContentsFilter!): [Content]
   page(locale: String, path: String!, preview: Boolean, site: String): Content
   paths(locales: [String!], preview: Boolean, site: String): [PagePathParams!]

@@ -1,0 +1,20 @@
+{
+  "spaceId": "e4vn8tcbbhts",
+  "environmentId": "master",
+  "managementToken": "CFPAT-i-1isDqfc5_f8v9rVVtPkdH9FEkHacj0hi_8iKFuog8",
+  "exportDir": "./files",
+  "saveFile": true,
+  "includeDrafts": true,
+  "includeArchived": false,
+  "skipContentModel": true,
+  "skipContent": false,
+  "skipRoles": true,
+  "skipWebhooks": true,
+  "contentOnly": true,
+  "queryEntries": [
+    "metadata.tags.sys.id[in]=template"
+  ],
+  "downloadAssets": false,
+  "maxAllowedLimit": 1000,
+  "useVerboseRenderer": false
+}

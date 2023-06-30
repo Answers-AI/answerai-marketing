@@ -26,6 +26,13 @@ const FONT_URLS = ['https://fonts.gstatic.com/s/poppins/v20/pxiEyp8kv8JHgFVrJJfe
 function MyApp({ Component, emotionCache = clientSideEmotionCache, pageProps, router }: MyAppProps) {
   const path = router?.pathname;
   const isExtension = path?.includes('/_contentful');
+  if (isExtension) {
+    return (
+      <>
+        <Component {...pageProps} />
+      </>
+    );
+  }
 
   return (
     <CacheProvider value={emotionCache}>

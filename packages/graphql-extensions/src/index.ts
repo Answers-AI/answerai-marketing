@@ -13,7 +13,8 @@ import {
   Page,
   RichText,
   Section,
-  Theme
+  Theme,
+  Sidekick
 } from '@last-rev/graphql-contentful-extensions';
 
 import * as ModuleIntegration from './ModuleIntegration';
@@ -70,7 +71,8 @@ const extensions: GraphQlExtension[] = [
   PageCustom,
   PricingPlan,
   SectionCustom,
-  Text
+  Text,
+  Sidekick
 ];
 
 export const typeDefs = mergeTypeDefs(extensions.map((e) => e.typeDefs).filter((t) => !!t) as any[]);
