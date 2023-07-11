@@ -32,6 +32,8 @@ export const getServerSideProps: GetServerSideProps = async ({ res, params, loca
       site: process.env.SITE
     });
 
+    const domain = config.sitemap.domain.replace(/\/$/, '');
+
     if (data?.sitemapPage) {
       sitemap = `
     <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd http://www.google.com/schemas/sitemap-image/1.1 http://www.google.com/schemas/sitemap-image/1.1/sitemap-image.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
@@ -40,7 +42,7 @@ export const getServerSideProps: GetServerSideProps = async ({ res, params, loca
       .map(
         (entry: any) => `
         <url>
-      <loc>${config.sitemap.domain}/${entry?.loc}</loc>
+      <loc>${domain}/${entry?.loc}</loc>
       <lastmod>${entry?.lastmod}</lastmod>
     </url>
         `
