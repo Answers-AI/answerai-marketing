@@ -22,6 +22,7 @@ import * as Block from './Block';
 import * as CardCustom from './Card';
 import * as Header from './Header';
 import * as BlogCustom from './Blog';
+import * as HeroCustom from './Hero';
 import * as GlobalFooter from './GlobalFooter';
 import * as Person from './Person';
 import * as LinkCustom from './Link';
@@ -56,6 +57,7 @@ const extensions: GraphQlExtension[] = [
   GlobalFooter,
   Header,
   Hero,
+  HeroCustom,
   Link,
   LinkCustom,
   Media,

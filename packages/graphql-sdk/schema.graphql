@@ -325,11 +325,11 @@ type Page implements Content {
   disableBackToTop: Boolean
   footer: Content
   footerOverride: GlobalFooter
+  fullUrlPath: String
   header: Header
   headerOverride: Header
   hero: Hero
   id: String
-  internalTitle: String
   lr__path__: String
   pageListImage: Media
   parentPage: Page
