@@ -13,6 +13,8 @@ export const getServerSideProps: GetServerSideProps = async ({ res, locales }) =
       preview
     });
 
+    const domain = config.sitemap.domain.replace(/\/$/, '');
+
     const sitemap = `
       <sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
       ${(data?.sitemapIndex?.pages || [])
@@ -20,7 +22,7 @@ export const getServerSideProps: GetServerSideProps = async ({ res, locales }) =
           (page: any) =>
             page &&
             `<sitemap>
-        <loc>${`${config.sitemap.domain}${buildPageUrl(page.contentType, page.locale, page.page)}`}</loc>
+        <loc>${`${domain}${buildPageUrl(page.contentType, page.locale, page.page)}`}</loc>
         <lastmod>${page.lastmod}</lastmod>
       </sitemap>`
         )
