@@ -26,7 +26,7 @@ const config = new LastRevAppConfig({
   extensions,
   graphql: { port: 8888 },
   sitemap: {
-    domain: process.env.DOMAIN
+    domain: process.env.DEPLOY_URL || process.env.DOMAIN
   },
   contentful: {
     contentPreviewToken: process.env.CONTENTFUL_PREVIEW_TOKEN,
