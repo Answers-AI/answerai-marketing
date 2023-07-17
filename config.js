@@ -21,7 +21,7 @@ const parseNumberEnvVar = (value = '') => {
 
 const config = new LastRevAppConfig({
   cms: 'Contentful',
-  contentStrategy: 'fs',
+  strategy: 'fs',
   sites: [process.env.SITE],
   extensions,
   graphql: { port: 8888 },
