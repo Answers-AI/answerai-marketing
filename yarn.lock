@@ -4868,25 +4868,32 @@
     ora "^5.4.1"
     tslib "^2.3.0"
 
-"@last-rev/contentful-webhook-handler@^0.4.11":
-  version "0.4.15"
-  resolved "https://registry.yarnpkg.com/@last-rev/contentful-webhook-handler/-/contentful-webhook-handler-0.4.15.tgz#b5fff2c64685c260d349046d014379207ecf2f46"
-  integrity sha512-bb2iLZKcCJbF/97gh0AL2CbNM5hfRuE6rojbJF/kyTabw6ZzRGYy3vS1gOAScSuTNeMhiOxYZpT7HofDOMdpTQ==
+"@last-rev/contentful-webhook-handler@^0.4.16":
+  version "0.4.16"
+  resolved "https://registry.yarnpkg.com/@last-rev/contentful-webhook-handler/-/contentful-webhook-handler-0.4.16.tgz#9bbce544351705d292ed1b04804760c03999d485"
+  integrity sha512-7L3Tl7/QkMiedVMxl30Zcs+Vwu6i0Qif4B4/Dh9ZVlXUd66mrrP3hPziJUOmt19TY9vpOrH5V1Poi+caD8FsAg==
   dependencies:
     "@aws-sdk/client-dynamodb" "^3.303.0"
     "@aws-sdk/lib-dynamodb" "^3.303.0"
     "@last-rev/contentful-path-util" "^0.1.23"
-    "@last-rev/contentful-webhook-parser" "^0.1.3"
+    "@last-rev/contentful-webhook-parser" "^0.1.4"
     "@last-rev/graphql-contentful-helpers" "^0.4.7"
     contentful "^9.0.0"
     ioredis "^5.0.4"
     jsonwebtoken "^9.0.0"
     lodash "^4.17.21"
 
-"@last-rev/contentful-webhook-parser@^0.1.2", "@last-rev/contentful-webhook-parser@^0.1.3":
+"@last-rev/contentful-webhook-parser@^0.1.2":
   version "0.1.3"
   resolved "https://registry.yarnpkg.com/@last-rev/contentful-webhook-parser/-/contentful-webhook-parser-0.1.3.tgz#080158a114ef82a77dc6456f0d7e78424eec25ec"
   integrity sha512-OdeS+NzycUL0HNL8JaQs9geZ2ooXgaozWcRstYvLG/pJrTrWRZbBEyG6C1LLVRra4mmjfAqQEyU7mZ7sHNK7rw==
+  dependencies:
+    contentful "^9.0.0"
+
+"@last-rev/contentful-webhook-parser@^0.1.4":
+  version "0.1.4"
+  resolved "https://registry.yarnpkg.com/@last-rev/contentful-webhook-parser/-/contentful-webhook-parser-0.1.4.tgz#ef9593577b15231ea7758a9ca157cc642039956a"
+  integrity sha512-nFN6ll6QjgezGE/CRq7vrnym7+988uUboEN9wmCGL2G1g5eSviisx727QhViQXrGgKM4bHNhvbi+L1cvpd9wUA==
   dependencies:
     contentful "^9.0.0"
 
