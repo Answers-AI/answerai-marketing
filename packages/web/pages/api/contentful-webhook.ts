@@ -32,7 +32,14 @@ export const config = {
 const handler: NextApiHandler = async (req: NextApiRequest, res: NextApiResponse) => {
   await cors(req, res);
   try {
-    await handleWebhook(lrConfig, JSON.parse(req.body), req.headers as Record<string, string>);
+    await handleWebhook(
+      lrConfig.clone({
+        contentStrategy: 'cms',
+        cmsCacheStrategy: 'redis'
+      }),
+      JSON.parse(req.body),
+      req.headers as Record<string, string>
+    );
     res.status(200).json('Success');
   } catch (err) {
     res.status(400).json(`There was an error, we are on it. ${err}`);

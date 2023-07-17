@@ -24,6 +24,7 @@
     "@last-rev/contentful-app-components": "^0.2.0",
     "@last-rev/contentful-sidekick-util": "^0.1.3",
     "@last-rev/graphql-contentful-core": "^0.5.17",
+    "@last-rev/contentful-webhook-handler": "^0.4.16",
     "@last-rev/logging": "^0.1.3",
     "@last-rev/sitemap-generator": "^0.2.1",
     "@last-rev/testing-library": "^0.1.10",

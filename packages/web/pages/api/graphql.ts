@@ -33,6 +33,7 @@ const handler: NextApiHandler = async (req, res) => {
   return await createVercelHandler(
     lrConfig.clone({
       contentStrategy: 'cms',
+      cmsCacheStrategy: 'redis',
       apolloServerOptions: {
         introspection: false,
         plugins: [ApolloServerPluginLandingPageDisabled()]
