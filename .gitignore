@@ -38,4 +38,5 @@ docubot/markdown
 .env*
 .flaskenv*
 !.env.project
-!.env.vault
+!/.env.vault
+.env*.local

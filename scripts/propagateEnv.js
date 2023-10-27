@@ -3,7 +3,7 @@ const { readdir, copyFile, existsSync } = require('fs-extra');
 const { resolve, join } = require('path');
 
 const run = async () => {
-  const envFile = resolve(__dirname, '../.env');
+  const envFile = resolve(__dirname, '../.env.vault');
 
   if (!existsSync(envFile)) {
     console.log('No .env file found. skipping.');
@@ -17,7 +17,7 @@ const run = async () => {
     await Promise.all(
       packages.map(async (packageName) => {
         if (packageName !== '.DS_Store') {
-          const newEnv = join(packagesDir, packageName, '.env');
+          const newEnv = join(packagesDir, packageName, '.env.vault');
           await copyFile(envFile, newEnv);
         }
       })
