@@ -34,3 +34,4 @@ packages/web/cypress/integration/__generated/**
 
 docubot/preview
 docubot/markdown
+.env.local.backup
