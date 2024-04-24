@@ -1,80 +1,48 @@
 {
   "$schema": "https://turborepo.org/schema.json",
   "baseBranch": "origin/main",
-  "globalDependencies": [
-    ".env",
-    "**/.env"
-  ],
+  "globalDependencies": [".env", "**/.env"],
   "pipeline": {
     "dev": {
-      "dependsOn": [
-        "^build"
-      ],
+      "dependsOn": ["^build"],
       "cache": false
     },
     "storybook": {
-      "dependsOn": [
-        "^build"
-      ],
+      "dependsOn": ["^build"],
       "cache": false
     },
     "lint": {
       "outputs": []
     },
     "test": {
-      "dependsOn": [
-        "^build"
-      ],
-      "outputs": [
-        "coverage/**"
-      ]
+      "dependsOn": ["^build"],
+      "outputs": ["coverage/**"]
     },
     "test:e2e": {
-      "dependsOn": [
-        "^build"
-      ],
-      "outputs": [
-        "coverage/**"
-      ],
-      "env": [
-        "PERCY_TOKEN"
-      ]
+      "dependsOn": ["^build"],
+      "outputs": ["coverage/**"],
+      "env": ["PERCY_TOKEN"]
     },
     "test:watch": {
-      "dependsOn": [
-        "^build"
-      ],
+      "dependsOn": ["^build"],
       "cache": false,
       "outputs": []
     },
     "build": {
-      "dependsOn": [
-        "^build"
-      ],
-      "outputs": [
-        "dist/**",
-        ".next/**"
-      ]
+      "dependsOn": ["^build"],
+      "outputs": ["dist/**", ".next/**"]
     },
     "build-storybook": {
-      "dependsOn": [
-        "^build"
-      ],
-      "outputs": [
-        "storybook-static/**"
-      ]
+      "dependsOn": ["^build"],
+      "outputs": ["storybook-static/**"]
     },
     "sync:cms": {
       "cache": false,
-      "dependsOn": [
-        "@answersai-marketing/graphql-extensions#build"
-      ]
+      "dependsOn": ["@answersai-marketing/graphql-extensions#build"]
     },
     "start": {
       "cache": false,
-      "dependsOn": [
-        "build"
-      ],
+      "dependsOn": ["build"],
       "outputs": []
     },
     "gql:healthcheck": {
@@ -84,67 +52,52 @@
     },
     "@answersai-marketing/graphql-runner#dev": {
       "cache": false,
-      "dependsOn": [
-        "@answersai-marketing/graphql-extensions#build"
-      ],
+      "dependsOn": ["@answersai-marketing/graphql-extensions#build"],
       "outputs": []
     },
     "@answersai-marketing/graphql-runner#start": {
       "cache": false,
-      "dependsOn": [
-        "@answersai-marketing/graphql-extensions#build"
-      ],
+      "dependsOn": ["@answersai-marketing/graphql-extensions#build"],
       "outputs": []
     },
     "@answersai-marketing/utils#dev": {
       "cache": false,
-      "dependsOn": [
-        "@answersai-marketing/graphql-sdk#build"
-      ],
+      "dependsOn": ["@answersai-marketing/graphql-sdk#build"],
       "outputs": []
     },
     "@answersai-marketing/graphql-sdk#dev": {
       "cache": false,
-      "dependsOn": [
-        "@answersai-marketing/graphql-sdk#gql:healthcheck"
-      ],
+      "dependsOn": ["@answersai-marketing/graphql-sdk#gql:healthcheck"],
       "outputs": []
     },
     "@answersai-marketing/graphql-sdk#build": {
-      "dependsOn": [
-        "@answersai-marketing/graphql-sdk#gql:healthcheck",
-        "^build"
-      ],
-      "outputs": [
-        "dist/**",
-        "src/generated/**",
-        "schema.graphql"
-      ]
+      "dependsOn": ["@answersai-marketing/graphql-sdk#gql:healthcheck", "^build"],
+      "outputs": ["dist/**", "src/generated/**", "schema.graphql"]
     },
     "@answersai-marketing/web#dev": {
       "cache": false,
-      "dependsOn": [
-        "@answersai-marketing/graphql-runner#dev",
-        "^build"
-      ],
-      "outputs": [
-        "out/**",
-        ".next/**"
-      ]
+      "dependsOn": ["@answersai-marketing/graphql-runner#dev", "^build"],
+      "outputs": ["out/**", ".next/**"]
     },
     "@answersai-marketing/web#build": {
       "cache": false,
-      "dependsOn": [
-        "@answersai-marketing/graphql-runner#start",
-        "^build"
-      ],
-      "outputs": [
-        "out/**",
-        ".next/**"
-      ]
+      "dependsOn": ["@answersai-marketing/graphql-runner#start", "^build"],
+      "outputs": ["out/**", ".next/**"]
     }
   },
   "globalEnv": [
-    "TURBO_CACHE_KEY"
+    "CONTENTFUL_DELIVERY_TOKEN",
+    "CONTENTFUL_ENV",
+    "CONTENTFUL_PREVIEW_TOKEN",
+    "CONTENTFUL_SPACE_ID",
+    "CONTENTFUL_USE_PREVIEW",
+    "DEFAULT_SITE_ID",
+    "DEPLOY_URL",
+    "DOMAIN",
+    "GRAPHQL_SERVER_URL",
+    "SITE_ID",
+    "SITE",
+    "TURBO_CACHE_KEY",
+    "VERCEL_URL"
   ]
 }

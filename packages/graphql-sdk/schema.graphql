@@ -41,6 +41,7 @@ type Block implements Content {
   body: RichText
   eyebrow: String
   id: String
+  image: Media
   internalTitle: String
   introText: Text
   link: Link
@@ -53,6 +54,7 @@ type Block implements Content {
 }
 
 type Blog implements Content {
+  aaiSeoSettings: JSON
   animation: JSON
   author: Person
   blogCategories: [CategoryBlog]
@@ -351,6 +353,7 @@ type PagePathParams {
 }
 
 type Person implements Content {
+  aaiSeoSettings: JSON
   animation: JSON
   body: RichText
   email: String
@@ -370,6 +373,7 @@ type Person implements Content {
   socialLinks: [Link]
   summary: String
   theme: [Theme]
+  title: String
 }
 
 type PricingPlan implements Content {
@@ -456,6 +460,7 @@ type Section implements Content {
 type Settings implements Content {
   animation: JSON
   id: String
+  internalTitle: String
   liveEditorSettings: JSON
   sidekickLookup: JSON
   theme: [Theme]
