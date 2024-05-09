@@ -1,5 +1,5 @@
 # Last Rev NextJS Starter
-
+ 
 1. Copy .env.template as .env and complete with your environment variables
 2. Run: `yarn`
 3. Run: `yarn build`
