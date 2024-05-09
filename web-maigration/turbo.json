@@ -1,0 +1,102 @@
+{
+  "$schema": "https://turborepo.org/schema.json",
+  "globalDependencies": [".env", "**/.env"],
+  "pipeline": {
+    "dev": {
+      "dependsOn": ["^build"],
+      "cache": false
+    },
+    "storybook": {
+      "dependsOn": ["^build"],
+      "cache": false
+    },
+    "lint": {
+      "outputs": []
+    },
+    "test": {
+      "dependsOn": ["^build"],
+      "outputs": ["coverage/**"]
+    },
+    "test:e2e": {
+      "dependsOn": ["^build"],
+      "outputs": ["coverage/**"],
+      "env": ["PERCY_TOKEN"]
+    },
+    "test:watch": {
+      "dependsOn": ["^build"],
+      "cache": false,
+      "outputs": []
+    },
+    "build": {
+      "dependsOn": ["^build"],
+      "outputs": ["dist/**", ".next/**"]
+    },
+    "build-storybook": {
+      "dependsOn": ["^build"],
+      "outputs": ["storybook-static/**"]
+    },
+    "sync:cms": {
+      "cache": false,
+      "dependsOn": ["@repo/graphql-extensions#build"]
+    },
+    "start": {
+      "cache": false,
+      "dependsOn": ["build"],
+      "outputs": []
+    },
+    "gql:healthcheck": {
+      "cache": false,
+      "dependsOn": [],
+      "outputs": []
+    },
+    "@repo/graphql-runner#dev": {
+      "cache": false,
+      "dependsOn": ["@repo/graphql-extensions#build"],
+      "outputs": []
+    },
+    "@repo/graphql-runner#start": {
+      "cache": false,
+      "dependsOn": ["@repo/graphql-extensions#build"],
+      "outputs": []
+    },
+    "@repo/utils#dev": {
+      "cache": false,
+      "dependsOn": ["@repo/graphql-sdk#build"],
+      "outputs": []
+    },
+    "@repo/graphql-sdk#dev": {
+      "cache": false,
+      "dependsOn": ["@repo/graphql-sdk#gql:healthcheck"],
+      "outputs": []
+    },
+    "@repo/graphql-sdk#build": {
+      "dependsOn": ["@repo/graphql-sdk#gql:healthcheck", "^build"],
+      "outputs": ["dist/**", "src/generated/**", "schema.graphql"]
+    },
+    "@repo/web#dev": {
+      "cache": false,
+      "dependsOn": ["@repo/graphql-runner#dev", "^build"],
+      "outputs": ["out/**", ".next/**"]
+    },
+    "@repo/web#build": {
+      "cache": false,
+      "dependsOn": ["@repo/graphql-runner#start", "^build"],
+      "outputs": ["out/**", ".next/**"]
+    }
+  },
+  "globalEnv": [
+    "CONTENTFUL_DELIVERY_TOKEN",
+    "CONTENTFUL_ENV",
+    "CONTENTFUL_PREVIEW_TOKEN",
+    "CONTENTFUL_SPACE_ID",
+    "CONTENTFUL_USE_PREVIEW",
+    "DEFAULT_SITE_ID",
+    "DEPLOY_URL",
+    "DOMAIN",
+    "GRAPHQL_SERVER_URL",
+    "SITE_ID",
+    "SITE",
+    "TURBO_CACHE_KEY",
+    "VERCEL_URL"
+  ]
+}
