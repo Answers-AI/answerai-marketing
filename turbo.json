@@ -1,10 +1,10 @@
 {
   "$schema": "https://turborepo.org/schema.json",
-  "baseBranch": "origin/main",
   "globalDependencies": [".env", "**/.env"],
   "pipeline": {
     "dev": {
       "dependsOn": ["^build"],
+      "persistent": true,
       "cache": false
     },
     "storybook": {
@@ -12,9 +12,11 @@
       "cache": false
     },
     "lint": {
+      "dependsOn": ["^build"],
       "outputs": []
     },
     "test": {
+      "outputMode": "new-only",
       "dependsOn": ["^build"],
       "outputs": ["coverage/**"]
     },
@@ -29,6 +31,7 @@
       "outputs": []
     },
     "build": {
+      "outputMode": "new-only",
       "dependsOn": ["^build"],
       "outputs": ["dist/**", ".next/**"]
     },
@@ -38,7 +41,22 @@
     },
     "sync:cms": {
       "cache": false,
-      "dependsOn": ["@answersai-marketing/graphql-extensions#build"]
+      "dependsOn": ["@repo/graphql-extensions#build"]
+    },
+    "gql:dev": {
+      "outputMode": "new-only",
+      "dependsOn": ["^build", "graphql-sdk#sync:cms"],
+      "cache": false,
+      "persistent": true
+    },
+    "gql:logs": {
+      "outputMode": "new-only",
+      "cache": false,
+      "persistent": true
+    },
+    "clean": {
+      "outputMode": "new-only",
+      "cache": false
     },
     "start": {
       "cache": false,
@@ -50,38 +68,41 @@
       "dependsOn": [],
       "outputs": []
     },
-    "@answersai-marketing/graphql-runner#dev": {
+    "@repo/graphql-runner#dev": {
       "cache": false,
-      "dependsOn": ["@answersai-marketing/graphql-extensions#build"],
+      "dependsOn": ["@repo/graphql-extensions#build"],
       "outputs": []
     },
-    "@answersai-marketing/graphql-runner#start": {
+    "@repo/graphql-runner#start": {
       "cache": false,
-      "dependsOn": ["@answersai-marketing/graphql-extensions#build"],
+      "dependsOn": ["@repo/graphql-extensions#build"],
       "outputs": []
     },
-    "@answersai-marketing/utils#dev": {
+    "@repo/utils#dev": {
       "cache": false,
-      "dependsOn": ["@answersai-marketing/graphql-sdk#build"],
+      "dependsOn": ["@repo/graphql-sdk#build"],
       "outputs": []
     },
-    "@answersai-marketing/graphql-sdk#dev": {
+    "@repo/graphql-sdk#dev": {
       "cache": false,
-      "dependsOn": ["@answersai-marketing/graphql-sdk#gql:healthcheck"],
+      "dependsOn": ["@repo/graphql-sdk#gql:healthcheck"],
       "outputs": []
     },
-    "@answersai-marketing/graphql-sdk#build": {
-      "dependsOn": ["@answersai-marketing/graphql-sdk#gql:healthcheck", "^build"],
+    "@repo/graphql-sdk#build": {
+      "outputMode": "new-only",
+      "dependsOn": ["@repo/graphql-sdk#gql:healthcheck", "^build"],
       "outputs": ["dist/**", "src/generated/**", "schema.graphql"]
     },
-    "@answersai-marketing/web#dev": {
+    "@repo/web#dev": {
+      "outputMode": "new-only",
       "cache": false,
-      "dependsOn": ["@answersai-marketing/graphql-runner#dev", "^build"],
+      "dependsOn": ["@repo/graphql-runner#dev", "^build"],
       "outputs": ["out/**", ".next/**"]
     },
-    "@answersai-marketing/web#build": {
+    "@repo/web#build": {
+      "outputMode": "new-only",
       "cache": false,
-      "dependsOn": ["@answersai-marketing/graphql-runner#start", "^build"],
+      "dependsOn": ["@repo/graphql-runner#start", "^build"],
       "outputs": ["out/**", ".next/**"]
     }
   },
