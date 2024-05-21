@@ -7,7 +7,7 @@ type UseThemeProps = <Theme extends ThemeWithProps, Props, Name extends keyof an
   defaultTheme?: Theme;
 }) => Props & ThemedProps<Theme, Name>;
 
- const useThemeProps: UseThemeProps = ({ name, props, defaultTheme }) => {
+export const useThemeProps: UseThemeProps = ({ name, props, defaultTheme }) => {
   const theme = useTheme(defaultTheme);
 
   if (
@@ -31,5 +31,3 @@ const resolveProps = (defaultProps: any, props: any) => {
   });
   return output;
 };
-
-export default useThemeProps

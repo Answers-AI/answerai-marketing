@@ -29,8 +29,9 @@ interface SEOValue {
   [key: string]: SettingEntry | ImageSettingEntry;
 }
 
- const getPageMetadata = ({
+export const getPageMetadata = ({
   seo,
+  parentSEO
 }: {
   seo: SEOValue | undefined;
   parentSEO: ResolvedMetadata;
@@ -78,5 +79,3 @@ interface SEOValue {
     }
   };
 };
-
-export default getPageMetadata;

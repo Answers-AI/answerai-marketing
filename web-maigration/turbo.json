@@ -1,47 +1,50 @@
 {
-  "$schema": "https://turborepo.org/schema.json",
-  "globalDependencies": [".env", "**/.env"],
+  "$schema": "https://turbo.build/schema.json",
+  "globalDependencies": ["**/.env.*local"],
+  "globalEnv": [
+    "ALGOLIA_MAX_RECORDS",
+    "ANALYZE_BUNDLE",
+    "CONTENTFUL_DELIVERY_TOKEN",
+    "CONTENTFUL_ENV",
+    "CONTENTFUL_PREVIEW_TOKEN",
+    "CONTENTFUL_SPACE_ID",
+    "CONTENTFUL_USE_PREVIEW",
+    "DEFAULT_SITE_ID",
+    "DEPLOY_URL",
+    "DOMAIN",
+    "NEXT_PUBLIC_SENTRY_DSN",
+    "NODE_ENV",
+    "PAGES_REVALIDATE",
+    "PORT",
+    "PREVIEW_TOKEN",
+    "SITE_SETTINGS",
+    "SITE",
+    "VERCEL_URL"
+  ],
   "pipeline": {
-    "dev": {
-      "dependsOn": ["^build"],
-      "persistent": true,
-      "cache": false
-    },
-    "storybook": {
-      "dependsOn": ["^build"],
-      "cache": false
-    },
-    "lint": {
-      "dependsOn": ["^build"],
-      "outputs": []
-    },
-    "test": {
-      "outputMode": "new-only",
-      "dependsOn": ["^build"],
-      "outputs": ["coverage/**"]
-    },
-    "test:e2e": {
-      "dependsOn": ["^build"],
-      "outputs": ["coverage/**"],
-      "env": ["PERCY_TOKEN"]
-    },
-    "test:watch": {
-      "dependsOn": ["^build"],
+    "start": {
       "cache": false,
-      "outputs": []
+      "persistent": true,
+      "dependsOn": ["build"]
     },
     "build": {
       "outputMode": "new-only",
       "dependsOn": ["^build"],
       "outputs": ["dist/**", ".next/**"]
     },
-    "build-storybook": {
-      "dependsOn": ["^build"],
-      "outputs": ["storybook-static/**"]
+    "test": {
+      "outputMode": "new-only",
+      "outputs": ["coverage/**"],
+      "dependsOn": []
     },
-    "sync:cms": {
+    "lint": {
+      "dependsOn": ["^build"]
+    },
+    "dev": {
+      "outputMode": "new-only",
+      "dependsOn": ["^build"],
       "cache": false,
-      "dependsOn": ["@repo/graphql-extensions#build"]
+      "persistent": true
     },
     "gql:dev": {
       "outputMode": "new-only",
@@ -58,67 +61,36 @@
       "outputMode": "new-only",
       "cache": false
     },
-    "start": {
-      "cache": false,
-      "dependsOn": ["build"],
-      "outputs": []
-    },
-    "gql:healthcheck": {
-      "cache": false,
-      "dependsOn": [],
-      "outputs": []
-    },
-    "@repo/graphql-runner#dev": {
-      "cache": false,
-      "dependsOn": ["@repo/graphql-extensions#build"],
-      "outputs": []
-    },
-    "@repo/graphql-runner#start": {
-      "cache": false,
-      "dependsOn": ["@repo/graphql-extensions#build"],
-      "outputs": []
-    },
-    "@repo/utils#dev": {
-      "cache": false,
-      "dependsOn": ["@repo/graphql-sdk#build"],
-      "outputs": []
-    },
-    "@repo/graphql-sdk#dev": {
-      "cache": false,
-      "dependsOn": ["@repo/graphql-sdk#gql:healthcheck"],
-      "outputs": []
-    },
-    "@repo/graphql-sdk#build": {
-      "outputMode": "new-only",
-      "dependsOn": ["@repo/graphql-sdk#gql:healthcheck", "^build"],
-      "outputs": ["dist/**", "src/generated/**", "schema.graphql"]
-    },
-    "@repo/web#dev": {
+    "graphql-sdk#build": {
       "outputMode": "new-only",
       "cache": false,
-      "dependsOn": ["@repo/graphql-runner#dev", "^build"],
-      "outputs": ["out/**", ".next/**"]
+      "dependsOn": ["graphql-sdk#sync:cms", "^build"],
+      "inputs": [
+        "./packages/graphql-sdk/.cms-sync",
+        "./packages/**/src/**/*.graphql",
+        "./apps/**/src/**/*.graphql"
+      ],
+      "outputs": ["dist/**", "schema.graphql", "src/generated/**"]
     },
-    "@repo/web#build": {
+    "graphql-sdk#gql:start": {
       "outputMode": "new-only",
       "cache": false,
-      "dependsOn": ["@repo/graphql-runner#start", "^build"],
+      "dependsOn": [
+        "graphql-extensions#build",
+        "graphql-sdk#sync:cms",
+        "^build"
+      ]
+    },
+    "graphql-sdk#sync:cms": {
+      "outputMode": "new-only",
+      "cache": false,
+      "dependsOn": ["^build", "graphql-extensions#build"],
+      "outputs": [".cms-sync"]
+    },
+    "web#build": {
+      "outputMode": "new-only",
+      "dependsOn": ["graphql-sdk#sync:cms", "graphql-sdk#gql:start", "^build"],
       "outputs": ["out/**", ".next/**"]
     }
-  },
-  "globalEnv": [
-    "CONTENTFUL_DELIVERY_TOKEN",
-    "CONTENTFUL_ENV",
-    "CONTENTFUL_PREVIEW_TOKEN",
-    "CONTENTFUL_SPACE_ID",
-    "CONTENTFUL_USE_PREVIEW",
-    "DEFAULT_SITE_ID",
-    "DEPLOY_URL",
-    "DOMAIN",
-    "GRAPHQL_SERVER_URL",
-    "SITE_ID",
-    "SITE",
-    "TURBO_CACHE_KEY",
-    "VERCEL_URL"
-  ]
+  }
 }

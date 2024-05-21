@@ -1,11 +1,8 @@
 {
-  "extends": "@repo/typescript-config/react-library.json",
   "compilerOptions": {
-    "outDir": "dist",
-    "noEmit": true,
-    "allowImportingTsExtensions": true,
-    "rootDir": ""
-    },
-  "include": ["src"],
-  "exclude": ["node_modules", "dist"],
+    "lib": ["dom", "ES2015"]
+  },
+  "extends": "tsconfig/react-library.json",
+  "include": ["."],
+  "exclude": ["dist", "build", "node_modules", "**/*.spec.tsx"] // TODO: Remove the spec
 }

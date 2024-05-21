@@ -1,33 +1,33 @@
 import dynamic from 'next/dynamic';
-
-const Block = dynamic(() => import('./components/Block'));
-
-const Hero = dynamic(() => import('./components/Hero'));
-const Link = dynamic(() => import('./components/Link'));
-const Media = dynamic(() => import('./components/Media'));
-const Header = dynamic(() => import('./components/Header'));
-const Footer = dynamic(() => import('./components/Footer'));
-const Page = dynamic(() => import('./components/Page'));
-const TEXT = dynamic(() => import('./components/Text'));
-const RichText = dynamic(() => import('./components/RichText'));
-const Carousel = dynamic(() => import('./components/Carousel'));
-const Collection = dynamic(() => import('./components/Collection'));
-const Tabs = dynamic(() => import('./components/Tabs'));
-const Card = dynamic(() => import('./components/Card'));
-const Accordion = dynamic(() => import('./components/Accordion'));
-const Blog = dynamic(() => import('./components/Blog'));
-const Person = dynamic(() => import('./components/Person'));
-const Quote = dynamic(() => import('./components/Quote'));
-const Form = dynamic(() => import('./components/Form'));
-const Section = dynamic(() => import('./components/Section'));
-const NavigationItem = dynamic(() => import('./components/NavigationItem'));
-const HeaderNavLink = dynamic(() => import('./components/Header/HeaderNavLink/HeaderNavLink'));
-const HeaderNavGroup = dynamic(() => import('./components/Header/HeaderNavGroup/HeaderNavGroup'));
-const HeaderNavLinkNested = dynamic(() => import('./components/Header/HeaderNavLinkNested/HeaderNavLinkNested'));
-const FooterNavigationItem = dynamic(() => import('./components/Footer/FooterNavigationItem'));
-const FooterNavigationItemGroup = dynamic(() => import('./components/Footer/FooterNavigationItemGroup'));
-const SiteMessage = dynamic(() => import('./components/SiteMessage'));
-const Breadcrumbs = dynamic(() => import('./components/Breadcrumbs'));
+const Block = dynamic(() => import('./Block'));
+const Hero = dynamic(() => import('./Hero'));
+const Link = dynamic(() => import('./Link'));
+const Media = dynamic(() => import('./Media'));
+const Page = dynamic(() => import('./Page'));
+const Text = dynamic(() => import('./Text'));
+const RichText = dynamic(() => import('./RichText'));
+const Carousel = dynamic(() => import('./Carousel'));
+const Collection = dynamic(() => import('./Collection'));
+const Tabs = dynamic(() => import('./Tabs'));
+const Card = dynamic(() => import('./Card'));
+const Person = dynamic(() => import('./Person'));
+const Quote = dynamic(() => import('./Quote'));
+const Blog = dynamic(() => import('./Blog'));
+const Accordion = dynamic(() => import('./Accordion'));
+const Form = dynamic(() => import('./Form'));
+const Section = dynamic(() => import('./Section'));
+const NavigationItem = dynamic(() => import('./NavigationItem'));
+const Header = dynamic(() => import('./Header'));
+const Footer = dynamic(() => import('./Footer'));
+const HeaderNavLink = dynamic(() => import('./Header/HeaderNavLink/HeaderNavLink'));
+const HeaderNavGroup = dynamic(() => import('./Header/HeaderNavGroup/HeaderNavGroup'));
+const HeaderNavLinkNested = dynamic(
+  () => import('./Header/HeaderNavLinkNested/HeaderNavLinkNested')
+);
+const FooterNavigationItem = dynamic(() => import('./Footer/FooterNavigationItem'));
+const FooterNavigationItemGroup = dynamic(() => import('./Footer/FooterNavigationItemGroup'));
+const SiteMessage = dynamic(() => import('./SiteMessage'));
+const Breadcrumbs = dynamic(() => import('./Breadcrumbs'));
 
 export const contentMapping: {
   [key: string]: any;
@@ -39,7 +39,7 @@ export const contentMapping: {
   Header,
   Footer,
   Page,
-  Text: TEXT,
+  Text,
   RichText,
   Carousel,
   Collection,

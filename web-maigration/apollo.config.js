@@ -1,16 +1,10 @@
-require('dotenv').config();
-
-const path = require('path');
-const { graphqlEndpoint } = require('@repo/utils');
-
 module.exports = {
   client: {
+    includes: ['./packages/**/*.graphql'],
+    excludes: ['./packages/graphql-sdk/schema.graphql'],
     service: {
-      name: process.env.APOLLO_GRAPH_REF || 'lastrev-next-starter',
-      localSchemaFile: path.resolve(__dirname, './apps/graphql-sdk/schema.graphql'),
-      url: graphqlEndpoint
-    },
-    includes: ['./packages/ui/src/components/**/*.graphql', './apps/graphql-sdk/src/**/*.graphql'],
-    excludes: ['**/generated/**']
+      name: 'Last-Rev-Next-Starter',
+      localSchemaFile: './packages/graphql-sdk/schema.graphql'
+    }
   }
 };
